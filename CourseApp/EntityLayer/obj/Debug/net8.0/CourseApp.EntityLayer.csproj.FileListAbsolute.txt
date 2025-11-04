@@ -1,0 +1,12 @@
+D:\HackathonV2Csharp\CourseApp\EntityLayer\bin\Debug\net8.0\CourseApp.EntityLayer.deps.json
+D:\HackathonV2Csharp\CourseApp\EntityLayer\bin\Debug\net8.0\CourseApp.EntityLayer.dll
+D:\HackathonV2Csharp\CourseApp\EntityLayer\bin\Debug\net8.0\CourseApp.EntityLayer.pdb
+D:\HackathonV2Csharp\CourseApp\EntityLayer\obj\Debug\net8.0\CourseApp.EntityLayer.GeneratedMSBuildEditorConfig.editorconfig
+D:\HackathonV2Csharp\CourseApp\EntityLayer\obj\Debug\net8.0\CourseApp.EntityLayer.AssemblyInfoInputs.cache
+D:\HackathonV2Csharp\CourseApp\EntityLayer\obj\Debug\net8.0\CourseApp.EntityLayer.AssemblyInfo.cs
+D:\HackathonV2Csharp\CourseApp\EntityLayer\obj\Debug\net8.0\CourseApp.EntityLayer.csproj.CoreCompileInputs.cache
+D:\HackathonV2Csharp\CourseApp\EntityLayer\obj\Debug\net8.0\CourseApp.EntityLayer.sourcelink.json
+D:\HackathonV2Csharp\CourseApp\EntityLayer\obj\Debug\net8.0\CourseApp.EntityLayer.dll
+D:\HackathonV2Csharp\CourseApp\EntityLayer\obj\Debug\net8.0\refint\CourseApp.EntityLayer.dll
+D:\HackathonV2Csharp\CourseApp\EntityLayer\obj\Debug\net8.0\CourseApp.EntityLayer.pdb
+D:\HackathonV2Csharp\CourseApp\EntityLayer\obj\Debug\net8.0\ref\CourseApp.EntityLayer.dll
