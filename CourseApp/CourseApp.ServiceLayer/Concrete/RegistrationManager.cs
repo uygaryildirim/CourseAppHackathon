@@ -23,10 +23,10 @@ public class RegistrationManager : IRegistrationService
     {
         var registrationList = await _unitOfWork.Registrations.GetAll(false).ToListAsync();
         var registrationListMapping = _mapper.Map<IEnumerable<GetAllRegistrationDto>>(registrationList);
-        // DÜZELTME: Boş liste kontrolü eklendi. Liste boş olduğunda kullanıcıya bilgilendirici mesaj döndürülüyor.
+        // DÜZELTME: Boş liste kontrolü eklendi. Liste boş olduğunda HTTP 200 OK ile bilgilendirici mesaj döndürülüyor. Boş liste bir hata değil, geçerli bir durumdur.
         if (!registrationList.Any() || registrationListMapping == null || !registrationListMapping.Any())
         {
-            return new ErrorDataResult<IEnumerable<GetAllRegistrationDto>>(null, ConstantsMessages.RegistrationListEmptyMessage);
+            return new SuccessDataResult<IEnumerable<GetAllRegistrationDto>>(new List<GetAllRegistrationDto>(), ConstantsMessages.RegistrationListEmptyMessage);
         }
         return new SuccessDataResult<IEnumerable<GetAllRegistrationDto>>(registrationListMapping, ConstantsMessages.RegistrationListSuccessMessage);
     }

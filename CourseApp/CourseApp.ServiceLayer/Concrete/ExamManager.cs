@@ -28,11 +28,11 @@ public class ExamManager : IExamService
         // DÜZELTME: examtListMapping yazım hatası düzeltildi - examListMapping olarak değiştirildi. Değişken adı daha okunabilir ve tutarlı hale getirildi.
         var examListMapping = _mapper.Map<IEnumerable<GetAllExamDto>>(examList);
         
-        // DÜZELTME: Boş liste kontrolü eklendi. Liste boş olduğunda kullanıcıya bilgilendirici mesaj döndürülüyor.
+        // DÜZELTME: Boş liste kontrolü eklendi. Liste boş olduğunda HTTP 200 OK ile bilgilendirici mesaj döndürülüyor. Boş liste bir hata değil, geçerli bir durumdur.
         // DÜZELTME: Index out of range exception önlendi. examListMapping boş olabilir, gereksiz index erişimi kaldırıldı.
         if (!examList.Any() || examListMapping == null || !examListMapping.Any())
         {
-            return new ErrorDataResult<IEnumerable<GetAllExamDto>>(null, ConstantsMessages.ExamListEmptyMessage);
+            return new SuccessDataResult<IEnumerable<GetAllExamDto>>(new List<GetAllExamDto>(), ConstantsMessages.ExamListEmptyMessage);
         }
         
         // DÜZELTME: examtListMapping yazım hatası düzeltildi - examListMapping olarak değiştirildi. Return statement'ta doğru değişken adı kullanılıyor.

@@ -24,10 +24,10 @@ public class StudentManager : IStudentService
     {
         var studentList = await _unitOfWork.Students.GetAll(track).ToListAsync();
         var studentListMapping = _mapper.Map<IEnumerable<GetAllStudentDto>>(studentList);
-        // DÜZELTME: Boş liste kontrolü eklendi. Liste boş olduğunda kullanıcıya bilgilendirici mesaj döndürülüyor.
+        // DÜZELTME: Boş liste kontrolü eklendi. Liste boş olduğunda HTTP 200 OK ile bilgilendirici mesaj döndürülüyor. Boş liste bir hata değil, geçerli bir durumdur.
         if (!studentList.Any() || studentListMapping == null || !studentListMapping.Any())
         {
-            return new ErrorDataResult<IEnumerable<GetAllStudentDto>>(null, ConstantsMessages.StudentListEmptyMessage);
+            return new SuccessDataResult<IEnumerable<GetAllStudentDto>>(new List<GetAllStudentDto>(), ConstantsMessages.StudentListEmptyMessage);
         }
         return new SuccessDataResult<IEnumerable<GetAllStudentDto>>(studentListMapping, ConstantsMessages.StudentListSuccessMessage);
     }

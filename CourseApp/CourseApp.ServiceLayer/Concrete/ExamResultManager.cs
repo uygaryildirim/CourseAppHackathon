@@ -26,10 +26,10 @@ public class ExamResultManager : IExamResultService
     {
         var examResultList = await _unitOfWork.ExamResults.GetAll(false).ToListAsync();
         var examResultListMapping = _mapper.Map<IEnumerable<GetAllExamResultDto>>(examResultList);
-        // DÜZELTME: Boş liste kontrolü eklendi. Liste boş olduğunda kullanıcıya bilgilendirici mesaj döndürülüyor.
+        // DÜZELTME: Boş liste kontrolü eklendi. Liste boş olduğunda HTTP 200 OK ile bilgilendirici mesaj döndürülüyor. Boş liste bir hata değil, geçerli bir durumdur.
         if (!examResultList.Any() || examResultListMapping == null || !examResultListMapping.Any())
         {
-            return new ErrorDataResult<IEnumerable<GetAllExamResultDto>>(null, ConstantsMessages.ExamResultListEmptyMessage);
+            return new SuccessDataResult<IEnumerable<GetAllExamResultDto>>(new List<GetAllExamResultDto>(), ConstantsMessages.ExamResultListEmptyMessage);
         }
         return new SuccessDataResult<IEnumerable<GetAllExamResultDto>>(examResultListMapping, ConstantsMessages.ExamResultListSuccessMessage);
 

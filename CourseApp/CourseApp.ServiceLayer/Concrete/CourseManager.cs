@@ -38,11 +38,11 @@ public class CourseManager : ICourseService
             StartDate = course.StartDate
         }).ToList();
 
-        // DÜZELTME: Boş liste kontrolü eklendi. Liste boş olduğunda kullanıcıya bilgilendirici mesaj döndürülüyor.
+        // DÜZELTME: Boş liste kontrolü eklendi. Liste boş olduğunda HTTP 200 OK ile bilgilendirici mesaj döndürülüyor. Boş liste bir hata değil, geçerli bir durumdur.
         // DÜZELTME: Index out of range exception önlendi. result boş olabilir, gereksiz index erişimi kaldırıldı.
         if (!result.Any())
         {
-            return new ErrorDataResult<IEnumerable<GetAllCourseDto>>(null, ConstantsMessages.CourseListEmptyMessage);
+            return new SuccessDataResult<IEnumerable<GetAllCourseDto>>(new List<GetAllCourseDto>(), ConstantsMessages.CourseListEmptyMessage);
         }
 
         return new SuccessDataResult<IEnumerable<GetAllCourseDto>>(result, ConstantsMessages.CourseListSuccessMessage);

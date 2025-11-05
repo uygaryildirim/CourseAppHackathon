@@ -94,12 +94,17 @@ app.UseSwagger();
 app.UseSwaggerUI(c =>
 {
     c.SwaggerEndpoint("/swagger/v1/swagger.json", "CourseApp API V1");
-    c.RoutePrefix = string.Empty; // Swagger UI'ı root path'te açmak için
+    c.RoutePrefix = "swagger"; // Swagger UI'ı /swagger path'inde açmak için (root path'te web arayüzü var)
     c.DisplayRequestDuration(); // İstek süresini göster
     c.EnableDeepLinking(); // Deep linking aktif
     c.EnableFilter(); // Arama filtresi aktif
     c.EnableTryItOutByDefault(); // Try it out butonunu varsayılan olarak aktif et
 });
+
+// DÜZELTME: Default files middleware eklendi. Root path'te index.html dosyasını otomatik olarak gösteriyor.
+app.UseDefaultFiles();
+// DÜZELTME: Static files middleware eklendi. wwwroot klasöründeki HTML, CSS, JS dosyalarına erişim sağlanıyor.
+app.UseStaticFiles();
 
 // DÜZELTME: HTTPS redirection eklendi. Güvenlik için HTTP istekleri HTTPS'e yönlendiriliyor.
 app.UseHttpsRedirection();

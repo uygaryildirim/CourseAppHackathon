@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CourseApp - Eğitim Yönetim Sistemi</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0f1419;
+            min-height: 100vh;
+            padding: 20px;
+            color: #e0e0e0;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* DÜZELTME: İnteraktif arka plan efekti. Mouse hareketine göre değişen gradient efektleri ekleniyor, premium görünüm için. */
+        #animatedBackground {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(251, 191, 36, 0.08) 0%, transparent 25%, #0f1419 50%);
+            pointer-events: none;
+            transition: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* DÜZELTME: Header daha kompakt ve sol üstte konumlandırıldı. Küçük logo ve slogan için düzenlendi. */
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 40px;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* DÜZELTME: Logo mezuniyet kepi silüeti olarak CSS ile çizildi. Sol tarafta görsel bir logo, premium görünüm için. */
+        .logo {
+            width: 48px;
+            height: 48px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* DÜZELTME: Mezuniyet kepi silüeti CSS ile çiziliyor. Kep tassel (püskül) ve kare şeklinde kep oluşturuluyor. */
+        .logo::before {
+            content: '';
+            position: absolute;
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            border-radius: 4px;
+            transform: rotate(45deg);
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+        }
+
+        /* DÜZELTME: Kep tassel (püskül) eklendi. Mezuniyet kepinin püskülü için küçük bir daire oluşturuluyor. */
+        .logo::after {
+            content: '';
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            width: 8px;
+            height: 8px;
+            background: #fbbf24;
+            border-radius: 50%;
+            box-shadow: 0 2px 8px rgba(251, 191, 36, 0.5);
+        }
+
+        .logo-section h1 {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 1.8em;
+            font-weight: 700;
+            margin: 0;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-section .slogan {
+            color: #94a3b8;
+            font-size: 0.95em;
+            font-weight: 400;
+            margin-left: 8px;
+        }
+
+        .buttons-container {
+            background: rgba(30, 30, 40, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .buttons-container h2 {
+            color: #e0e0e0;
+            margin-bottom: 25px;
+            font-size: 1.3em;
+            font-weight: 600;
+        }
+
+        /* DÜZELTME: Buton grid'i 4 sütunlu, 2 satırlı olacak şekilde düzenlendi. Grid yapısı sabit ve düzenli. */
+        .buttons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        /* DÜZELTME: Premium buton tasarımı. Daha zengin görünüm ama yine de sade kalıyor. */
+        .api-button {
+            background: rgba(30, 30, 40, 0.9);
+            color: #e0e0e0;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            padding: 20px;
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .api-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .api-button:hover::before {
+            left: 100%;
+        }
+
+        .api-button:hover {
+            background: rgba(40, 40, 55, 0.95);
+            border-color: rgba(59, 130, 246, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);
+        }
+
+        .api-button:active {
+            transform: translateY(0);
+        }
+
+        .api-button.loading {
+            opacity: 0.6;
+            cursor: wait;
+            pointer-events: none;
+        }
+
+        .endpoint-info {
+            color: #888;
+            font-size: 0.8em;
+            margin-top: 8px;
+            font-family: 'Courier New', monospace;
+            font-weight: 400;
+        }
+
+        .response-container {
+            background: rgba(30, 30, 40, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 30px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            min-height: 300px;
+        }
+
+        .response-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .response-header h2 {
+            color: #e0e0e0;
+            font-size: 1.5em;
+            font-weight: 600;
+        }
+
+        .status-badge {
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 500;
+            font-size: 0.85em;
+        }
+
+        .status-success {
+            background: #2d5a2d;
+            color: #81c784;
+            border: 1px solid #4caf50;
+        }
+
+        .status-error {
+            background: #5a2d2d;
+            color: #e57373;
+            border: 1px solid #f44336;
+        }
+
+        .status-loading {
+            background: #5a4d2d;
+            color: #ffb74d;
+            border: 1px solid #ff9800;
+        }
+
+        .response-content {
+            background: rgba(15, 20, 25, 0.6);
+            border-radius: 8px;
+            padding: 20px;
+            max-height: 600px;
+            overflow-y: auto;
+            font-family: 'Fira Code', 'Courier New', monospace;
+            font-size: 0.9em;
+            line-height: 1.6;
+            border: 1px solid rgba(59, 130, 246, 0.1);
+        }
+
+        .response-content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .response-content::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+
+        .response-content::-webkit-scrollbar-thumb {
+            background: #444;
+            border-radius: 4px;
+        }
+
+        .response-content::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        .response-content pre {
+            margin: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            color: #e0e0e0;
+        }
+
+        .empty-message {
+            text-align: center;
+            color: #888;
+            padding: 60px;
+            font-style: italic;
+        }
+
+        .loading-spinner {
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            border: 2px solid rgba(255, 152, 0, 0.3);
+            border-radius: 50%;
+            border-top-color: #ff9800;
+            animation: spin 0.8s linear infinite;
+            margin-right: 8px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* DÜZELTME: Responsive tasarım. Mobil cihazlarda 2 sütun, tablet'te 3 sütun olacak şekilde ayarlandı. */
+        @media (max-width: 1024px) {
+            .buttons-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .buttons-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- DÜZELTME: İnteraktif arka plan için div eklendi. Mouse hareketine göre gradient efekti oluşturuluyor. -->
+    <div id="animatedBackground"></div>
+
+    <div class="container">
+        <!-- DÜZELTME: Header sol üstte kompakt hale getirildi. Logo ve slogan yan yana yerleştirildi. -->
+        <header>
+            <div class="logo-section">
+                <!-- DÜZELTME: Logo mezuniyet kepi silüeti olarak CSS ile çizildi. Sol tarafta görsel bir logo, premium görünüm için. -->
+                <div class="logo"></div>
+                <div>
+                    <h1>CourseApp</h1>
+                </div>
+                <span class="slogan">Eğitim Yönetim Sistemi</span>
+            </div>
+        </header>
+
+        <div class="buttons-container">
+            <h2>API Endpoint'leri</h2>
+            <!-- DÜZELTME: Butonlar Swagger'daki sıralamaya göre düzenlendi: Courses, ExamResults, Exams, Instructors, Lessons, Registrations, Students -->
+            <div class="buttons-grid">
+                <button class="api-button" onclick="fetchData('Courses', 'GET /api/Courses')">
+                    📖 Kurslar
+                    <div class="endpoint-info">GET /api/Courses</div>
+                </button>
+                <button class="api-button" onclick="fetchData('ExamResults', 'GET /api/ExamResults')">
+                    📊 Sınav Sonuçları
+                    <div class="endpoint-info">GET /api/ExamResults</div>
+                </button>
+                <button class="api-button" onclick="fetchData('Exams', 'GET /api/Exams')">
+                    📝 Sınavlar
+                    <div class="endpoint-info">GET /api/Exams</div>
+                </button>
+                <button class="api-button" onclick="fetchData('Instructors', 'GET /api/Instructors')">
+                    👨‍🏫 Eğitmenler
+                    <div class="endpoint-info">GET /api/Instructors</div>
+                </button>
+                <button class="api-button" onclick="fetchData('Lessons', 'GET /api/Lessons')">
+                    📚 Dersler
+                    <div class="endpoint-info">GET /api/Lessons</div>
+                </button>
+                <button class="api-button" onclick="fetchData('Registrations', 'GET /api/Registrations')">
+                    ✍️ Kayıtlar
+                    <div class="endpoint-info">GET /api/Registrations</div>
+                </button>
+                <button class="api-button" onclick="fetchData('Students', 'GET /api/Students')">
+                    👥 Öğrenciler
+                    <div class="endpoint-info">GET /api/Students</div>
+                </button>
+            </div>
+        </div>
+
+        <div class="response-container">
+            <div class="response-header">
+                <h2>API Response</h2>
+                <span id="statusBadge" class="status-badge status-loading" style="display: none;">
+                    <span class="loading-spinner"></span>
+                    Yükleniyor...
+                </span>
+            </div>
+            <div class="response-content" id="responseContent">
+                <div class="empty-message">
+                    Yukarıdaki butonlardan birini tıklayarak API endpoint'lerini test edebilirsiniz.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // DÜZELTME: API base URL'i tanımlanıyor. Farklı ortamlarda çalışabilmesi için window.location.origin kullanılıyor.
+        const API_BASE_URL = window.location.origin;
+
+        // DÜZELTME: İnteraktif arka plan efekti. Mouse hareketine göre gradient pozisyonu değişiyor, premium görünüm için.
+        const animatedBackground = document.getElementById('animatedBackground');
+
+        // DÜZELTME: Anlık takip için transition ve requestAnimationFrame kaldırıldı. Direkt style güncellemesi yapılıyor, hiç gecikme olmadan.
+        document.addEventListener('mousemove', (e) => {
+            // DÜZELTME: Mouse pozisyonu anlık olarak hesaplanıyor ve gradient direkt güncelleniyor. Hiç transition veya frame gecikmesi yok.
+            const x = (e.clientX / window.innerWidth) * 100;
+            const y = (e.clientY / window.innerHeight) * 100;
+            
+            // DÜZELTME: Sarı tonlarında gradient kullanılıyor. Kullanıcı deneyimi için daha hoş görünen renk paleti. Anlık güncelleme için direkt style ataması.
+            animatedBackground.style.background = `
+                radial-gradient(circle 200px at ${x}% ${y}%, 
+                    rgba(251, 191, 36, 0.12) 0%, 
+                    rgba(251, 191, 36, 0.06) 40%, 
+                    transparent 70%, 
+                    #0f1419 100%)
+            `;
+        });
+
+        /**
+         * API'den veri çekme fonksiyonu
+         * @param {string} endpoint - API endpoint adı (örn: 'Students', 'Courses')
+         * @param {string} endpointInfo - Kullanıcıya gösterilecek endpoint bilgisi
+         */
+        async function fetchData(endpoint, endpointInfo) {
+            // DÜZELTME: Response container'ı ve status badge'i alınıyor. UI güncellemeleri için DOM elementleri hazırlanıyor.
+            const responseContent = document.getElementById('responseContent');
+            const statusBadge = document.getElementById('statusBadge');
+            
+            // DÜZELTME: Loading durumu gösteriliyor. Kullanıcıya istek gönderildiği bilgisi veriliyor.
+            statusBadge.style.display = 'block';
+            statusBadge.className = 'status-badge status-loading';
+            statusBadge.innerHTML = '<span class="loading-spinner"></span> Yükleniyor...';
+            
+            // DÜZELTME: Response içeriği temizleniyor. Önceki sonuçlar gösterilmiyor, yeni istek için hazırlanıyor.
+            responseContent.innerHTML = '<div class="empty-message">İstek gönderiliyor...</div>';
+
+            // DÜZELTME: Tüm butonlar loading durumuna alınıyor. Kullanıcının birden fazla istek göndermesini önlemek için.
+            const buttons = document.querySelectorAll('.api-button');
+            buttons.forEach(btn => {
+                btn.classList.add('loading');
+                btn.disabled = true;
+            });
+
+            try {
+                // DÜZELTME: Fetch API kullanılarak HTTP GET isteği gönderiliyor. Modern JavaScript fetch API'si ile API çağrısı yapılıyor.
+                const response = await fetch(`${API_BASE_URL}/api/${endpoint}`);
+                
+                // DÜZELTME: Response'dan JSON verisi çıkarılıyor. API'den dönen JSON formatındaki veri parse ediliyor.
+                const data = await response.json();
+                
+                // DÜZELTME: HTTP status kodu kontrol ediliyor. Başarılı (200-299) veya hata durumlarına göre UI güncelleniyor.
+                if (response.ok) {
+                    // DÜZELTME: Başarılı response gösteriliyor. Status badge'i yeşil yapılıyor ve başarı mesajı gösteriliyor.
+                    statusBadge.className = 'status-badge status-success';
+                    statusBadge.textContent = `✓ Başarılı (${response.status})`;
+                    
+                    // DÜZELTME: JSON verisi formatlanarak gösteriliyor. JSON.stringify ile güzel formatlanmış JSON gösterimi sağlanıyor.
+                    const formattedJson = JSON.stringify(data, null, 2);
+                    responseContent.innerHTML = `
+                        <div style="margin-bottom: 20px; color: #ffffff; font-weight: 500;">
+                            <div>Endpoint: ${endpointInfo}</div>
+                            <div style="margin-top: 8px; font-size: 0.9em; color: #888;">
+                                Status: ${response.status} ${response.statusText}
+                            </div>
+                        </div>
+                        <pre>${formattedJson}</pre>
+                    `;
+                } else {
+                    // DÜZELTME: Hata durumu gösteriliyor. Status badge'i kırmızı yapılıyor ve hata mesajı gösteriliyor.
+                    statusBadge.className = 'status-badge status-error';
+                    statusBadge.textContent = `✗ Hata (${response.status})`;
+                    
+                    // DÜZELTME: Hata mesajı formatlanarak gösteriliyor. API'den dönen hata mesajı kullanıcıya gösteriliyor.
+                    const formattedJson = JSON.stringify(data, null, 2);
+                    responseContent.innerHTML = `
+                        <div style="margin-bottom: 20px; color: #e57373; font-weight: 500;">
+                            <div>Endpoint: ${endpointInfo}</div>
+                            <div style="margin-top: 8px; font-size: 0.9em; color: #888;">
+                                Status: ${response.status} ${response.statusText}
+                            </div>
+                        </div>
+                        <pre>${formattedJson}</pre>
+                    `;
+                }
+            } catch (error) {
+                // DÜZELTME: Network veya diğer hatalar yakalanıyor. Try-catch ile beklenmeyen hatalar yakalanıyor ve kullanıcıya gösteriliyor.
+                statusBadge.className = 'status-badge status-error';
+                statusBadge.textContent = '✗ Hata';
+                
+                // DÜZELTME: Hata detayları gösteriliyor. Network hataları veya diğer exception'lar kullanıcıya açıklayıcı şekilde gösteriliyor.
+                responseContent.innerHTML = `
+                    <div style="color: #e57373; font-weight: 500; margin-bottom: 20px;">
+                        <div>Endpoint: ${endpointInfo}</div>
+                        <div style="margin-top: 15px;">Hata: ${error.message}</div>
+                    </div>
+                    <pre>${JSON.stringify({ error: error.message, stack: error.stack }, null, 2)}</pre>
+                `;
+            } finally {
+                // DÜZELTME: Butonlar tekrar aktif hale getiriliyor. İstek tamamlandığında (başarılı veya hatalı) butonlar tekrar kullanılabilir hale geliyor.
+                buttons.forEach(btn => {
+                    btn.classList.remove('loading');
+                    btn.disabled = false;
+                });
+            }
+        }
+
+        // DÜZELTME: Sayfa yüklendiğinde hoş geldin mesajı gösteriliyor. Kullanıcıya arayüzün nasıl kullanılacağı hakkında bilgi veriliyor.
+        window.addEventListener('load', () => {
+            console.log('CourseApp API Test Arayüzü hazır!');
+        });
+    </script>
+</body>
+</html>
