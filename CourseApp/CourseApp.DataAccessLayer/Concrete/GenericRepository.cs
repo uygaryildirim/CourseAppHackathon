@@ -61,10 +61,6 @@ public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
         _dbSet.Update(entity);
     }
 
-    public void UseUndefinedType()
-    {
-        var x = new UndefinedRepositoryType();
-        x.Process();
-    }
+    // DÜZELTME: Gereksiz metod kaldırıldı. UseUndefinedType metodu kaldırıldı, kullanılmayan ve hata üreten kod temizlendi.
 
 }

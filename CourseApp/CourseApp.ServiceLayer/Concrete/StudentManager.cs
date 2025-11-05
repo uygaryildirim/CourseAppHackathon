@@ -33,29 +33,49 @@ public class StudentManager : IStudentService
 
     public async Task<IDataResult<GetByIdStudentDto>> GetByIdAsync(string id, bool track = true)
     {
-        // ORTA: Null check eksik - id null/empty olabilir
-        // ORTA: Null reference exception - hasStudent null olabilir ama kontrol edilmiyor
+        // DÜZELTME: Null check eklendi. id parametresi null veya empty olabilir, bu durumda hata mesajı döndürülüyor.
+        if (string.IsNullOrEmpty(id))
+        {
+            return new ErrorDataResult<GetByIdStudentDto>(null, "ID parametresi boş olamaz.");
+        }
+        
         var hasStudent = await _unitOfWork.Students.GetByIdAsync(id, false);
+        // DÜZELTME: Null reference exception önlendi. hasStudent null olabilir, bu durumda hata mesajı döndürülüyor.
+        if (hasStudent == null)
+        {
+            return new ErrorDataResult<GetByIdStudentDto>(null, "Belirtilen ID'ye sahip öğrenci bulunamadı.");
+        }
+        
         var hasStudentMapping = _mapper.Map<GetByIdStudentDto>(hasStudent);
-        // ORTA: Null reference - hasStudentMapping null olabilir ama kullanılıyor
-        var name = hasStudentMapping.Name; // Null reference riski
+        // DÜZELTME: Null reference exception önlendi. hasStudentMapping null olabilir, bu durumda kontrol ediliyor.
+        if (hasStudentMapping == null)
+        {
+            return new ErrorDataResult<GetByIdStudentDto>(null, "Öğrenci bilgileri eşlenemedi.");
+        }
+        
         return new SuccessDataResult<GetByIdStudentDto>(hasStudentMapping, ConstantsMessages.StudentGetByIdSuccessMessage);
     }
 
     public async Task<IResult> CreateAsync(CreateStudentDto entity)
     {
-        if(entity == null) return new ErrorResult("Null");
+        // DÜZELTME: Null check eklendi ve daha açıklayıcı hata mesajı döndürülüyor.
+        if (entity == null)
+        {
+            return new ErrorResult("Öğrenci bilgileri boş olamaz.");
+        }
         
-        // ORTA: Tip dönüşüm hatası - string'i int'e direkt cast
-        var invalidConversion = (int)entity.TC; // ORTA: InvalidCastException - string int'e dönüştürülemez
+        // DÜZELTME: Invalid cast exception önlendi. Gereksiz tip dönüşümü kaldırıldı, string'i int'e cast etme işlemi kaldırıldı.
         
         var createdStudent = _mapper.Map<Student>(entity);
-        // ORTA: Null reference - createdStudent null olabilir
-        var studentName = createdStudent.Name; // Null check yok
+        // DÜZELTME: Null reference exception önlendi. createdStudent null olabilir, bu durumda hata mesajı döndürülüyor.
+        if (createdStudent == null)
+        {
+            return new ErrorResult("Öğrenci bilgileri eşlenemedi.");
+        }
         
         await _unitOfWork.Students.CreateAsync(createdStudent);
-        // ZOR: Async/await anti-pattern - .Result kullanımı deadlock'a sebep olabilir
-        var result = _unitOfWork.CommitAsync().Result; // ZOR: Anti-pattern
+        // DÜZELTME: Async/await anti-pattern düzeltildi. .Result yerine await kullanılarak deadlock riski önlendi.
+        var result = await _unitOfWork.CommitAsync();
         if (result > 0)
         {
             return new SuccessResult(ConstantsMessages.StudentCreateSuccessMessage);
@@ -66,9 +86,22 @@ public class StudentManager : IStudentService
 
     public async Task<IResult> Remove(DeleteStudentDto entity)
     {
+        // DÜZELTME: Null check eklendi. entity null olabilir, bu durumda hata mesajı döndürülüyor.
+        if (entity == null)
+        {
+            return new ErrorResult("Silinecek öğrenci bilgileri boş olamaz.");
+        }
+        
         var deletedStudent = _mapper.Map<Student>(entity);
+        // DÜZELTME: Null reference exception önlendi. deletedStudent null olabilir, bu durumda hata mesajı döndürülüyor.
+        if (deletedStudent == null)
+        {
+            return new ErrorResult("Öğrenci bilgileri eşlenemedi.");
+        }
+        
         _unitOfWork.Students.Remove(deletedStudent);
-        var result = _unitOfWork.CommitAsync().GetAwaiter().GetResult();
+        // DÜZELTME: Async/await anti-pattern düzeltildi. GetAwaiter().GetResult() yerine await kullanılarak deadlock riski önlendi.
+        var result = await _unitOfWork.CommitAsync();
         if (result > 0)
         {
             return new SuccessResult(ConstantsMessages.StudentDeleteSuccessMessage);
@@ -78,25 +111,31 @@ public class StudentManager : IStudentService
 
     public async Task<IResult> Update(UpdateStudentDto entity)
     {
-        // ORTA: Null check eksik - entity null olabilir
-        var updatedStudent = _mapper.Map<Student>(entity);
+        // DÜZELTME: Null check eklendi. entity null olabilir, bu durumda hata mesajı döndürülüyor.
+        if (entity == null)
+        {
+            return new ErrorResult("Güncellenecek öğrenci bilgileri boş olamaz.");
+        }
         
-        // ORTA: Index out of range - entity.TC null/boş olabilir
-        var tcFirstDigit = entity.TC[0]; // IndexOutOfRangeException riski
+        var updatedStudent = _mapper.Map<Student>(entity);
+        // DÜZELTME: Null reference exception önlendi. updatedStudent null olabilir, bu durumda hata mesajı döndürülüyor.
+        if (updatedStudent == null)
+        {
+            return new ErrorResult("Öğrenci bilgileri eşlenemedi.");
+        }
+        
+        // DÜZELTME: Index out of range exception önlendi. entity.TC null veya boş olabilir, gereksiz index erişimi kaldırıldı.
         
         _unitOfWork.Students.Update(updatedStudent);
         var result = await _unitOfWork.CommitAsync();
         if (result > 0)
         {
-            // ORTA: Mantıksal hata - başarılı durumda yanlış mesaj döndürülüyor
-            return new SuccessResult(ConstantsMessages.StudentListSuccessMessage); // HATA: UpdateSuccessMessage olmalıydı
+            // DÜZELTME: Mantıksal hata düzeltildi. Başarılı durumda doğru mesaj döndürülüyor - UpdateSuccessMessage kullanılıyor.
+            return new SuccessResult(ConstantsMessages.StudentUpdateSuccessMessage);
         }
-        // ORTA: Mantıksal hata - hata durumunda SuccessResult döndürülüyor
-        return new SuccessResult(ConstantsMessages.StudentUpdateFailedMessage); // HATA: ErrorResult olmalıydı
+        // DÜZELTME: Mantıksal hata düzeltildi. Hata durumunda ErrorResult döndürülüyor, SuccessResult yerine ErrorResult kullanılıyor.
+        return new ErrorResult(ConstantsMessages.StudentUpdateFailedMessage);
     }
-
-    public void MissingImplementation()
-    {
-        var x = UnknownClass.StaticMethod();
-    }
+    
+    // DÜZELTME: Gereksiz metod kaldırıldı. MissingImplementation metodu kaldırıldı, kullanılmayan ve hata üreten kod temizlendi.
 }

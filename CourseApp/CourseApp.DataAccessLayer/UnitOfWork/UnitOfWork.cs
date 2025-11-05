@@ -6,46 +6,54 @@ namespace CourseApp.DataAccessLayer.UnitOfWork;
 public class UnitOfWork : IUnitOfWork
 {
     private readonly AppDbContext _context;
-    private StudentRepository _studentRepository;
-    private LessonRepository _lessonRepository;
-    private CourseRepository _courseRepository;
-    private RegistrationRepository _registrationRepository;
-    private ExamRepository _examRepository;
-    private ExamResultRepository _examResultRepository;
-    private InstructorRepository _instructorRepository;
+    // DÜZELTME: Thread-safe repository initialization. Lazy<T> kullanılarak thread-safe lazy initialization sağlanıyor, multi-threaded ortamda birden fazla instance oluşturulması önleniyor.
+    private readonly Lazy<IStudentRepository> _studentRepository;
+    private readonly Lazy<ILessonRepository> _lessonRepository;
+    private readonly Lazy<ICourseRepository> _courseRepository;
+    private readonly Lazy<IRegistrationRepository> _registrationRepository;
+    private readonly Lazy<IExamRepository> _examRepository;
+    private readonly Lazy<IExamResultRepository> _examResultRepository;
+    private readonly Lazy<IInstructorRepository> _instructorRepository;
 
     public UnitOfWork(AppDbContext context)
     {
-        _context = context;
+        _context = context ?? throw new ArgumentNullException(nameof(context));
+        // DÜZELTME: Thread-safe lazy initialization. Her repository için Lazy<T> kullanılarak thread-safe initialization sağlanıyor.
+        _studentRepository = new Lazy<IStudentRepository>(() => new StudentRepository(_context));
+        _lessonRepository = new Lazy<ILessonRepository>(() => new LessonRepository(_context));
+        _courseRepository = new Lazy<ICourseRepository>(() => new CourseRepository(_context));
+        _registrationRepository = new Lazy<IRegistrationRepository>(() => new RegistrationRepository(_context));
+        _examRepository = new Lazy<IExamRepository>(() => new ExamRepository(_context));
+        _examResultRepository = new Lazy<IExamResultRepository>(() => new ExamResultRepository(_context));
+        _instructorRepository = new Lazy<IInstructorRepository>(() => new InstructorRepository(_context));
     }
 
-    public IStudentRepository Students => _studentRepository ?? (_studentRepository = new StudentRepository(_context)); // ZOR SEVİYE: Thread-safe değil - multi-threaded ortamda birden fazla instance oluşturulabilir
+    // DÜZELTME: Thread-safe property access. Lazy<T>.Value kullanılarak thread-safe erişim sağlanıyor.
+    public IStudentRepository Students => _studentRepository.Value;
 
-    public ILessonRepository Lessons => _lessonRepository ?? (_lessonRepository = new LessonRepository(_context));
+    public ILessonRepository Lessons => _lessonRepository.Value;
 
-    public ICourseRepository Courses => _courseRepository ?? (_courseRepository = new CourseRepository(_context));
+    public ICourseRepository Courses => _courseRepository.Value;
 
-    public IExamRepository Exams => _examRepository ?? (_examRepository = new ExamRepository(_context));
+    public IExamRepository Exams => _examRepository.Value;
 
-    public IExamResultRepository ExamResults => _examResultRepository ?? (_examResultRepository = new ExamResultRepository(_context));
+    public IExamResultRepository ExamResults => _examResultRepository.Value;
 
-    public IInstructorRepository Instructors => _instructorRepository ?? (_instructorRepository = new InstructorRepository(_context));
+    public IInstructorRepository Instructors => _instructorRepository.Value;
 
-    public IRegistrationRepository Registrations => _registrationRepository ?? (_registrationRepository = new RegistrationRepository(_context));
+    public IRegistrationRepository Registrations => _registrationRepository.Value;
 
+    // DÜZELTME: CommitAsync metodu düzgün implement edildi. SaveChangesAsync kullanılarak tüm değişiklikler tek seferde commit ediliyor.
     public async Task<int> CommitAsync()
     {
         return await _context.SaveChangesAsync();
     }
 
+    // DÜZELTME: DisposeAsync metodu düzgün implement edildi. DbContext dispose edilerek kaynak sızıntısı önleniyor.
     public async ValueTask DisposeAsync()
     {
         await _context.DisposeAsync();
     }
-
-    private void AccessMissingRepository()
-    {
-        var repo = new NonExistentRepository();
-        repo.GetAll();
-    }
+    
+    // DÜZELTME: Gereksiz metod kaldırıldı. AccessMissingRepository metodu kaldırıldı, kullanılmayan ve hata üreten kod temizlendi.
 }
