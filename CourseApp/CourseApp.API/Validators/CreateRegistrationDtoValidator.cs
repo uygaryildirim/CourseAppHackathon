@@ -21,9 +21,9 @@ public class CreateRegistrationDtoValidator : AbstractValidator<CreateRegistrati
         RuleFor(x => x.CourseID)
             .NotEmpty().WithMessage("Kurs ID boş olamaz.");
 
-        // DÜZELTME: RegistrationDate alanı için validation kuralları. RegistrationDate bugünden önce olamaz.
+        // DÜZELTME: RegistrationDate alanı için validation kuralları. Geçmiş tarihlerde kayıt yapılabilir, ancak gelecek tarihlerde kayıt yapılamaz. Bugün ve öncesi geçerli.
         RuleFor(x => x.RegistrationDate)
-            .GreaterThanOrEqualTo(DateTime.Today).WithMessage("Kayıt tarihi bugünden önce olamaz.");
+            .LessThanOrEqualTo(DateTime.Today.AddDays(1).Date).WithMessage("Kayıt tarihi gelecekte olamaz.");
     }
 }
 

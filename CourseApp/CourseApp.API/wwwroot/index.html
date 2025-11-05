@@ -190,6 +190,18 @@
             font-weight: 400;
         }
 
+        /* DÜZELTME: Test butonları için özel stil. Test butonları bordo renkte görünüyor, ayırt edilebilir hale getirildi. */
+        .test-button {
+            background: rgba(40, 50, 60, 0.9);
+            border-color: rgba(139, 0, 0, 0.5);
+        }
+
+        .test-button:hover {
+            background: rgba(50, 60, 70, 0.95);
+            border-color: rgba(139, 0, 0, 0.7);
+            box-shadow: 0 4px 15px rgba(139, 0, 0, 0.3);
+        }
+
         .response-container {
             background: rgba(30, 30, 40, 0.8);
             backdrop-filter: blur(10px);
@@ -207,6 +219,105 @@
             margin-bottom: 20px;
             padding-bottom: 15px;
             border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        /* DÜZELTME: View toggle butonu eklendi. API Response ve Information Cards arasında geçiş yapmak için. */
+        .view-toggle {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .toggle-button {
+            background: rgba(30, 30, 40, 0.9);
+            color: #e0e0e0;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 0.9em;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .toggle-button.active {
+            background: rgba(59, 130, 246, 0.3);
+            border-color: rgba(59, 130, 246, 0.5);
+            color: #ffffff;
+        }
+
+        .toggle-button:hover {
+            background: rgba(40, 40, 55, 0.95);
+        }
+
+        /* DÜZELTME: Information cards için stil. Kullanıcı dostu bilgi kartları gösterimi için. */
+        .info-cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .info-card {
+            background: rgba(40, 40, 50, 0.9);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 10px;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .info-card:hover {
+            border-color: rgba(59, 130, 246, 0.4);
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .info-card-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(59, 130, 246, 0.1);
+        }
+
+        .info-card-icon {
+            font-size: 1.5em;
+        }
+
+        .info-card-title {
+            color: #ffffff;
+            font-size: 1.2em;
+            font-weight: 600;
+        }
+
+        .info-card-body {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .info-item:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            color: #94a3b8;
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+
+        .info-value {
+            color: #e0e0e0;
+            font-size: 0.9em;
+            text-align: right;
+            max-width: 60%;
+            word-wrap: break-word;
         }
 
         .response-header h2 {
@@ -339,44 +450,88 @@
             <h2>API Endpoint'leri</h2>
             <!-- DÜZELTME: Butonlar Swagger'daki sıralamaya göre düzenlendi: Courses, ExamResults, Exams, Instructors, Lessons, Registrations, Students -->
             <div class="buttons-grid">
-                <button class="api-button" onclick="fetchData('Courses', 'GET /api/Courses')">
+                <button class="api-button" onclick="fetchData('Courses', 'GET /api/Courses', event)">
                     📖 Kurslar
                     <div class="endpoint-info">GET /api/Courses</div>
                 </button>
-                <button class="api-button" onclick="fetchData('ExamResults', 'GET /api/ExamResults')">
+                <button class="api-button" onclick="fetchData('ExamResults', 'GET /api/ExamResults', event)">
                     📊 Sınav Sonuçları
                     <div class="endpoint-info">GET /api/ExamResults</div>
                 </button>
-                <button class="api-button" onclick="fetchData('Exams', 'GET /api/Exams')">
+                <button class="api-button" onclick="fetchData('Exams', 'GET /api/Exams', event)">
                     📝 Sınavlar
                     <div class="endpoint-info">GET /api/Exams</div>
                 </button>
-                <button class="api-button" onclick="fetchData('Instructors', 'GET /api/Instructors')">
+                <button class="api-button" onclick="fetchData('Instructors', 'GET /api/Instructors', event)">
                     👨‍🏫 Eğitmenler
                     <div class="endpoint-info">GET /api/Instructors</div>
                 </button>
-                <button class="api-button" onclick="fetchData('Lessons', 'GET /api/Lessons')">
+                <button class="api-button" onclick="fetchData('Lessons', 'GET /api/Lessons', event)">
                     📚 Dersler
                     <div class="endpoint-info">GET /api/Lessons</div>
                 </button>
-                <button class="api-button" onclick="fetchData('Registrations', 'GET /api/Registrations')">
+                <button class="api-button" onclick="fetchData('Registrations', 'GET /api/Registrations', event)">
                     ✍️ Kayıtlar
                     <div class="endpoint-info">GET /api/Registrations</div>
                 </button>
-                <button class="api-button" onclick="fetchData('Students', 'GET /api/Students')">
+                <button class="api-button" onclick="fetchData('Students', 'GET /api/Students', event)">
                     👥 Öğrenciler
                     <div class="endpoint-info">GET /api/Students</div>
                 </button>
             </div>
         </div>
 
+        <!-- DÜZELTME: Test butonları eklendi. Her entity için örnek veri oluşturup POST yapacak test butonları. API endpoint butonlarıyla aynı sırada. -->
+        <div class="buttons-container">
+            <h2>Test İşlemleri</h2>
+            <div class="buttons-grid">
+                <button class="api-button test-button" data-entity="Courses" onclick="testEntity('Courses', event)">
+                    Kurs Örneği
+                    <div class="endpoint-info">Örnek kurs oluştur</div>
+                </button>
+                <button class="api-button test-button" data-entity="ExamResults" onclick="testEntity('ExamResults', event)">
+                    Sınav Sonucu Örneği
+                    <div class="endpoint-info">Örnek sonuç oluştur</div>
+                </button>
+                <button class="api-button test-button" data-entity="Exams" onclick="testEntity('Exams', event)">
+                    Sınav Örneği
+                    <div class="endpoint-info">Örnek sınav oluştur</div>
+                </button>
+                <button class="api-button test-button" data-entity="Instructors" onclick="testEntity('Instructors', event)">
+                    Eğitmen Örneği
+                    <div class="endpoint-info">Örnek eğitmen oluştur</div>
+                </button>
+                <button class="api-button test-button" data-entity="Lessons" onclick="testEntity('Lessons', event)">
+                    Ders Örneği
+                    <div class="endpoint-info">Örnek ders oluştur</div>
+                </button>
+                <button class="api-button test-button" data-entity="Registrations" onclick="testEntity('Registrations', event)">
+                    Kayıt Örneği
+                    <div class="endpoint-info">Örnek kayıt oluştur</div>
+                </button>
+                <button class="api-button test-button" data-entity="Students" onclick="testEntity('Students', event)">
+                    Öğrenci Örneği
+                    <div class="endpoint-info">Örnek öğrenci oluştur</div>
+                </button>
+            </div>
+        </div>
+
         <div class="response-container">
             <div class="response-header">
-                <h2>API Response</h2>
+                <h2>Sonuçlar</h2>
                 <span id="statusBadge" class="status-badge status-loading" style="display: none;">
                     <span class="loading-spinner"></span>
                     Yükleniyor...
                 </span>
+            </div>
+            <!-- DÜZELTME: View toggle butonları eklendi. API Response ve Information Cards arasında geçiş yapmak için. -->
+            <div class="view-toggle">
+                <button class="toggle-button active" onclick="switchView('json')" id="jsonViewBtn">
+                    📄 API Response
+                </button>
+                <button class="toggle-button" onclick="switchView('info')" id="infoViewBtn">
+                    📋 Bilgiler
+                </button>
             </div>
             <div class="response-content" id="responseContent">
                 <div class="empty-message">
@@ -389,6 +544,10 @@
     <script>
         // DÜZELTME: API base URL'i tanımlanıyor. Farklı ortamlarda çalışabilmesi için window.location.origin kullanılıyor.
         const API_BASE_URL = window.location.origin;
+
+        // DÜZELTME: Global state değişkenleri. Mevcut veri ve görünüm durumunu saklamak için.
+        let currentData = null;
+        let currentView = 'json'; // 'json' veya 'info'
 
         // DÜZELTME: İnteraktif arka plan efekti. Mouse hareketine göre gradient pozisyonu değişiyor, premium görünüm için.
         const animatedBackground = document.getElementById('animatedBackground');
@@ -409,12 +568,36 @@
             `;
         });
 
+        // DÜZELTME: Fetch işlemleri için işlem durumu kontrolü. Çift tıklama ve duplicate istekleri önlemek için.
+        const processingFetches = new Set();
+
         /**
          * API'den veri çekme fonksiyonu
          * @param {string} endpoint - API endpoint adı (örn: 'Students', 'Courses')
          * @param {string} endpointInfo - Kullanıcıya gösterilecek endpoint bilgisi
+         * @param {Event} event - Event objesi (çift tıklamayı önlemek için)
          */
-        async function fetchData(endpoint, endpointInfo) {
+        async function fetchData(endpoint, endpointInfo, event) {
+            // DÜZELTME: Event propagation'ı durduruyoruz. Çift tıklama ve event bubbling'i önlemek için.
+            if (event) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            
+            // DÜZELTME: Çift tıklama koruması. Bu endpoint için zaten bir istek devam ediyorsa yeni istek başlatılmıyor.
+            if (processingFetches.has(endpoint)) {
+                return;
+            }
+            
+            // DÜZELTME: Tıklanan butonu hemen disable ediyoruz. Çift tıklamayı önlemek için.
+            const clickedButton = event ? event.currentTarget : null;
+            if (clickedButton) {
+                clickedButton.disabled = true;
+                clickedButton.classList.add('loading');
+            }
+            
+            processingFetches.add(endpoint);
+            
             // DÜZELTME: Response container'ı ve status badge'i alınıyor. UI güncellemeleri için DOM elementleri hazırlanıyor.
             const responseContent = document.getElementById('responseContent');
             const statusBadge = document.getElementById('statusBadge');
@@ -447,17 +630,11 @@
                     statusBadge.className = 'status-badge status-success';
                     statusBadge.textContent = `✓ Başarılı (${response.status})`;
                     
-                    // DÜZELTME: JSON verisi formatlanarak gösteriliyor. JSON.stringify ile güzel formatlanmış JSON gösterimi sağlanıyor.
-                    const formattedJson = JSON.stringify(data, null, 2);
-                    responseContent.innerHTML = `
-                        <div style="margin-bottom: 20px; color: #ffffff; font-weight: 500;">
-                            <div>Endpoint: ${endpointInfo}</div>
-                            <div style="margin-top: 8px; font-size: 0.9em; color: #888;">
-                                Status: ${response.status} ${response.statusText}
-                            </div>
-                        </div>
-                        <pre>${formattedJson}</pre>
-                    `;
+                    // DÜZELTME: Global state'e veri saklanıyor. View toggle için veri saklanıyor, hem JSON hem Info Cards gösterebilmek için.
+                    currentData = { data, endpoint, endpointInfo, status: response.status, statusText: response.statusText };
+                    
+                    // DÜZELTME: Mevcut görünüme göre içerik gösteriliyor. JSON veya Info Cards görünümü seçili duruma göre gösteriliyor.
+                    displayResponse(currentData, currentView);
                 } else {
                     // DÜZELTME: Hata durumu gösteriliyor. Status badge'i kırmızı yapılıyor ve hata mesajı gösteriliyor.
                     statusBadge.className = 'status-badge status-error';
@@ -494,6 +671,667 @@
                     btn.classList.remove('loading');
                     btn.disabled = false;
                 });
+                // DÜZELTME: Bu endpoint için işlem durumu kaldırılıyor. Çift tıklama koruması için.
+                processingFetches.delete(endpoint);
+            }
+        }
+
+        // DÜZELTME: Global işlem durumu kontrolü. Çift tıklama ve duplicate kayıtları önlemek için. Her entity için ayrı kontrol.
+        const processingEntities = new Set();
+        
+        // DÜZELTME: Cooldown kontrolü. Her entity için son kullanım zamanını tutuyoruz. 5 saniye bekleme süresi için.
+        const entityCooldowns = new Map();
+        const COOLDOWN_DURATION = 5000; // 5 saniye
+
+        /**
+         * DÜZELTME: Test entity fonksiyonu. Örnek veri oluşturup POST yapıyor, sonra GET ile çekip gösteriyor.
+         * Bağımlılıkları otomatik oluşturuyor (örneğin kurs için eğitmen, kayıt için öğrenci ve kurs).
+         * @param {string} entity - Entity adı (Students, Courses, vb.)
+         * @param {Event} event - Event objesi (çift tıklamayı önlemek için)
+         */
+        async function testEntity(entity, event) {
+            // DÜZELTME: Event propagation'ı durduruyoruz. Çift tıklama ve event bubbling'i önlemek için.
+            if (event) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            
+            // DÜZELTME: Cooldown kontrolü. Bu entity için son kullanım üzerinden 5 saniye geçmemişse yeni işlem başlatılmıyor.
+            const lastUsed = entityCooldowns.get(entity);
+            if (lastUsed) {
+                const timeSinceLastUse = Date.now() - lastUsed;
+                if (timeSinceLastUse < COOLDOWN_DURATION) {
+                    const remainingSeconds = Math.ceil((COOLDOWN_DURATION - timeSinceLastUse) / 1000);
+                    const clickedButton = event ? event.currentTarget : null;
+                    if (clickedButton) {
+                        // DÜZELTME: Buton metnini cooldown mesajı ile değiştiriyoruz. Kullanıcıya ne kadar süre kaldığını gösteriyoruz.
+                        const buttonText = clickedButton.querySelector(':first-child')?.textContent || clickedButton.textContent.split('\n')[0];
+                        clickedButton.innerHTML = `⏳ ${remainingSeconds}s bekle...<div class="endpoint-info">${remainingSeconds} saniye sonra tekrar deneyin</div>`;
+                        clickedButton.disabled = true;
+                        
+                        // DÜZELTME: Cooldown süresince buton metnini güncelliyoruz. Kullanıcıya ne kadar süre kaldığını gösteriyoruz.
+                        const interval = setInterval(() => {
+                            const timeSince = Date.now() - lastUsed;
+                            const remaining = Math.ceil((COOLDOWN_DURATION - timeSince) / 1000);
+                            if (remaining > 0) {
+                                clickedButton.innerHTML = `⏳ ${remaining}s bekle...<div class="endpoint-info">${remaining} saniye sonra tekrar deneyin</div>`;
+                            } else {
+                                // DÜZELTME: Cooldown bittiğinde buton metnini geri yüklüyoruz. Orijinal metni data attribute'dan alıyoruz.
+                                const originalText = clickedButton.getAttribute('data-original-text');
+                                if (originalText) {
+                                    clickedButton.innerHTML = originalText;
+                                }
+                                clickedButton.disabled = false;
+                                clearInterval(interval);
+                            }
+                        }, 1000);
+                    }
+                    return;
+                }
+            }
+            
+            // DÜZELTME: Çift tıklama koruması. Bu entity için zaten bir işlem devam ediyorsa yeni işlem başlatılmıyor.
+            if (processingEntities.has(entity)) {
+                return;
+            }
+            
+            // DÜZELTME: Tıklanan butonu hemen disable ediyoruz. Çift tıklamayı önlemek için.
+            const clickedButton = event ? event.currentTarget : null;
+            if (clickedButton) {
+                // DÜZELTME: Orijinal buton metnini data attribute olarak kaydediyoruz. Cooldown sonrası geri yüklemek için.
+                if (!clickedButton.getAttribute('data-original-text')) {
+                    clickedButton.setAttribute('data-original-text', clickedButton.innerHTML);
+                }
+                clickedButton.disabled = true;
+                clickedButton.classList.add('loading');
+            }
+            
+            processingEntities.add(entity);
+            
+            const responseContent = document.getElementById('responseContent');
+            const statusBadge = document.getElementById('statusBadge');
+            
+            statusBadge.style.display = 'block';
+            statusBadge.className = 'status-badge status-loading';
+            statusBadge.innerHTML = '<span class="loading-spinner"></span> Test verisi oluşturuluyor...';
+            
+            responseContent.innerHTML = '<div class="empty-message">Test verisi oluşturuluyor...</div>';
+            
+            const buttons = document.querySelectorAll('.api-button');
+            buttons.forEach(btn => {
+                btn.classList.add('loading');
+                btn.disabled = true;
+            });
+
+            try {
+                // DÜZELTME: Bağımlılıkları oluşturuyoruz. Entity'ye bağlı olan diğer entity'ler önce oluşturuluyor.
+                const dependencies = await createDependencies(entity);
+                
+                // DÜZELTME: Entity tipine göre örnek test verisi oluşturuluyor. Bağımlılık ID'leri ile birlikte.
+                const testData = await generateTestData(entity, dependencies);
+                
+                // DÜZELTME: POST isteği ile test verisi API'ye gönderiliyor. Örnek veri oluşturulup veritabanına ekleniyor.
+                const createResponse = await fetch(`${API_BASE_URL}/api/${entity}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(testData)
+                });
+
+                const createResult = await createResponse.json();
+                
+                if (createResponse.ok) {
+                    statusBadge.className = 'status-badge status-success';
+                    statusBadge.textContent = `✓ Test verisi oluşturuldu (${createResponse.status})`;
+                    
+                    // DÜZELTME: Oluşturulan veriyi GET ile çekip gösteriyoruz. Test verisi başarıyla oluşturulduktan sonra listeyi çekiyoruz.
+                    await fetchData(entity, `GET /api/${entity}`);
+                } else {
+                    statusBadge.className = 'status-badge status-error';
+                    statusBadge.textContent = `✗ Hata (${createResponse.status})`;
+                    
+                    const formattedJson = JSON.stringify(createResult, null, 2);
+                    responseContent.innerHTML = `
+                        <div style="margin-bottom: 20px; color: #e57373; font-weight: 500;">
+                            <div>Test verisi oluşturulamadı</div>
+                            <div style="margin-top: 8px; font-size: 0.9em; color: #888;">
+                                Status: ${createResponse.status} ${createResponse.statusText}
+                            </div>
+                        </div>
+                        <pre>${formattedJson}</pre>
+                    `;
+                }
+            } catch (error) {
+                statusBadge.className = 'status-badge status-error';
+                statusBadge.textContent = '✗ Hata';
+                
+                responseContent.innerHTML = `
+                    <div style="color: #e57373; font-weight: 500; margin-bottom: 20px;">
+                        <div>Hata: ${error.message}</div>
+                    </div>
+                    <pre>${JSON.stringify({ error: error.message }, null, 2)}</pre>
+                `;
+            } finally {
+                // DÜZELTME: İşlem tamamlandığında butonlar tekrar aktif hale getiriliyor ve işlem durumu sıfırlanıyor.
+                const clickedButton = event ? event.currentTarget : null;
+                const originalText = clickedButton ? clickedButton.getAttribute('data-original-text') : null;
+                
+                // DÜZELTME: Tüm butonlardan loading class'ını kaldırıyoruz. Sadece görsel durum güncelleniyor.
+                buttons.forEach(btn => {
+                    btn.classList.remove('loading');
+                });
+                
+                // DÜZELTME: Bu entity için işlem durumu kaldırılıyor. Çift tıklama koruması için.
+                processingEntities.delete(entity);
+                
+                // DÜZELTME: İşlem tamamlandığında cooldown zamanını kaydediyoruz. 5 saniye bekleme süresi başlıyor.
+                entityCooldowns.set(entity, Date.now());
+                
+                // DÜZELTME: Cooldown süresince tıklanan butonu disable ediyoruz ve geri sayım gösteriyoruz. Kullanıcıya ne kadar süre kaldığını gösteriyoruz.
+                if (clickedButton && originalText) {
+                    const updateCooldown = () => {
+                        const lastUsed = entityCooldowns.get(entity);
+                        if (lastUsed) {
+                            const timeSince = Date.now() - lastUsed;
+                            const remaining = Math.ceil((COOLDOWN_DURATION - timeSince) / 1000);
+                            if (remaining > 0) {
+                                clickedButton.innerHTML = `⏳ ${remaining}s bekle...<div class="endpoint-info">${remaining} saniye sonra tekrar deneyin</div>`;
+                                clickedButton.disabled = true;
+                                setTimeout(updateCooldown, 1000);
+                            } else {
+                                clickedButton.innerHTML = originalText;
+                                clickedButton.disabled = false;
+                                entityCooldowns.delete(entity);
+                            }
+                        }
+                    };
+                    updateCooldown();
+                }
+            }
+        }
+
+        // DÜZELTME: findOrCreateEntity için işlem durumu kontrolü. Aynı entity için duplicate istekleri önlemek için.
+        const processingFindOrCreate = new Map();
+
+        /**
+         * DÜZELTME: Yardımcı fonksiyon - Mevcut kayıtları kontrol ediyor, yoksa yeni kayıt oluşturuyor. Duplicate kayıtları önlemek için.
+         * @param {string} endpoint - API endpoint
+         * @param {object} data - Oluşturulacak veri
+         * @param {string} searchField - Arama yapılacak alan (email, tc, name, courseName)
+         * @param {string} searchValue - Arama değeri
+         * @returns {string|null} ID veya null
+         */
+        async function findOrCreateEntity(endpoint, data, searchField, searchValue) {
+            // DÜZELTME: Unique key oluşturuyoruz. Aynı endpoint ve searchValue için duplicate istekleri önlemek için.
+            const uniqueKey = `${endpoint}:${searchValue}`;
+            
+            // DÜZELTME: Bu key için zaten bir işlem devam ediyorsa, mevcut promise'i bekliyoruz. Duplicate istekleri önlemek için.
+            if (processingFindOrCreate.has(uniqueKey)) {
+                return await processingFindOrCreate.get(uniqueKey);
+            }
+            
+            // DÜZELTME: Promise oluşturuyoruz ve Map'e ekliyoruz. Aynı key için duplicate istekleri önlemek için.
+            const promise = (async () => {
+                try {
+                    // DÜZELTME: Önce mevcut kayıtları kontrol ediyoruz. Varsa yenisini oluşturmuyoruz, duplicate kayıtları önlemek için.
+                    const getAllResponse = await fetch(`${API_BASE_URL}/api/${endpoint}`);
+                    if (getAllResponse.ok) {
+                        const getAllResult = await getAllResponse.json();
+                        const items = getAllResult.data || [];
+                        const existing = items.find(item => item[searchField] === searchValue);
+                        if (existing && existing.id) {
+                            return existing.id;
+                        }
+                    }
+                    
+                    // DÜZELTME: Mevcut kayıt yoksa yeni kayıt oluşturuyoruz.
+                    const createResponse = await fetch(`${API_BASE_URL}/api/${endpoint}`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(data)
+                    });
+                    
+                    if (createResponse.ok) {
+                        await new Promise(resolve => setTimeout(resolve, 150));
+                        const getAllResponse2 = await fetch(`${API_BASE_URL}/api/${endpoint}`);
+                        if (getAllResponse2.ok) {
+                            const getAllResult2 = await getAllResponse2.json();
+                            const items2 = getAllResult2.data || [];
+                            const created = items2.find(item => item[searchField] === searchValue);
+                            if (created && created.id) {
+                                return created.id;
+                            }
+                        }
+                    }
+                    return null;
+                } finally {
+                    // DÜZELTME: İşlem tamamlandığında Map'ten kaldırıyoruz. Sonraki istekler için hazır hale getiriyoruz.
+                    processingFindOrCreate.delete(uniqueKey);
+                }
+            })();
+            
+            processingFindOrCreate.set(uniqueKey, promise);
+            return await promise;
+        }
+
+        /**
+         * DÜZELTME: Bağımlılıkları oluşturma fonksiyonu. Entity'ye bağlı olan diğer entity'ler önce oluşturuluyor.
+         * Mevcut kayıtları kontrol ediyor, duplicate kayıtları önlemek için.
+         * @param {string} entity - Entity adı
+         * @returns {object} Bağımlılık ID'leri
+         */
+        async function createDependencies(entity) {
+            const dependencies = {};
+            
+            // DÜZELTME: Kurs için eğitmen oluşturuluyor. InstructorID zorunlu olduğu için. Mevcut kayıtları kontrol ediyoruz.
+            if (entity === 'Courses') {
+                const timestamp = Date.now();
+                const instructorData = {
+                    name: 'Test',
+                    surname: 'Eğitmen',
+                    email: `test.instructor.${timestamp}@example.com`,
+                    phoneNumber: '5551234567'
+                };
+                
+                dependencies.instructorID = await findOrCreateEntity('Instructors', instructorData, 'email', instructorData.email);
+            }
+            
+            // DÜZELTME: Kayıt için öğrenci ve kurs oluşturuluyor. StudentID ve CourseID zorunlu olduğu için. Mevcut kayıtları kontrol ediyoruz.
+            if (entity === 'Registrations') {
+                // Öğrenci oluştur veya mevcut olanı bul
+                const studentTc = `${Math.floor(10000000000 + Math.random() * 89999999999)}`;
+                const studentData = {
+                    name: 'Test',
+                    surname: 'Öğrenci',
+                    birthDate: new Date(2000, 0, 1).toISOString(),
+                    tc: studentTc
+                };
+                
+                dependencies.studentID = await findOrCreateEntity('Students', studentData, 'tc', studentTc);
+                
+                // Eğitmen oluştur veya mevcut olanı bul
+                const timestamp = Date.now();
+                const instructorEmail = `test.instructor.${timestamp}@example.com`;
+                const instructorData = {
+                    name: 'Test',
+                    surname: 'Eğitmen',
+                    email: instructorEmail,
+                    phoneNumber: '5551234567'
+                };
+                
+                const instructorID = await findOrCreateEntity('Instructors', instructorData, 'email', instructorEmail);
+                
+                // Kurs oluştur veya mevcut olanı bul
+                const courseName = `Test Kurs ${timestamp}`;
+                const now = new Date();
+                const courseData = {
+                    courseName: courseName,
+                    startDate: new Date().toISOString(),
+                    endDate: new Date(now.getTime() + 90 * 24 * 60 * 60 * 1000).toISOString(),
+                    instructorID: instructorID || ''
+                };
+                
+                dependencies.courseID = await findOrCreateEntity('Courses', courseData, 'courseName', courseName);
+            }
+            
+            // DÜZELTME: Ders için kurs oluşturuluyor. CourseID zorunlu olduğu için. Mevcut kayıtları kontrol ediyoruz.
+            if (entity === 'Lessons') {
+                // Eğitmen oluştur veya mevcut olanı bul
+                const timestamp = Date.now();
+                const instructorEmail = `test.instructor.${timestamp}@example.com`;
+                const instructorData = {
+                    name: 'Test',
+                    surname: 'Eğitmen',
+                    email: instructorEmail,
+                    phoneNumber: '5551234567'
+                };
+                
+                const instructorID = await findOrCreateEntity('Instructors', instructorData, 'email', instructorEmail);
+                
+                // Kurs oluştur veya mevcut olanı bul
+                const courseName = `Test Kurs ${timestamp}`;
+                const now = new Date();
+                const courseData = {
+                    courseName: courseName,
+                    startDate: new Date().toISOString(),
+                    endDate: new Date(now.getTime() + 90 * 24 * 60 * 60 * 1000).toISOString(),
+                    instructorID: instructorID || ''
+                };
+                
+                dependencies.courseID = await findOrCreateEntity('Courses', courseData, 'courseName', courseName);
+            }
+            
+            // DÜZELTME: Sınav sonucu için sınav ve öğrenci oluşturuluyor. ExamID ve StudentID zorunlu olduğu için. Mevcut kayıtları kontrol ediyoruz.
+            if (entity === 'ExamResults') {
+                // Öğrenci oluştur veya mevcut olanı bul
+                const studentTc = `${Math.floor(10000000000 + Math.random() * 89999999999)}`;
+                const studentData = {
+                    name: 'Test',
+                    surname: 'Öğrenci',
+                    birthDate: new Date(2000, 0, 1).toISOString(),
+                    tc: studentTc
+                };
+                
+                dependencies.studentID = await findOrCreateEntity('Students', studentData, 'tc', studentTc);
+                
+                // Sınav oluştur veya mevcut olanı bul
+                const timestamp = Date.now();
+                const examName = `Test Sınav ${timestamp}`;
+                const now = new Date();
+                const examData = {
+                    name: examName,
+                    date: new Date(now.getTime() + 7 * 24 * 60 * 60 * 1000).toISOString()
+                };
+                
+                dependencies.examID = await findOrCreateEntity('Exams', examData, 'name', examName);
+            }
+            
+            return dependencies;
+        }
+
+        /**
+         * DÜZELTME: Test verisi oluşturma fonksiyonu. Entity tipine göre örnek veriler oluşturuyor, bağımlılık ID'lerini kullanıyor.
+         * @param {string} entity - Entity adı
+         * @param {object} dependencies - Bağımlılık ID'leri (instructorID, studentID, courseID, examID)
+         * @returns {object} Test verisi
+         */
+        async function generateTestData(entity, dependencies = {}) {
+            const now = new Date();
+            
+            switch (entity) {
+                case 'Students':
+                    return {
+                        name: 'Test',
+                        surname: 'Öğrenci',
+                        birthDate: new Date(2000, 0, 1).toISOString(),
+                        tc: `${Math.floor(10000000000 + Math.random() * 89999999999)}`
+                    };
+                case 'Courses':
+                    // DÜZELTME: InstructorID zorunlu olduğu için bağımlılıktan alınıyor.
+                    return {
+                        courseName: `Test Kurs ${Date.now()}`,
+                        startDate: new Date().toISOString(),
+                        endDate: new Date(now.getTime() + 90 * 24 * 60 * 60 * 1000).toISOString(),
+                        instructorID: dependencies.instructorID || ''
+                    };
+                case 'Instructors':
+                    return {
+                        name: 'Test',
+                        surname: 'Eğitmen',
+                        email: `test.instructor.${Date.now()}@example.com`,
+                        phoneNumber: '5551234567'
+                    };
+                case 'Exams':
+                    // DÜZELTME: Sınav için bağımlılık yok, sadece tarih bugünden sonra olmalı.
+                    return {
+                        name: `Test Sınav ${Date.now()}`,
+                        date: new Date(now.getTime() + 7 * 24 * 60 * 60 * 1000).toISOString()
+                    };
+                case 'Lessons':
+                    // DÜZELTME: CourseID zorunlu olduğu için bağımlılıktan alınıyor.
+                    return {
+                        title: 'Test Ders',
+                        date: new Date().toISOString(),
+                        duration: 60,
+                        content: 'Test ders içeriği',
+                        courseID: dependencies.courseID || ''
+                    };
+                case 'Registrations':
+                    // DÜZELTME: StudentID ve CourseID zorunlu olduğu için bağımlılıklardan alınıyor. Currency alanı eklendi, rastgele para birimi seçiliyor.
+                    const currencies = [1, 2, 3]; // TRY, USD, EUR
+                    const randomCurrency = currencies[Math.floor(Math.random() * currencies.length)];
+                    // DÜZELTME: Geçmiş tarihlerde kayıt yapılabilir, bugün ve öncesi geçerli. Geçmiş 30 gün içinde rastgele bir tarih seçiliyor.
+                    const pastDate = new Date();
+                    pastDate.setDate(pastDate.getDate() - Math.floor(Math.random() * 30));
+                    return {
+                        price: 1000.00,
+                        currency: randomCurrency,
+                        studentID: dependencies.studentID || '',
+                        courseID: dependencies.courseID || '',
+                        registrationDate: pastDate.toISOString()
+                    };
+                case 'ExamResults':
+                    // DÜZELTME: ExamID ve StudentID zorunlu olduğu için bağımlılıklardan alınıyor.
+                    return {
+                        grade: 85,
+                        examID: dependencies.examID || '',
+                        studentID: dependencies.studentID || ''
+                    };
+                default:
+                    return {};
+            }
+        }
+
+        /**
+         * DÜZELTME: View toggle fonksiyonu. JSON ve Info Cards arasında geçiş yapıyor.
+         * @param {string} view - 'json' veya 'info'
+         */
+        function switchView(view) {
+            currentView = view;
+            
+            // DÜZELTME: Toggle butonlarının active durumu güncelleniyor. Seçili görünümü gösteriyor.
+            document.getElementById('jsonViewBtn').classList.toggle('active', view === 'json');
+            document.getElementById('infoViewBtn').classList.toggle('active', view === 'info');
+            
+            // DÜZELTME: Mevcut veri varsa seçili görünüme göre gösteriliyor. View değiştiğinde içerik güncelleniyor.
+            if (currentData) {
+                displayResponse(currentData, view);
+            }
+        }
+
+        /**
+         * DÜZELTME: Response gösterim fonksiyonu. JSON veya Info Cards olarak gösteriyor.
+         * @param {object} dataInfo - Veri bilgileri
+         * @param {string} view - 'json' veya 'info'
+         */
+        function displayResponse(dataInfo, view) {
+            const responseContent = document.getElementById('responseContent');
+            
+            if (view === 'json') {
+                // DÜZELTME: JSON görünümü gösteriliyor. Formatlanmış JSON string olarak gösteriliyor.
+                const formattedJson = JSON.stringify(dataInfo.data, null, 2);
+                responseContent.innerHTML = `
+                    <div style="margin-bottom: 20px; color: #ffffff; font-weight: 500;">
+                        <div>Endpoint: ${dataInfo.endpointInfo}</div>
+                        <div style="margin-top: 8px; font-size: 0.9em; color: #888;">
+                            Status: ${dataInfo.status} ${dataInfo.statusText}
+                        </div>
+                    </div>
+                    <pre>${formattedJson}</pre>
+                `;
+            } else {
+                // DÜZELTME: Info Cards görünümü gösteriliyor. Kullanıcı dostu kartlar halinde gösteriliyor.
+                responseContent.innerHTML = renderInfoCards(dataInfo.data, dataInfo.endpoint);
+            }
+        }
+
+        /**
+         * DÜZELTME: Info Cards render fonksiyonu. API response'unu kullanıcı dostu kartlara dönüştürüyor.
+         * @param {object} data - API response verisi
+         * @param {string} endpoint - Endpoint adı
+         * @returns {string} HTML string
+         */
+        function renderInfoCards(data, endpoint) {
+            // DÜZELTME: Response yapısını kontrol ediyoruz. data.data veya data array olabilir.
+            const items = data?.data || (Array.isArray(data) ? data : []);
+            
+            if (!items || items.length === 0) {
+                return '<div class="empty-message">Kayıt bulunamadı.</div>';
+            }
+
+            // DÜZELTME: Entity tipine göre icon ve başlık belirleniyor. Her entity için uygun icon ve isim.
+            const entityConfig = {
+                'Students': { icon: '👥', name: 'Öğrenci', title: (item) => `${item.name || ''} ${item.surname || ''}`.trim() || 'İsimsiz Öğrenci' },
+                'Courses': { icon: '📖', name: 'Kurs', title: (item) => item.courseName || 'İsimsiz Kurs' },
+                'Instructors': { icon: '👨‍🏫', name: 'Eğitmen', title: (item) => `${item.name || ''} ${item.surname || ''}`.trim() || 'İsimsiz Eğitmen' },
+                'Exams': { icon: '📝', name: 'Sınav', title: (item) => item.name || 'İsimsiz Sınav' },
+                'Lessons': { icon: '📚', name: 'Ders', title: (item) => item.title || 'İsimsiz Ders' },
+                'Registrations': { icon: '✍️', name: 'Kayıt', title: (item) => `Kayıt #${item.id || 'N/A'}` },
+                'ExamResults': { icon: '📊', name: 'Sınav Sonucu', title: (item) => `Sonuç #${item.id || 'N/A'}` }
+            };
+
+            const config = entityConfig[endpoint] || { icon: '📄', name: 'Kayıt', title: (item) => `Kayıt #${item.id || 'N/A'}` };
+
+            // DÜZELTME: Her item için kart oluşturuluyor. Grid yapısında kullanıcı dostu kartlar.
+            const cards = items.map(item => {
+                const cardTitle = config.title(item);
+                const cardBody = renderCardBody(item, endpoint);
+                
+                return `
+                    <div class="info-card">
+                        <div class="info-card-header">
+                            <span class="info-card-icon">${config.icon}</span>
+                            <span class="info-card-title">${cardTitle}</span>
+                        </div>
+                        <div class="info-card-body">
+                            ${cardBody}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            return `<div class="info-cards-container">${cards}</div>`;
+        }
+
+        /**
+         * DÜZELTME: Kart body render fonksiyonu. Entity tipine göre uygun alanları gösteriyor.
+         * @param {object} item - Veri item'ı
+         * @param {string} endpoint - Endpoint adı
+         * @returns {string} HTML string
+         */
+        function renderCardBody(item, endpoint) {
+            const formatDate = (dateStr) => {
+                if (!dateStr) return 'N/A';
+                try {
+                    const date = new Date(dateStr);
+                    return date.toLocaleDateString('tr-TR', { year: 'numeric', month: 'long', day: 'numeric' });
+                } catch {
+                    return dateStr;
+                }
+            };
+
+            // DÜZELTME: Para birimi formatlama fonksiyonu. Currency enum değerine göre uygun sembolü gösteriyor (TRY=1, USD=2, EUR=3).
+            const formatCurrency = (amount, currency = 1) => {
+                if (amount == null) return 'N/A';
+                const currencyMap = {
+                    1: { code: 'TRY', symbol: '₺' },
+                    2: { code: 'USD', symbol: '$' },
+                    3: { code: 'EUR', symbol: '€' }
+                };
+                const curr = currencyMap[currency] || currencyMap[1];
+                return new Intl.NumberFormat('tr-TR', { style: 'currency', currency: curr.code }).format(amount);
+            };
+
+            // DÜZELTME: Entity tipine göre özel alanlar render ediliyor. Her entity için uygun bilgiler gösteriliyor.
+            switch (endpoint) {
+                case 'Students':
+                    return `
+                        <div class="info-item">
+                            <span class="info-label">Ad Soyad:</span>
+                            <span class="info-value">${item.fullname || `${item.name || ''} ${item.surname || ''}`.trim() || 'N/A'}</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">TC Kimlik:</span>
+                            <span class="info-value">${item.tc || 'N/A'}</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Doğum Tarihi:</span>
+                            <span class="info-value">${formatDate(item.birthDate)}</span>
+                        </div>
+                    `;
+                case 'Courses':
+                    return `
+                        <div class="info-item">
+                            <span class="info-label">Kurs Adı:</span>
+                            <span class="info-value">${item.courseName || 'N/A'}</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Başlangıç:</span>
+                            <span class="info-value">${formatDate(item.startDate)}</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Bitiş:</span>
+                            <span class="info-value">${formatDate(item.endDate)}</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Eğitmen:</span>
+                            <span class="info-value">${item.instructorName || 'Atanmamış'}</span>
+                        </div>
+                    `;
+                case 'Instructors':
+                    return `
+                        <div class="info-item">
+                            <span class="info-label">Ad Soyad:</span>
+                            <span class="info-value">${item.fullName || `${item.name || ''} ${item.surname || ''}`.trim() || 'N/A'}</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">E-posta:</span>
+                            <span class="info-value">${item.email || 'N/A'}</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Telefon:</span>
+                            <span class="info-value">${item.phoneNumber || 'N/A'}</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Uzmanlık:</span>
+                            <span class="info-value">${item.professions || 'N/A'}</span>
+                        </div>
+                    `;
+                case 'Exams':
+                    return `
+                        <div class="info-item">
+                            <span class="info-label">Sınav Adı:</span>
+                            <span class="info-value">${item.name || 'N/A'}</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Tarih:</span>
+                            <span class="info-value">${formatDate(item.date)}</span>
+                        </div>
+                    `;
+                case 'Lessons':
+                    return `
+                        <div class="info-item">
+                            <span class="info-label">Ders Başlığı:</span>
+                            <span class="info-value">${item.title || 'N/A'}</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Tarih:</span>
+                            <span class="info-value">${formatDate(item.date)}</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Süre:</span>
+                            <span class="info-value">${item.duration || 0} dakika</span>
+                        </div>
+                    `;
+                case 'Registrations':
+                    // DÜZELTME: Currency bilgisi formatCurrency fonksiyonuna geçiriliyor. Para birimi sembolü fiyat ile birlikte gösteriliyor (TRY=₺, USD=$, EUR=€).
+                    const currency = item.currency || 1; // Varsayılan TRY
+                    return `
+                        <div class="info-item">
+                            <span class="info-label">Fiyat:</span>
+                            <span class="info-value">${formatCurrency(item.price, currency)}</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Kayıt Tarihi:</span>
+                            <span class="info-value">${formatDate(item.registrationDate)}</span>
+                        </div>
+                    `;
+                case 'ExamResults':
+                    return `
+                        <div class="info-item">
+                            <span class="info-label">Not:</span>
+                            <span class="info-value">${item.grade || 0} / 100</span>
+                        </div>
+                    `;
+                default:
+                    // DÜZELTME: Varsayılan olarak tüm alanları gösteriyoruz. Bilinmeyen entity'ler için generic gösterim.
+                    return Object.keys(item).map(key => `
+                        <div class="info-item">
+                            <span class="info-label">${key}:</span>
+                            <span class="info-value">${item[key] || 'N/A'}</span>
+                        </div>
+                    `).join('');
             }
         }
 

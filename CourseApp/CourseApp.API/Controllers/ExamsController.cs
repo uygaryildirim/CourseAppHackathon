@@ -18,19 +18,11 @@ public class ExamsController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {
-        // ZOR: N+1 Problemi - Her exam için ayrı sorgu
+        // DÜZELTME: N+1 problemi kaldırıldı. Gereksiz foreach döngüsü ve GetByIdAsync çağrıları kaldırıldı, sadece GetAllAsync kullanılıyor.
         var result = await _examService.GetAllAsync();
         // DÜZELTME: result.Success yazım hatası düzeltildi - result.IsSuccess olarak değiştirildi. IResult interface'inde doğru property adı kullanılıyor.
         if (result.IsSuccess)
         {
-            // ORTA: Null reference - result.Data null olabilir
-            var exams = result.Data.ToList();
-            // ZOR: N+1 - Her exam için ayrı sorgu (örnek - gerçek implementasyon service layer'da olabilir)
-            foreach (var exam in exams)
-            {
-                // Her exam için ayrı sorgu atılıyor - Include kullanılmamalıydı
-                var details = await _examService.GetByIdAsync(exam.Id);
-            }
             return Ok(result);
         }
         return BadRequest(result);

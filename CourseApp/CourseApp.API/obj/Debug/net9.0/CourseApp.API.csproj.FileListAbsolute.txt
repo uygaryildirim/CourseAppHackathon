@@ -86,4 +86,4 @@
 /Users/uygaryildirim/Downloads/CourseAppHackathon/CourseApp/CourseApp.API/obj/Debug/net9.0/CourseApp.API.genruntimeconfig.cache
 /Users/uygaryildirim/Downloads/CourseAppHackathon/CourseApp/CourseApp.API/obj/Debug/net9.0/ref/CourseApp.API.dll
 /Users/uygaryildirim/Downloads/CourseAppHackathon/CourseApp/CourseApp.API/bin/Debug/net9.0/CourseApp.API.staticwebassets.runtime.json
-/Users/uygaryildirim/Downloads/CourseAppHackathon/CourseApp/CourseApp.API/obj/Debug/net9.0/compressed/hk45hvrtkr-asa0v75u6f.gz
+/Users/uygaryildirim/Downloads/CourseAppHackathon/CourseApp/CourseApp.API/obj/Debug/net9.0/compressed/hk45hvrtkr-tihotk4o2y.gz

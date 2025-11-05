@@ -11,6 +11,10 @@ public class ExamMapping:Profile
         CreateMap<Exam,GetAllExamDto>().ReverseMap();
         CreateMap<Exam,CreateExamDto>().ReverseMap();
         CreateMap<Exam,DeleteExamDto>().ReverseMap();
+        // DÜZELTME: GetByIdExamDto mapping'i eklendi. Exam -> GetByIdExamDto mapping'i eksikti, eklendi.
+        CreateMap<Exam,GetByIdExamDto>().ReverseMap();
+        // DÜZELTME: UpdateExamDto mapping'i eklendi. Exam güncelleme işlemleri için gerekli mapping eksikti, eklendi.
+        CreateMap<UpdateExamDto, Exam>();
         // DÜZELTME: Gereksiz mapping kaldırıldı. MissingMappingDto mapping'i kaldırıldı, kullanılmayan ve hata üreten kod temizlendi.
     }
 }

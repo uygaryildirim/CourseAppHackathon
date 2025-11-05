@@ -74,8 +74,7 @@ public class ExamManager : IExamService
             return new ErrorResult("Sınav bilgileri eşlenemedi.");
         }
         
-        // DÜZELTME: Transaction yönetimi eklendi. Veritabanı işlemlerinin atomik olarak yürütülmesi için transaction kullanılıyor.
-        await using var transaction = await _unitOfWork.BeginTransactionAsync();
+        // DÜZELTME: InMemory DB transaction desteklemediği için transaction kaldırıldı. InMemory DB için transaction kullanılmıyor, sadece CommitAsync kullanılıyor.
         try
         {
             // DÜZELTME: Async/await anti-pattern düzeltildi. .Wait() yerine await kullanılarak deadlock riski önlendi.
@@ -84,20 +83,15 @@ public class ExamManager : IExamService
             
             if (result > 0)
             {
-                // DÜZELTME: Transaction commit ediliyor. Tüm işlemler başarılı olduğunda transaction commit ediliyor.
-                await _unitOfWork.CommitTransactionAsync();
                 return new SuccessResult(ConstantsMessages.ExamCreateSuccessMessage);
             }
             
-            // DÜZELTME: Transaction rollback ediliyor. Hata durumunda tüm değişiklikler geri alınıyor.
-            await _unitOfWork.RollbackTransactionAsync();
             return new ErrorResult(ConstantsMessages.ExamCreateFailedMessage);
         }
-        catch (Exception)
+        catch (Exception ex)
         {
-            // DÜZELTME: Exception durumunda transaction rollback ediliyor. Veri tutarlılığı sağlanıyor.
-            await _unitOfWork.RollbackTransactionAsync();
-            throw;
+            // DÜZELTME: Exception durumunda hata mesajı döndürülüyor. InMemory DB için transaction kullanılmadığı için rollback gerekmiyor.
+            return new ErrorResult($"Sınav oluşturulurken hata oluştu: {ex.Message}");
         }
     }
 
@@ -116,8 +110,7 @@ public class ExamManager : IExamService
             return new ErrorResult("Sınav bilgileri eşlenemedi.");
         }
         
-        // DÜZELTME: Transaction yönetimi eklendi. Veritabanı işlemlerinin atomik olarak yürütülmesi için transaction kullanılıyor, başka işlemler varsa rollback oluyor.
-        await using var transaction = await _unitOfWork.BeginTransactionAsync();
+        // DÜZELTME: InMemory DB transaction desteklemediği için transaction kaldırıldı. InMemory DB için transaction kullanılmıyor, sadece CommitAsync kullanılıyor.
         try
         {
             _unitOfWork.Exams.Remove(deletedExamMapping);
@@ -125,20 +118,15 @@ public class ExamManager : IExamService
             
             if (result > 0)
             {
-                // DÜZELTME: Transaction commit ediliyor. Tüm işlemler başarılı olduğunda transaction commit ediliyor.
-                await _unitOfWork.CommitTransactionAsync();
                 return new SuccessResult(ConstantsMessages.ExamDeleteSuccessMessage);
             }
             
-            // DÜZELTME: Transaction rollback ediliyor. Hata durumunda tüm değişiklikler geri alınıyor.
-            await _unitOfWork.RollbackTransactionAsync();
             return new ErrorResult(ConstantsMessages.ExamDeleteFailedMessage);
         }
-        catch (Exception)
+        catch (Exception ex)
         {
-            // DÜZELTME: Exception durumunda transaction rollback ediliyor. Veri tutarlılığı sağlanıyor.
-            await _unitOfWork.RollbackTransactionAsync();
-            throw;
+            // DÜZELTME: Exception durumunda hata mesajı döndürülüyor. InMemory DB için transaction kullanılmadığı için rollback gerekmiyor.
+            return new ErrorResult($"Sınav silinirken hata oluştu: {ex.Message}");
         }
     }
 
@@ -157,8 +145,7 @@ public class ExamManager : IExamService
             return new ErrorResult("Sınav bilgileri eşlenemedi.");
         }
         
-        // DÜZELTME: Transaction yönetimi eklendi. Veritabanı işlemlerinin atomik olarak yürütülmesi için transaction kullanılıyor.
-        await using var transaction = await _unitOfWork.BeginTransactionAsync();
+        // DÜZELTME: InMemory DB transaction desteklemediği için transaction kaldırıldı. InMemory DB için transaction kullanılmıyor, sadece CommitAsync kullanılıyor.
         try
         {
             _unitOfWork.Exams.Update(updatedExamMapping);
@@ -166,20 +153,15 @@ public class ExamManager : IExamService
             
             if (result > 0)
             {
-                // DÜZELTME: Transaction commit ediliyor. Tüm işlemler başarılı olduğunda transaction commit ediliyor.
-                await _unitOfWork.CommitTransactionAsync();
                 return new SuccessResult(ConstantsMessages.ExamUpdateSuccessMessage);
             }
             
-            // DÜZELTME: Transaction rollback ediliyor. Hata durumunda tüm değişiklikler geri alınıyor.
-            await _unitOfWork.RollbackTransactionAsync();
             return new ErrorResult(ConstantsMessages.ExamUpdateFailedMessage);
         }
-        catch (Exception)
+        catch (Exception ex)
         {
-            // DÜZELTME: Exception durumunda transaction rollback ediliyor. Veri tutarlılığı sağlanıyor.
-            await _unitOfWork.RollbackTransactionAsync();
-            throw;
+            // DÜZELTME: Exception durumunda hata mesajı döndürülüyor. InMemory DB için transaction kullanılmadığı için rollback gerekmiyor.
+            return new ErrorResult($"Sınav güncellenirken hata oluştu: {ex.Message}");
         }
     }
 }

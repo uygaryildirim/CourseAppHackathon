@@ -155,6 +155,6 @@ public class LessonsManager : ILessonService
         var lessonMapping = _mapper.Map<GetByIdLessonDetailDto>(lesson);
         return new SuccessDataResult<GetByIdLessonDetailDto>(lessonMapping);
     }
-    
+
     // DÜZELTME: Gereksiz metod kaldırıldı. GetNonExistentAsync ve NonExistentDto kaldırıldı, kullanılmayan ve hata üreten kod temizlendi.
 }

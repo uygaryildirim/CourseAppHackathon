@@ -33,6 +33,6 @@ public class LessonRepository : GenericRepository<Lesson>, ILessonRepository
         return (await query.Include(l => l.Course)
                            .FirstOrDefaultAsync(l => l.ID == id))!;
     }
-    
+
     // DÜZELTME: Gereksiz metod kaldırıldı. UseMissingHelper ve LessonHelperClass kaldırıldı, kullanılmayan ve hata üreten kod temizlendi.
 }
