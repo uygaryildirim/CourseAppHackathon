@@ -131,8 +131,8 @@ public class LessonsManager : ILessonService
         {
             return new SuccessResult(ConstantsMessages.LessonUpdateSuccessMessage);
         }
-        // ORTA: Mantıksal hata - hata durumunda SuccessResult döndürülüyor
-        return new SuccessResult(ConstantsMessages.LessonUpdateFailedMessage); // HATA: ErrorResult olmalıydı
+        // DÜZELTME: Mantıksal hata düzeltildi. Hata durumunda ErrorResult döndürülüyor, SuccessResult yerine ErrorResult kullanılıyor.
+        return new ErrorResult(ConstantsMessages.LessonUpdateFailedMessage);
     }
 
     public async Task<IDataResult<IEnumerable<GetAllLessonDetailDto>>> GetAllLessonDetailAsync(bool track = true)
