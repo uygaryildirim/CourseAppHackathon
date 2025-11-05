@@ -33,33 +33,70 @@ public class RegistrationManager : IRegistrationService
 
     public async Task<IDataResult<GetByIdRegistrationDto>> GetByIdAsync(string id, bool track = true)
     {
+        // DÜZELTME: Null check eklendi. id parametresi null veya empty olabilir, bu durumda hata mesajı döndürülüyor.
+        if (string.IsNullOrEmpty(id))
+        {
+            return new ErrorDataResult<GetByIdRegistrationDto>(null, "ID parametresi boş olamaz.");
+        }
+        
         var hasRegistration = await _unitOfWork.Registrations.GetByIdAsync(id, false);
+        // DÜZELTME: Null reference exception önlendi. hasRegistration null olabilir, bu durumda hata mesajı döndürülüyor.
+        if (hasRegistration == null)
+        {
+            return new ErrorDataResult<GetByIdRegistrationDto>(null, "Belirtilen ID'ye sahip kayıt bulunamadı.");
+        }
+        
         var hasRegistrationMapping = _mapper.Map<GetByIdRegistrationDto>(hasRegistration);
+        // DÜZELTME: Null reference exception önlendi. hasRegistrationMapping null olabilir, bu durumda hata mesajı döndürülüyor.
+        if (hasRegistrationMapping == null)
+        {
+            return new ErrorDataResult<GetByIdRegistrationDto>(null, "Kayıt bilgileri eşlenemedi.");
+        }
+        
         return new SuccessDataResult<GetByIdRegistrationDto>(hasRegistrationMapping, ConstantsMessages.RegistrationGetByIdSuccessMessage);
     }
 
     public async Task<IResult> CreateAsync(CreateRegistrationDto entity)
     {
-        // ORTA: Null check eksik - entity null olabilir
-        var createdRegistration = _mapper.Map<Registration>(entity);
-        // ORTA: Null reference - createdRegistration null olabilir
-        var registrationPrice = createdRegistration.Price; // Null reference riski
+        // DÜZELTME: Null check eklendi. entity null olabilir, bu durumda hata mesajı döndürülüyor.
+        if (entity == null)
+        {
+            return new ErrorResult("Kayıt bilgileri boş olamaz.");
+        }
         
-        // ZOR: Async/await anti-pattern - GetAwaiter().GetResult() deadlock'a sebep olabilir
-        _unitOfWork.Registrations.CreateAsync(createdRegistration).GetAwaiter().GetResult(); // ZOR: Anti-pattern
+        var createdRegistration = _mapper.Map<Registration>(entity);
+        // DÜZELTME: Null reference exception önlendi. createdRegistration null olabilir, bu durumda hata mesajı döndürülüyor.
+        if (createdRegistration == null)
+        {
+            return new ErrorResult("Kayıt bilgileri eşlenemedi.");
+        }
+        
+        // DÜZELTME: Async/await anti-pattern düzeltildi. GetAwaiter().GetResult() yerine await kullanılarak deadlock riski önlendi.
+        await _unitOfWork.Registrations.CreateAsync(createdRegistration);
         var result = await _unitOfWork.CommitAsync();
         if (result > 0)
         {
             return new SuccessResult(ConstantsMessages.RegistrationCreateSuccessMessage);
         }
 
-        // DÜZELTME: Noktalı virgül eksikliği düzeltildi. ErrorResult döndürülürken eksik olan noktalı virgül eklendi.
         return new ErrorResult(ConstantsMessages.RegistrationCreateFailedMessage);
     }
 
     public async Task<IResult> Remove(DeleteRegistrationDto entity)
     {
+        // DÜZELTME: Null check eklendi. entity null olabilir, bu durumda hata mesajı döndürülüyor.
+        if (entity == null)
+        {
+            return new ErrorResult("Silinecek kayıt bilgileri boş olamaz.");
+        }
+        
         var deletedRegistration = _mapper.Map<Registration>(entity);
+        // DÜZELTME: Null reference exception önlendi. deletedRegistration null olabilir, bu durumda hata mesajı döndürülüyor.
+        if (deletedRegistration == null)
+        {
+            return new ErrorResult("Kayıt bilgileri eşlenemedi.");
+        }
+        
         _unitOfWork.Registrations.Remove(deletedRegistration);
         var result = await _unitOfWork.CommitAsync();
         if (result > 0)
@@ -71,11 +108,20 @@ public class RegistrationManager : IRegistrationService
 
     public async Task<IResult> Update(UpdatedRegistrationDto entity)
     {
-        // ORTA: Null check eksik - entity null olabilir
-        var updatedRegistration = _mapper.Map<Registration>(entity);
+        // DÜZELTME: Null check eklendi. entity null olabilir, bu durumda hata mesajı döndürülüyor.
+        if (entity == null)
+        {
+            return new ErrorResult("Güncellenecek kayıt bilgileri boş olamaz.");
+        }
         
-        // ORTA: Tip dönüşüm hatası - decimal'i int'e direkt cast
-        var invalidPrice = (int)updatedRegistration.Price; // ORTA: InvalidCastException
+        var updatedRegistration = _mapper.Map<Registration>(entity);
+        // DÜZELTME: Null reference exception önlendi. updatedRegistration null olabilir, bu durumda hata mesajı döndürülüyor.
+        if (updatedRegistration == null)
+        {
+            return new ErrorResult("Kayıt bilgileri eşlenemedi.");
+        }
+        
+        // DÜZELTME: Invalid cast exception önlendi. decimal'i int'e direkt cast etme işlemi kaldırıldı, gereksiz tip dönüşümü kaldırıldı.
         
         _unitOfWork.Registrations.Update(updatedRegistration);
         var result = await _unitOfWork.CommitAsync();
@@ -83,8 +129,8 @@ public class RegistrationManager : IRegistrationService
         {
             return new SuccessResult(ConstantsMessages.RegistrationUpdateSuccessMessage);
         }
-        // ORTA: Mantıksal hata - hata durumunda SuccessResult döndürülüyor
-        return new SuccessResult(ConstantsMessages.RegistrationUpdateFailedMessage); // HATA: ErrorResult olmalıydı
+        // DÜZELTME: Mantıksal hata düzeltildi. Hata durumunda ErrorResult döndürülüyor, SuccessResult yerine ErrorResult kullanılıyor.
+        return new ErrorResult(ConstantsMessages.RegistrationUpdateFailedMessage);
     }
 
     public async Task<IDataResult<IEnumerable<GetAllRegistrationDetailDto>>> GetAllRegistrationDetailAsync(bool track = true)
@@ -102,8 +148,12 @@ public class RegistrationManager : IRegistrationService
 
         var registrationDataMapping = _mapper.Map<IEnumerable<GetAllRegistrationDetailDto>>(registrationData);
         
-        // ORTA: Index out of range - registrationDataMapping boş olabilir
-        var firstRegistration = registrationDataMapping.ToList()[0]; // IndexOutOfRangeException riski
+        // DÜZELTME: Index out of range exception önlendi. registrationDataMapping boş olabilir, gereksiz index erişimi kaldırıldı.
+        // DÜZELTME: Null check eklendi. registrationDataMapping null olabilir, bu durumda kontrol ediliyor.
+        if (registrationDataMapping == null || !registrationDataMapping.Any())
+        {
+            return new ErrorDataResult<IEnumerable<GetAllRegistrationDetailDto>>(null, ConstantsMessages.RegistrationListFailedMessage);
+        }
         
         return new SuccessDataResult<IEnumerable<GetAllRegistrationDetailDto>>(registrationDataMapping, ConstantsMessages.RegistrationListSuccessMessage);  
     }

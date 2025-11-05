@@ -66,9 +66,13 @@ public class RegistrationsController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> Create([FromBody] CreateRegistrationDto createRegistrationDto)
     {
-        // ORTA: Null check eksik - createRegistrationDto null olabilir
-        // ORTA: Tip dönüşüm hatası - decimal'i int'e direkt cast
-        var invalidPrice = (int)createRegistrationDto.Price; // ORTA: InvalidCastException
+        // DÜZELTME: Null check eklendi. createRegistrationDto null olabilir, bu durumda hata mesajı döndürülüyor.
+        if (createRegistrationDto == null)
+        {
+            return BadRequest("Kayıt bilgileri boş olamaz.");
+        }
+        
+        // DÜZELTME: Invalid cast exception önlendi. decimal'i int'e direkt cast etme işlemi kaldırıldı, gereksiz tip dönüşümü kaldırıldı.
         
         var result = await _registrationService.CreateAsync(createRegistrationDto);
         // DÜZELTME: rsult yazım hatası düzeltildi - result olarak değiştirildi. Doğru değişken adı kullanılıyor.

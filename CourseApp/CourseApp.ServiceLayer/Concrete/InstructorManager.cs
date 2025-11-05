@@ -33,24 +33,48 @@ public class InstructorManager : IInstructorService
 
     public async Task<IDataResult<GetByIdInstructorDto>> GetByIdAsync(string id, bool track = true)
     {
-        // ORTA: Null check eksik - id null/empty olabilir
-        // ORTA: Index out of range - id çok kısa olabilir
-        var idPrefix = id[5]; // IndexOutOfRangeException riski
+        // DÜZELTME: Null check eklendi. id parametresi null veya empty olabilir, bu durumda hata mesajı döndürülüyor.
+        if (string.IsNullOrEmpty(id))
+        {
+            return new ErrorDataResult<GetByIdInstructorDto>(null, "ID parametresi boş olamaz.");
+        }
+        
+        // DÜZELTME: Index out of range exception önlendi. id uzunluğu kontrol edilmeden index erişimi yapılıyordu, gereksiz index erişimi kaldırıldı.
         
         var hasInstructor = await _unitOfWork.Instructors.GetByIdAsync(id, false);
-        // ORTA: Null reference - hasInstructor null olabilir ama kontrol edilmiyor
+        // DÜZELTME: Null reference exception önlendi. hasInstructor null olabilir, bu durumda hata mesajı döndürülüyor.
+        if (hasInstructor == null)
+        {
+            return new ErrorDataResult<GetByIdInstructorDto>(null, "Belirtilen ID'ye sahip eğitmen bulunamadı.");
+        }
+        
         var hasInstructorMapping = _mapper.Map<GetByIdInstructorDto>(hasInstructor);
-        // ORTA: Null reference - hasInstructorMapping null olabilir
-        var name = hasInstructorMapping.Name; // Null reference riski
+        // DÜZELTME: Null reference exception önlendi. hasInstructorMapping null olabilir, bu durumda hata mesajı döndürülüyor.
+        if (hasInstructorMapping == null)
+        {
+            return new ErrorDataResult<GetByIdInstructorDto>(null, "Eğitmen bilgileri eşlenemedi.");
+        }
+        
         return new SuccessDataResult<GetByIdInstructorDto>(hasInstructorMapping, ConstantsMessages.InstructorGetByIdSuccessMessage);
     }
 
     public async Task<IResult> CreateAsync(CreatedInstructorDto entity)
     {
+        // DÜZELTME: Null check eklendi. entity null olabilir, bu durumda hata mesajı döndürülüyor.
+        if (entity == null)
+        {
+            return new ErrorResult("Eğitmen bilgileri boş olamaz.");
+        }
+        
         var createdInstructor = _mapper.Map<Instructor>(entity);
+        // DÜZELTME: Null reference exception önlendi. createdInstructor null olabilir, bu durumda hata mesajı döndürülüyor.
+        if (createdInstructor == null)
+        {
+            return new ErrorResult("Eğitmen bilgileri eşlenemedi.");
+        }
+        
         await _unitOfWork.Instructors.CreateAsync(createdInstructor);
         var result = await _unitOfWork.CommitAsync();
-        if(createdInstructor == null) return new ErrorResult("Null");
         if (result > 0)
         {
             return new SuccessResult(ConstantsMessages.InstructorCreateSuccessMessage);
@@ -60,7 +84,19 @@ public class InstructorManager : IInstructorService
 
     public async Task<IResult> Remove(DeletedInstructorDto entity)
     {
+        // DÜZELTME: Null check eklendi. entity null olabilir, bu durumda hata mesajı döndürülüyor.
+        if (entity == null)
+        {
+            return new ErrorResult("Silinecek eğitmen bilgileri boş olamaz.");
+        }
+        
         var deletedInstructor = _mapper.Map<Instructor>(entity);
+        // DÜZELTME: Null reference exception önlendi. deletedInstructor null olabilir, bu durumda hata mesajı döndürülüyor.
+        if (deletedInstructor == null)
+        {
+            return new ErrorResult("Eğitmen bilgileri eşlenemedi.");
+        }
+        
         _unitOfWork.Instructors.Remove(deletedInstructor);
         var result = await _unitOfWork.CommitAsync();
         if (result > 0)
@@ -72,10 +108,18 @@ public class InstructorManager : IInstructorService
 
     public async Task<IResult> Update(UpdatedInstructorDto entity)
     {
-        // ORTA: Null check eksik - entity null olabilir
+        // DÜZELTME: Null check eklendi. entity null olabilir, bu durumda hata mesajı döndürülüyor.
+        if (entity == null)
+        {
+            return new ErrorResult("Güncellenecek eğitmen bilgileri boş olamaz.");
+        }
+        
         var updatedInstructor = _mapper.Map<Instructor>(entity);
-        // ORTA: Null reference - updatedInstructor null olabilir
-        var instructorName = updatedInstructor.Name; // Null reference riski
+        // DÜZELTME: Null reference exception önlendi. updatedInstructor null olabilir, bu durumda hata mesajı döndürülüyor.
+        if (updatedInstructor == null)
+        {
+            return new ErrorResult("Eğitmen bilgileri eşlenemedi.");
+        }
         
         _unitOfWork.Instructors.Update(updatedInstructor);
         var result = await _unitOfWork.CommitAsync();
@@ -83,8 +127,8 @@ public class InstructorManager : IInstructorService
         {
             return new SuccessResult(ConstantsMessages.InstructorUpdateSuccessMessage);
         }
-        // ORTA: Mantıksal hata - hata durumunda SuccessResult döndürülüyor
-        return new SuccessResult(ConstantsMessages.InstructorUpdateFailedMessage); // HATA: ErrorResult olmalıydı
+        // DÜZELTME: Mantıksal hata düzeltildi. Hata durumunda ErrorResult döndürülüyor, SuccessResult yerine ErrorResult kullanılıyor.
+        return new ErrorResult(ConstantsMessages.InstructorUpdateFailedMessage);
     }
 
     // DÜZELTME: Gereksiz metod kaldırıldı. UseNonExistentNamespace ve NonExistentNamespace kaldırıldı, kullanılmayan ve hata üreten kod temizlendi.

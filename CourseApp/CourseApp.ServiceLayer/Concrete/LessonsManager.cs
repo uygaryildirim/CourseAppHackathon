@@ -33,12 +33,28 @@ public class LessonsManager : ILessonService
 
     public async Task<IDataResult<GetByIdLessonDto>> GetByIdAsync(string id, bool track = true)
     {
-        // ORTA: Null check eksik - id null/empty olabilir
+        // DÜZELTME: Null check eklendi. id parametresi null veya empty olabilir, bu durumda hata mesajı döndürülüyor.
+        if (string.IsNullOrEmpty(id))
+        {
+            return new ErrorDataResult<GetByIdLessonDto>(null, "ID parametresi boş olamaz.");
+        }
+        
         var hasLesson = await _unitOfWork.Lessons.GetByIdAsync(id, false);
-        // ORTA: Null reference - hasLesson null olabilir ama kontrol edilmiyor
+        // DÜZELTME: Null reference exception önlendi. hasLesson null olabilir, bu durumda hata mesajı döndürülüyor.
+        if (hasLesson == null)
+        {
+            return new ErrorDataResult<GetByIdLessonDto>(null, "Belirtilen ID'ye sahip ders bulunamadı.");
+        }
+        
         var hasLessonMapping = _mapper.Map<GetByIdLessonDto>(hasLesson);
-        // ORTA: Mantıksal hata - yanlış mesaj döndürülüyor (Instructor yerine Lesson olmalıydı)
-        return new SuccessDataResult<GetByIdLessonDto>(hasLessonMapping, ConstantsMessages.InstructorGetByIdSuccessMessage); // HATA: LessonGetByIdSuccessMessage olmalıydı
+        // DÜZELTME: Null reference exception önlendi. hasLessonMapping null olabilir, bu durumda hata mesajı döndürülüyor.
+        if (hasLessonMapping == null)
+        {
+            return new ErrorDataResult<GetByIdLessonDto>(null, "Ders bilgileri eşlenemedi.");
+        }
+        
+        // DÜZELTME: Mantıksal hata düzeltildi. InstructorGetByIdSuccessMessage yerine LessonGetByIdSuccessMessage kullanılıyor, doğru mesaj döndürülüyor.
+        return new SuccessDataResult<GetByIdLessonDto>(hasLessonMapping, ConstantsMessages.LessonGetByIdSuccessMessage);
     }
 
     public async Task<IResult> CreateAsync(CreateLessonDto entity)
@@ -70,7 +86,19 @@ public class LessonsManager : ILessonService
 
     public async Task<IResult> Remove(DeleteLessonDto entity)
     {
+        // DÜZELTME: Null check eklendi. entity null olabilir, bu durumda hata mesajı döndürülüyor.
+        if (entity == null)
+        {
+            return new ErrorResult("Silinecek ders bilgileri boş olamaz.");
+        }
+        
         var deletedLesson = _mapper.Map<Lesson>(entity);
+        // DÜZELTME: Null reference exception önlendi. deletedLesson null olabilir, bu durumda hata mesajı döndürülüyor.
+        if (deletedLesson == null)
+        {
+            return new ErrorResult("Ders bilgileri eşlenemedi.");
+        }
+        
         _unitOfWork.Lessons.Remove(deletedLesson);
         var result = await _unitOfWork.CommitAsync();
         if (result > 0)

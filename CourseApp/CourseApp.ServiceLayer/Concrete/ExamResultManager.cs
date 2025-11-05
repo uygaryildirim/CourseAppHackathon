@@ -37,9 +37,28 @@ public class ExamResultManager : IExamResultService
 
     public async Task<IDataResult<GetByIdExamResultDto>> GetByIdAsync(string id, bool track = true)
     {
+        // DÜZELTME: Null check eklendi. id parametresi null veya empty olabilir, bu durumda hata mesajı döndürülüyor.
+        if (string.IsNullOrEmpty(id))
+        {
+            return new ErrorDataResult<GetByIdExamResultDto>(null, "ID parametresi boş olamaz.");
+        }
+        
         var hasExamResult = await _unitOfWork.ExamResults.GetByIdAsync(id, false);
+        // DÜZELTME: Null reference exception önlendi. hasExamResult null olabilir, bu durumda hata mesajı döndürülüyor.
+        if (hasExamResult == null)
+        {
+            return new ErrorDataResult<GetByIdExamResultDto>(null, "Belirtilen ID'ye sahip sınav sonucu bulunamadı.");
+        }
+        
         var examResultMapping = _mapper.Map<GetByIdExamResultDto>(hasExamResult);
-        return new SuccessDataResult<GetByIdExamResultDto>(examResultMapping, ConstantsMessages.ExamResultListSuccessMessage);
+        // DÜZELTME: Null reference exception önlendi. examResultMapping null olabilir, bu durumda hata mesajı döndürülüyor.
+        if (examResultMapping == null)
+        {
+            return new ErrorDataResult<GetByIdExamResultDto>(null, "Sınav sonucu bilgileri eşlenemedi.");
+        }
+        
+        // DÜZELTME: Yanlış mesaj düzeltildi. ExamResultListSuccessMessage yerine ExamResultGetByIdSuccessMessage kullanılıyor.
+        return new SuccessDataResult<GetByIdExamResultDto>(examResultMapping, ConstantsMessages.ExamResultGetByIdSuccessMessage);
     }
 
     public async Task<IResult> CreateAsync(CreateExamResultDto entity)
@@ -70,7 +89,19 @@ public class ExamResultManager : IExamResultService
 
     public async Task<IResult> Remove(DeleteExamResultDto entity)
     {
+        // DÜZELTME: Null check eklendi. entity null olabilir, bu durumda hata mesajı döndürülüyor.
+        if (entity == null)
+        {
+            return new ErrorResult("Silinecek sınav sonucu bilgileri boş olamaz.");
+        }
+        
         var deletedExamResultMapping = _mapper.Map<ExamResult>(entity);
+        // DÜZELTME: Null reference exception önlendi. deletedExamResultMapping null olabilir, bu durumda hata mesajı döndürülüyor.
+        if (deletedExamResultMapping == null)
+        {
+            return new ErrorResult("Sınav sonucu bilgileri eşlenemedi.");
+        }
+        
         _unitOfWork.ExamResults.Remove(deletedExamResultMapping);
         var result = await _unitOfWork.CommitAsync();
         if (result > 0)
@@ -82,7 +113,19 @@ public class ExamResultManager : IExamResultService
 
     public async Task<IResult> Update(UpdateExamResultDto entity)
     {
+        // DÜZELTME: Null check eklendi. entity null olabilir, bu durumda hata mesajı döndürülüyor.
+        if (entity == null)
+        {
+            return new ErrorResult("Güncellenecek sınav sonucu bilgileri boş olamaz.");
+        }
+        
         var updatedExamResultMapping = _mapper.Map<ExamResult>(entity);
+        // DÜZELTME: Null reference exception önlendi. updatedExamResultMapping null olabilir, bu durumda hata mesajı döndürülüyor.
+        if (updatedExamResultMapping == null)
+        {
+            return new ErrorResult("Sınav sonucu bilgileri eşlenemedi.");
+        }
+        
         _unitOfWork.ExamResults.Update(updatedExamResultMapping);
         var result = await _unitOfWork.CommitAsync();
         if (result > 0)
