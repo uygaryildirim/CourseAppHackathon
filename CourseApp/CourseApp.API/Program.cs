@@ -85,8 +85,8 @@ builder.Services.AddCors(options =>
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-// DÜZELTME: Exception handling middleware pipeline'ın en başına eklendi. Tüm exception'lar yakalanıp standart formatta döndürülüyor.
-app.UseExceptionHandling();
+// DÜZELTME: Global exception handler middleware pipeline'ın en başına eklendi. Tüm exception'lar yakalanıp standart formatta döndürülüyor, exception tipine göre özel mesajlar sağlanıyor.
+app.UseGlobalExceptionHandler();
 
 // DÜZELTME: Request logging middleware eklendi. Tüm HTTP istekleri loglanıyor, performans ve kullanım izleme için.
 app.UseRequestLogging();

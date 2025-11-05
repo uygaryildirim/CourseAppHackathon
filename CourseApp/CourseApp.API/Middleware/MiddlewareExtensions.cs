@@ -9,10 +9,10 @@ public static class MiddlewareExtensions
         return builder.UseMiddleware<RequestLoggingMiddleware>();
     }
 
-    // DÜZELTME: Exception handling middleware extension metodu. Pipeline'a exception handling middleware'i ekleniyor.
-    public static IApplicationBuilder UseExceptionHandling(this IApplicationBuilder builder)
+    // DÜZELTME: Global exception handler middleware extension metodu. Pipeline'a global exception handler middleware'i ekleniyor.
+    public static IApplicationBuilder UseGlobalExceptionHandler(this IApplicationBuilder builder)
     {
-        return builder.UseMiddleware<ExceptionHandlingMiddleware>();
+        return builder.UseMiddleware<GlobalExceptionHandlerMiddleware>();
     }
 }
 
