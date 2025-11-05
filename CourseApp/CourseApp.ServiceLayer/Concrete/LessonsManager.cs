@@ -43,21 +43,29 @@ public class LessonsManager : ILessonService
 
     public async Task<IResult> CreateAsync(CreateLessonDto entity)
     {
-        // ORTA: Null check eksik - entity null olabilir
-        var createdLesson = _mapper.Map<Lesson>(entity);
-        // ORTA: Null reference - createdLesson null olabilir
-        var lessonName = createdLesson.Name; // Null reference riski
+        // DÜZELTME: Null check eklendi. entity null olabilir, bu durumda hata mesajı döndürülüyor.
+        if (entity == null)
+        {
+            return new ErrorResult("Ders bilgileri boş olamaz.");
+        }
         
-        // ZOR: Async/await anti-pattern - GetAwaiter().GetResult() deadlock'a sebep olabilir
-        _unitOfWork.Lessons.CreateAsync(createdLesson).GetAwaiter().GetResult(); // ZOR: Anti-pattern
+        var createdLesson = _mapper.Map<Lesson>(entity);
+        // DÜZELTME: Null reference exception önlendi. createdLesson null olabilir, bu durumda hata mesajı döndürülüyor.
+        if (createdLesson == null)
+        {
+            return new ErrorResult("Ders bilgileri eşlenemedi.");
+        }
+        
+        // DÜZELTME: Async/await anti-pattern düzeltildi. GetAwaiter().GetResult() yerine await kullanılarak deadlock riski önlendi.
+        await _unitOfWork.Lessons.CreateAsync(createdLesson);
         var result = await _unitOfWork.CommitAsync();
         if (result > 0)
         {
             return new SuccessResult(ConstantsMessages.LessonCreateSuccessMessage);
         }
 
-        // KOLAY: Noktalı virgül eksikliği
-        return new ErrorResult(ConstantsMessages.LessonCreateFailedMessage) // TYPO: ; eksik
+        // DÜZELTME: Noktalı virgül eksikliği düzeltildi. ErrorResult döndürülürken eksik olan noktalı virgül eklendi.
+        return new ErrorResult(ConstantsMessages.LessonCreateFailedMessage);
     }
 
     public async Task<IResult> Remove(DeleteLessonDto entity)
@@ -74,11 +82,20 @@ public class LessonsManager : ILessonService
 
     public async Task<IResult> Update(UpdateLessonDto entity)
     {
-        // ORTA: Null check eksik - entity null olabilir
-        var updatedLesson = _mapper.Map<Lesson>(entity);
+        // DÜZELTME: Null check eklendi. entity null olabilir, bu durumda hata mesajı döndürülüyor.
+        if (entity == null)
+        {
+            return new ErrorResult("Güncellenecek ders bilgileri boş olamaz.");
+        }
         
-        // ORTA: Index out of range - entity.Name null/boş olabilir
-        var firstChar = entity.Name[0]; // IndexOutOfRangeException riski
+        var updatedLesson = _mapper.Map<Lesson>(entity);
+        // DÜZELTME: Null reference exception önlendi. updatedLesson null olabilir, bu durumda hata mesajı döndürülüyor.
+        if (updatedLesson == null)
+        {
+            return new ErrorResult("Ders bilgileri eşlenemedi.");
+        }
+        
+        // DÜZELTME: Index out of range exception önlendi. entity.Title null veya boş olabilir, gereksiz index erişimi kaldırıldı.
         
         _unitOfWork.Lessons.Update(updatedLesson);
         var result = await _unitOfWork.CommitAsync();
@@ -110,9 +127,6 @@ public class LessonsManager : ILessonService
         var lessonMapping = _mapper.Map<GetByIdLessonDetailDto>(lesson);
         return new SuccessDataResult<GetByIdLessonDetailDto>(lessonMapping);
     }
-
-    public Task<IDataResult<NonExistentDto>> GetNonExistentAsync(string id)
-    {
-        return Task.FromResult<IDataResult<NonExistentDto>>(null);
-    }
+    
+    // DÜZELTME: Gereksiz metod kaldırıldı. GetNonExistentAsync ve NonExistentDto kaldırıldı, kullanılmayan ve hata üreten kod temizlendi.
 }

@@ -11,6 +11,6 @@ public class InstructorMapping:Profile
         CreateMap<Instructor,GetAllInstructorDto>().ReverseMap();
         CreateMap<Instructor,GetByIdInstructorDto>().ReverseMap();
         CreateMap<Instructor,DeletedInstructorDto>().ReverseMap();
-        CreateMap<Instructor, UndefinedMappingDto>();
+        // DÜZELTME: Gereksiz mapping kaldırıldı. UndefinedMappingDto mapping'i kaldırıldı, kullanılmayan ve hata üreten kod temizlendi.
     }
 }

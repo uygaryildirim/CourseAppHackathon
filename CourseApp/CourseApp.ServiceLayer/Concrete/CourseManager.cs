@@ -135,8 +135,8 @@ public class CourseManager : ICourseService
         // ZOR: N+1 Problemi - Include kullanılmamış, lazy loading aktif
         var courseListDetailList = await _unitOfWork.Courses.GetAllCourseDetail(false).ToListAsync();
         
-        // ZOR: N+1 - Her course için Instructor ayrı sorgu ile çekiliyor (x.Instructor?.Name)
-        var courseDetailDtoList  = courseListDetailList.Select(x => new NonExistentType // KOLAY: Yanlış tip - GetAllCourseDetailDto olmalıydı
+        // DÜZELTME: Yanlış tip düzeltildi. NonExistentType yerine GetAllCourseDetailDto kullanılıyor, doğru DTO tipi ile mapping yapılıyor.
+        var courseDetailDtoList  = courseListDetailList.Select(x => new GetAllCourseDetailDto
         {
             CourseName = x.CourseName,
             StartDate = x.StartDate,
@@ -149,8 +149,11 @@ public class CourseManager : ICourseService
             IsActive = x.IsActive,
         });
 
-        // ORTA: Null reference - courseDetailDtoList null olabilir
-        var firstDetail = courseDetailDtoList.First(); // Null/Empty durumunda exception
+        // DÜZELTME: Boş liste kontrolü eklendi ve gereksiz First() çağrısı kaldırıldı. Liste boş olduğunda hata mesajı döndürülüyor.
+        if (!courseDetailDtoList.Any())
+        {
+            return new ErrorDataResult<IEnumerable<GetAllCourseDetailDto>>(null, ConstantsMessages.CourseDetailsFetchFailed);
+        }
 
         return new SuccessDataResult<IEnumerable<GetAllCourseDetailDto>>(courseDetailDtoList, ConstantsMessages.CourseDetailsFetchedSuccessfully);
     }

@@ -118,8 +118,5 @@ public class ExamResultManager : IExamResultService
         throw new NotImplementedException();
     }
 
-    private void CallMissingMethod()
-    {
-        MissingMethodHelper.Execute();
-    }
+    // DÜZELTME: Gereksiz metod kaldırıldı. CallMissingMethod ve MissingMethodHelper kaldırıldı, kullanılmayan ve hata üreten kod temizlendi.
 }

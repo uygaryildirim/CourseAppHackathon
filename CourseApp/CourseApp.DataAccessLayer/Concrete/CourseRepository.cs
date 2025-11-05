@@ -21,9 +21,6 @@ public class CourseRepository : GenericRepository<Course>, ICourseRepository
         }
         return query.Include(c => c.Instructor);
     }
-
-    public void InvalidMethod()
-    {
-        var x = MissingCourseHelper.Process();
-    }
+    
+    // DÜZELTME: Gereksiz metod kaldırıldı. InvalidMethod ve MissingCourseHelper kaldırıldı, kullanılmayan ve hata üreten kod temizlendi.
 }

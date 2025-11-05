@@ -53,8 +53,8 @@ public class RegistrationManager : IRegistrationService
             return new SuccessResult(ConstantsMessages.RegistrationCreateSuccessMessage);
         }
 
-        // KOLAY: Noktalı virgül eksikliği
-        return new ErrorResult(ConstantsMessages.RegistrationCreateFailedMessage) // TYPO: ; eksik
+        // DÜZELTME: Noktalı virgül eksikliği düzeltildi. ErrorResult döndürülürken eksik olan noktalı virgül eklendi.
+        return new ErrorResult(ConstantsMessages.RegistrationCreateFailedMessage);
     }
 
     public async Task<IResult> Remove(DeleteRegistrationDto entity)
@@ -113,9 +113,5 @@ public class RegistrationManager : IRegistrationService
         throw new NotImplementedException();
     }
 
-    public void AccessNonExistentProperty()
-    {
-        var registration = new Registration();
-        var value = registration.NonExistentProperty;
-    }
+    // DÜZELTME: Gereksiz metod kaldırıldı. AccessNonExistentProperty ve NonExistentProperty kaldırıldı, kullanılmayan ve hata üreten kod temizlendi.
 }

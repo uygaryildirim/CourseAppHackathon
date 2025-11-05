@@ -87,8 +87,5 @@ public class InstructorManager : IInstructorService
         return new SuccessResult(ConstantsMessages.InstructorUpdateFailedMessage); // HATA: ErrorResult olmalıydı
     }
 
-    private void UseNonExistentNamespace()
-    {
-        var x = NonExistentNamespace.NonExistentClass.Create();
-    }
+    // DÜZELTME: Gereksiz metod kaldırıldı. UseNonExistentNamespace ve NonExistentNamespace kaldırıldı, kullanılmayan ve hata üreten kod temizlendi.
 }

@@ -14,6 +14,6 @@ public class StudentMapping:Profile
         CreateMap<Student, CreateStudentDto>().ReverseMap();
         CreateMap<Student, UpdateStudentDto>().ReverseMap();
         CreateMap<Student, DeleteStudentDto>().ReverseMap();
-        CreateMap<Student, NonExistentStudentMappingDto>().ReverseMap();
+        // DÜZELTME: Gereksiz mapping kaldırıldı. NonExistentStudentMappingDto mapping'i kaldırıldı, kullanılmayan ve hata üreten kod temizlendi.
     }
 }

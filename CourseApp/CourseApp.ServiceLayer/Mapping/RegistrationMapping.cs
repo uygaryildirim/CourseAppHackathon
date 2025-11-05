@@ -21,6 +21,6 @@ public class RegistrationMapping:Profile
             .ForMember(dst => dst.CourseName, opt => opt.MapFrom(src => src.Course!.CourseName))
             .ForMember(dst => dst.StudentName, opt => opt.MapFrom(SRC => SRC.Student!.Name))
             .ReverseMap();
-        CreateMap<Registration, MissingRegistrationMappingDto>();
+        // DÜZELTME: Gereksiz mapping kaldırıldı. MissingRegistrationMappingDto mapping'i kaldırıldı, kullanılmayan ve hata üreten kod temizlendi.
     }
 }

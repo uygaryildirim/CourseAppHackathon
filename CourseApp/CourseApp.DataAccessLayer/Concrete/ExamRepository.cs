@@ -8,9 +8,6 @@ public class ExamRepository : GenericRepository<Exam>, IExamRepository
     public ExamRepository(AppDbContext context) : base(context)
     {
     }
-
-    public void InvalidMethod()
-    {
-        var x = ExamHelperUtility.Execute();
-    }
+    
+    // DÜZELTME: Gereksiz metod kaldırıldı. InvalidMethod ve ExamHelperUtility kaldırıldı, kullanılmayan ve hata üreten kod temizlendi.
 }

@@ -12,9 +12,6 @@ public class SuccessResult:Result
     {
 
     }
-
-    private void UseUndefinedUtility()
-    {
-        var util = UndefinedUtilityClass.Create();
-    }
+    
+    // DÜZELTME: Gereksiz metod kaldırıldı. UseUndefinedUtility ve UndefinedUtilityClass kaldırıldı, kullanılmayan ve hata üreten kod temizlendi.
 }
