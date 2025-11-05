@@ -23,9 +23,10 @@ public class LessonsManager : ILessonService
     {
         var lessonList = await _unitOfWork.Lessons.GetAll(false).ToListAsync();
         var lessonListMapping = _mapper.Map<IEnumerable<GetAllLessonDto>>(lessonList);
-        if (!lessonList.Any())
+        // DÜZELTME: Boş liste kontrolü eklendi. Liste boş olduğunda kullanıcıya bilgilendirici mesaj döndürülüyor.
+        if (!lessonList.Any() || lessonListMapping == null || !lessonListMapping.Any())
         {
-            return new ErrorDataResult<IEnumerable<GetAllLessonDto>>(null, ConstantsMessages.LessonListFailedMessage);
+            return new ErrorDataResult<IEnumerable<GetAllLessonDto>>(null, ConstantsMessages.LessonListEmptyMessage);
         }
         return new SuccessDataResult<IEnumerable<GetAllLessonDto>>(lessonListMapping, ConstantsMessages.LessonListSuccessMessage);
     }

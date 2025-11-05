@@ -104,6 +104,13 @@ public static class ConstantsMessages
     public const string CourseDetailsFetchedSuccessfully = "Kurs detayları başarıyla getirildi.";
     public const string CourseDetailsFetchFailed = "Kurs detayları getirilemedi.";
 
-
+    // DÜZELTME: Boş liste mesajları eklendi. Liste boş olduğunda kullanıcıya bilgilendirici mesajlar döndürülüyor.
+    public const string StudentListEmptyMessage = "Öğrenci kaydı bulunamadı.";
+    public const string CourseListEmptyMessage = "Kurs kaydı bulunamadı.";
+    public const string ExamListEmptyMessage = "Sınav kaydı bulunamadı.";
+    public const string ExamResultListEmptyMessage = "Sınav sonucu kaydı bulunamadı.";
+    public const string InstructorListEmptyMessage = "Eğitmen kaydı bulunamadı.";
+    public const string LessonListEmptyMessage = "Ders kaydı bulunamadı.";
+    public const string RegistrationListEmptyMessage = "Kayıt bulunamadı.";
 
 }

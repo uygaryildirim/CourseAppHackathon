@@ -10,7 +10,28 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+// DÜZELTME: Swagger UI yapılandırması iyileştirildi. API dokümantasyonu için Swagger UI'ı daha kullanışlı hale getirildi.
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
+    {
+        Title = "CourseApp API",
+        Version = "v1",
+        Description = "CourseApp - Eğitim yönetim sistemi API dokümantasyonu",
+        Contact = new Microsoft.OpenApi.Models.OpenApiContact
+        {
+            Name = "CourseApp Team"
+        }
+    });
+    
+    // DÜZELTME: XML yorumları eklendi. Swagger UI'da API endpoint'leri için detaylı açıklamalar gösteriliyor.
+    var xmlFile = $"{System.Reflection.Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+    if (File.Exists(xmlPath))
+    {
+        c.IncludeXmlComments(xmlPath);
+    }
+});
 
 // DbContext Configuration
 // DÜZELTME: SQL Server yerine InMemory database kullanılıyor. Projenin makine üzerinde çalışması için SQL Server kurulumu gerekmiyor, InMemory database kullanılarak test ve geliştirme ortamında kolaylık sağlanıyor.
@@ -50,11 +71,17 @@ builder.Services.AddCors(options =>
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+// DÜZELTME: Swagger UI her ortamda aktif. Geliştirme ve test için Swagger UI'ı her zaman kullanılabilir hale getirildi.
+app.UseSwagger();
+app.UseSwaggerUI(c =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "CourseApp API V1");
+    c.RoutePrefix = string.Empty; // Swagger UI'ı root path'te açmak için
+    c.DisplayRequestDuration(); // İstek süresini göster
+    c.EnableDeepLinking(); // Deep linking aktif
+    c.EnableFilter(); // Arama filtresi aktif
+    c.EnableTryItOutByDefault(); // Try it out butonunu varsayılan olarak aktif et
+});
 
 app.UseHttpsRedirection();
 

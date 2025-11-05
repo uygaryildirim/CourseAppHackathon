@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ZoIr9RFiiz4=",
+  "dgSpecHash": "kXeu1z4C1aM=",
   "success": true,
   "projectFilePath": "/Users/uygaryildirim/Downloads/CourseAppHackathon/CourseApp/CourseApp.API/CourseApp.API.csproj",
   "expectedPackageFiles": [
@@ -16,6 +16,7 @@
     "/Users/uygaryildirim/.nuget/packages/microsoft.entityframeworkcore/8.0.10/microsoft.entityframeworkcore.8.0.10.nupkg.sha512",
     "/Users/uygaryildirim/.nuget/packages/microsoft.entityframeworkcore.abstractions/8.0.10/microsoft.entityframeworkcore.abstractions.8.0.10.nupkg.sha512",
     "/Users/uygaryildirim/.nuget/packages/microsoft.entityframeworkcore.analyzers/8.0.10/microsoft.entityframeworkcore.analyzers.8.0.10.nupkg.sha512",
+    "/Users/uygaryildirim/.nuget/packages/microsoft.entityframeworkcore.inmemory/8.0.10/microsoft.entityframeworkcore.inmemory.8.0.10.nupkg.sha512",
     "/Users/uygaryildirim/.nuget/packages/microsoft.entityframeworkcore.relational/8.0.10/microsoft.entityframeworkcore.relational.8.0.10.nupkg.sha512",
     "/Users/uygaryildirim/.nuget/packages/microsoft.entityframeworkcore.sqlserver/8.0.10/microsoft.entityframeworkcore.sqlserver.8.0.10.nupkg.sha512",
     "/Users/uygaryildirim/.nuget/packages/microsoft.extensions.apidescription.server/6.0.5/microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",

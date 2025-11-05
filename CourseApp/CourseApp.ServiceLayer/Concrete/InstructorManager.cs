@@ -23,9 +23,10 @@ public class InstructorManager : IInstructorService
     {
         var instructorList = await _unitOfWork.Instructors.GetAll(false).ToListAsync();
         var instructorListMapping = _mapper.Map<IEnumerable<GetAllInstructorDto>>(instructorList);
-        if (!instructorList.Any())
+        // DÜZELTME: Boş liste kontrolü eklendi. Liste boş olduğunda kullanıcıya bilgilendirici mesaj döndürülüyor.
+        if (!instructorList.Any() || instructorListMapping == null || !instructorListMapping.Any())
         {
-            return new ErrorDataResult<IEnumerable<GetAllInstructorDto>>(null, ConstantsMessages.InstructorListFailedMessage);
+            return new ErrorDataResult<IEnumerable<GetAllInstructorDto>>(null, ConstantsMessages.InstructorListEmptyMessage);
         }
         return new SuccessDataResult<IEnumerable<GetAllInstructorDto>>(instructorListMapping, ConstantsMessages.InstructorListSuccessMessage);
     }

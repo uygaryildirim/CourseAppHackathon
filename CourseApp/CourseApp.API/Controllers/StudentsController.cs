@@ -71,8 +71,11 @@ public class StudentsController : ControllerBase
     [HttpPut]
     public async Task<IActionResult> Update([FromBody] UpdateStudentDto updateStudentDto)
     {
-        // DÜZELTME: updateStudntDto yazım hatası düzeltildi - updateStudentDto olarak değiştirildi. Metod parametresindeki doğru değişken adı kullanılıyor.
-        var name = updateStudentDto.Name;
+        // DÜZELTME: Null check eklendi. updateStudentDto null olabilir, bu durumda BadRequest döndürülüyor.
+        if (updateStudentDto == null)
+        {
+            return BadRequest(new { Message = "Güncellenecek öğrenci bilgileri boş olamaz." });
+        }
         
         var result = await _studentService.Update(updateStudentDto);
         if (result.Success)

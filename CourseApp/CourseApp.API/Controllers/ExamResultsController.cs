@@ -32,8 +32,8 @@ public class ExamResultsController : ControllerBase
             }
             return Ok(result);
         }
-        // KOLAY: Metod adı yanlış yazımı - BadRequest yerine BadReqest
-        return BadReqest(result); // TYPO: Request yerine Reqest
+        // DÜZELTME: BadReqest yazım hatası düzeltildi - BadRequest olarak değiştirildi. Doğru HTTP status code metodu kullanılıyor.
+        return BadRequest(result);
     }
 
     [HttpGet("{id}")]
