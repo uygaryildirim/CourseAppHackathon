@@ -50,14 +50,22 @@ public class CourseManager : ICourseService
 
     public async Task<IDataResult<GetByIdCourseDto>> GetByIdAsync(string id, bool track = true)
     {
-        // ORTA: Null check eksik - id null/empty olabilir
-        // ORTA: Null reference exception - hasCourse null olabilir ama kontrol edilmiyor
+        // DÜZELTME: Null check eklendi. id parametresi null veya empty olabilir, bu durumda hata mesajı döndürülüyor.
+        if (string.IsNullOrEmpty(id))
+        {
+            return new ErrorDataResult<GetByIdCourseDto>(null, "ID parametresi boş olamaz.");
+        }
+        
         var hasCourse = await _unitOfWork.Courses.GetByIdAsync(id, track);
+        // DÜZELTME: Null reference exception önlendi. hasCourse null olabilir, bu durumda hata mesajı döndürülüyor.
+        if (hasCourse == null)
+        {
+            return new ErrorDataResult<GetByIdCourseDto>(null, "Belirtilen ID'ye sahip kurs bulunamadı.");
+        }
 
-        // ORTA: Null reference - hasCourse null ise NullReferenceException
         var course = new GetByIdCourseDto
         {
-            CourseName = hasCourse.CourseName, // Null reference riski
+            CourseName = hasCourse.CourseName,
             CreatedDate = hasCourse.CreatedDate,
             EndDate = hasCourse.EndDate,
             InstructorID = hasCourse.InstructorID,
@@ -70,6 +78,12 @@ public class CourseManager : ICourseService
     }
     public async Task<IResult> CreateAsync(CreateCourseDto entity)
     {
+        // DÜZELTME: Null check eklendi. entity null olabilir, bu durumda hata mesajı döndürülüyor.
+        if (entity == null)
+        {
+            return new ErrorResult("Kurs bilgileri boş olamaz.");
+        }
+        
         var createdCourse = new Course
         {
             CourseName = entity.CourseName,
@@ -93,6 +107,12 @@ public class CourseManager : ICourseService
     }
     public async Task<IResult> Remove(DeleteCourseDto entity)
     {
+        // DÜZELTME: Null check eklendi. entity null olabilir, bu durumda hata mesajı döndürülüyor.
+        if (entity == null)
+        {
+            return new ErrorResult("Silinecek kurs bilgileri boş olamaz.");
+        }
+        
         var deletedCourse = new Course
         {
             ID = entity.Id,
@@ -109,6 +129,12 @@ public class CourseManager : ICourseService
 
     public async Task<IResult> Update(UpdateCourseDto entity)
     {
+        // DÜZELTME: Null check eklendi. entity null olabilir, bu durumda hata mesajı döndürülüyor.
+        if (entity == null)
+        {
+            return new ErrorResult("Güncellenecek kurs bilgileri boş olamaz.");
+        }
+        
         var updatedCourse = await _unitOfWork.Courses.GetByIdAsync(entity.Id);
         if (updatedCourse == null)
         {
