@@ -13,9 +13,10 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // DbContext Configuration
+// DÜZELTME: SQL Server yerine InMemory database kullanılıyor. Projenin makine üzerinde çalışması için SQL Server kurulumu gerekmiyor, InMemory database kullanılarak test ve geliştirme ortamında kolaylık sağlanıyor.
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+    options.UseInMemoryDatabase("CourseAppDb");
 });
 
 // UnitOfWork Configuration

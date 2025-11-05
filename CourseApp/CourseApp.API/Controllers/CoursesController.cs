@@ -29,10 +29,16 @@ public class CoursesController : ControllerBase
     [HttpGet("{id}")]
     public async Task<IActionResult> GetById(string id)
     {
+        // DÜZELTME: Null ve empty kontrolü eklendi. String parametre null veya boş olabilir, bu durumda BadRequest döndürülüyor.
+        if (string.IsNullOrEmpty(id))
+        {
+            return BadRequest(new { Message = "ID parametresi boş olamaz." });
+        }
+        
         // DÜZELTME: GetByIdAsnc yazım hatası düzeltildi - GetByIdAsync olarak değiştirildi. ICourseService interface'indeki doğru async metod adı kullanılıyor.
         var result = await _courseService.GetByIdAsync(id);
-        // ORTA: Null reference - result null olabilir
-        if (result.Success)
+        // DÜZELTME: Null reference exception önlendi. result null olabilir, bu durumda result.Success kontrolü yapılmadan önce null kontrolü ekleniyor.
+        if (result != null && result.Success)
         {
             return Ok(result);
         }
@@ -53,11 +59,17 @@ public class CoursesController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> Create([FromBody] CreateCourseDto createCourseDto)
     {
-        // ORTA: Null check eksik - createCourseDto null olabilir
-        var courseName = createCourseDto.CourseName; // Null reference riski
+        // DÜZELTME: Null check eklendi. createCourseDto null olabilir, bu durumda BadRequest döndürülüyor.
+        if (createCourseDto == null)
+        {
+            return BadRequest(new { Message = "Kurs bilgileri boş olamaz." });
+        }
         
-        // ORTA: Array index out of range - courseName boş/null ise
-        var firstChar = courseName[0]; // IndexOutOfRangeException riski
+        // DÜZELTME: Null ve empty kontrolü eklendi. CourseName null veya boş olabilir, IndexOutOfRangeException oluşmadan önce kontrol ediliyor.
+        if (string.IsNullOrWhiteSpace(createCourseDto.CourseName))
+        {
+            return BadRequest(new { Message = "Kurs adı boş olamaz." });
+        }
         
         var result = await _courseService.CreateAsync(createCourseDto);
         if (result.Success)

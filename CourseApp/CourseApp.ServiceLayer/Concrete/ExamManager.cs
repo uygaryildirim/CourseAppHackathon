@@ -22,13 +22,13 @@ public class ExamManager : IExamService
 
     public async Task<IDataResult<IEnumerable<GetAllExamDto>>> GetAllAsync(bool track = true)
     {
-        // ZOR: Async/await anti-pattern - async metot içinde senkron ToList kullanımı
-        var examList = _unitOfWork.Exams.GetAll(false).ToList(); // ZOR: ToListAsync kullanılmalıydı
+        // DÜZELTME: Async/await anti-pattern düzeltildi. Senkron ToList yerine ToListAsync kullanılarak async pattern doğru uygulanıyor.
+        var examList = await _unitOfWork.Exams.GetAll(false).ToListAsync();
         // DÜZELTME: examtListMapping yazım hatası düzeltildi - examListMapping olarak değiştirildi. Değişken adı daha okunabilir ve tutarlı hale getirildi.
         var examListMapping = _mapper.Map<IEnumerable<GetAllExamDto>>(examList);
         
-        // ORTA: Index out of range - examListMapping boş olabilir
-        var firstExam = examListMapping.ToList()[0]; // IndexOutOfRangeException riski
+        // DÜZELTME: Index out of range exception önlendi. examListMapping boş olabilir, gereksiz index erişimi kaldırıldı.
+        // Gereksiz firstExam değişkeni kaldırıldı, sadece liste döndürülüyor.
         
         // DÜZELTME: examtListMapping yazım hatası düzeltildi - examListMapping olarak değiştirildi. Return statement'ta doğru değişken adı kullanılıyor.
         return new SuccessDataResult<IEnumerable<GetAllExamDto>>(examListMapping, ConstantsMessages.ExamListSuccessMessage);
@@ -41,20 +41,39 @@ public class ExamManager : IExamService
 
     public async Task<IDataResult<GetByIdExamDto>> GetByIdAsync(string id, bool track = true)
     {
+        // DÜZELTME: Null check eklendi. id parametresi null veya empty olabilir, bu durumda hata mesajı döndürülüyor.
+        if (string.IsNullOrEmpty(id))
+        {
+            return new ErrorDataResult<GetByIdExamDto>(null, "ID parametresi boş olamaz.");
+        }
+        
         var hasExam = await _unitOfWork.Exams.GetByIdAsync(id, false);
+        // DÜZELTME: Null reference exception önlendi. hasExam null olabilir, bu durumda hata mesajı döndürülüyor.
+        if (hasExam == null)
+        {
+            return new ErrorDataResult<GetByIdExamDto>(null, "Belirtilen ID'ye sahip sınav bulunamadı.");
+        }
+        
         var examResultMapping = _mapper.Map<GetByIdExamDto>(hasExam);
         return new SuccessDataResult<GetByIdExamDto>(examResultMapping, ConstantsMessages.ExamGetByIdSuccessMessage);
     }
     public async Task<IResult> CreateAsync(CreateExamDto entity)
     {
-        // ORTA: Null check eksik - entity null olabilir
+        // DÜZELTME: Null check eklendi. entity null olabilir, bu durumda hata mesajı döndürülüyor.
+        if (entity == null)
+        {
+            return new ErrorResult("Sınav bilgileri boş olamaz.");
+        }
+        
         var addedExamMapping = _mapper.Map<Exam>(entity);
+        // DÜZELTME: Null reference exception önlendi. addedExamMapping null olabilir, bu durumda hata mesajı döndürülüyor.
+        if (addedExamMapping == null)
+        {
+            return new ErrorResult("Sınav bilgileri eşlenemedi.");
+        }
         
-        // ORTA: Null reference - addedExamMapping null olabilir
-        var examName = addedExamMapping.Name; // Null reference riski
-        
-        // ZOR: Async/await anti-pattern - async metot içinde .Wait() kullanımı deadlock'a sebep olabilir
-        _unitOfWork.Exams.CreateAsync(addedExamMapping).Wait(); // ZOR: Anti-pattern - await kullanılmalıydı
+        // DÜZELTME: Async/await anti-pattern düzeltildi. .Wait() yerine await kullanılarak deadlock riski önlendi.
+        await _unitOfWork.Exams.CreateAsync(addedExamMapping);
         var result = await _unitOfWork.CommitAsync();
         if (result > 0)
         {

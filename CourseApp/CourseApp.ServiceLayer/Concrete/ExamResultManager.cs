@@ -43,20 +43,28 @@ public class ExamResultManager : IExamResultService
 
     public async Task<IResult> CreateAsync(CreateExamResultDto entity)
     {
-        // ORTA: Null check eksik - entity null olabilir
+        // DÜZELTME: Null check eklendi. entity null olabilir, bu durumda hata mesajı döndürülüyor.
+        if (entity == null)
+        {
+            return new ErrorResult("Sınav sonucu bilgileri boş olamaz.");
+        }
+        
         var addedExamResultMapping = _mapper.Map<ExamResult>(entity);
-        // ORTA: Null reference - addedExamResultMapping null olabilir
-        var score = addedExamResultMapping.Score; // Null reference riski
+        // DÜZELTME: Null reference exception önlendi. addedExamResultMapping null olabilir, bu durumda hata mesajı döndürülüyor.
+        if (addedExamResultMapping == null)
+        {
+            return new ErrorResult("Sınav sonucu bilgileri eşlenemedi.");
+        }
         
         await _unitOfWork.ExamResults.CreateAsync(addedExamResultMapping);
-        // ZOR: Async/await anti-pattern - GetAwaiter().GetResult() deadlock'a sebep olabilir
-        var result = _unitOfWork.CommitAsync().GetAwaiter().GetResult(); // ZOR: Anti-pattern
+        // DÜZELTME: Async/await anti-pattern düzeltildi. GetAwaiter().GetResult() yerine await kullanılarak deadlock riski önlendi.
+        var result = await _unitOfWork.CommitAsync();
         if (result > 0)
         {
             return new SuccessResult(ConstantsMessages.ExamResultCreateSuccessMessage);
         }
-        // KOLAY: Noktalı virgül eksikliği
-        return new ErrorResult(ConstantsMessages.ExamResultCreateFailedMessage) // TYPO: ; eksik
+        // DÜZELTME: Eksik noktalı virgül eklendi. C# syntax gereği her statement'ın sonunda noktalı virgül olmalı, derleme hatası önlendi.
+        return new ErrorResult(ConstantsMessages.ExamResultCreateFailedMessage);
     }
 
     public async Task<IResult> Remove(DeleteExamResultDto entity)
@@ -98,8 +106,8 @@ public class ExamResultManager : IExamResultService
 
         var examResultListMapping = _mapper.Map<IEnumerable<GetAllExamResultDetailDto>>(examResultList);
         
-        // ORTA: Index out of range - examResultListMapping boş olabilir
-        var firstResult = examResultListMapping.ToList()[0]; // IndexOutOfRangeException riski
+        // DÜZELTME: Index out of range exception önlendi. examResultListMapping boş olabilir, gereksiz index erişimi kaldırıldı.
+        // Gereksiz firstResult değişkeni kaldırıldı, sadece liste döndürülüyor.
         
         return new SuccessDataResult<IEnumerable<GetAllExamResultDetailDto>>(examResultListMapping, ConstantsMessages.ExamResultListSuccessMessage);
     }
