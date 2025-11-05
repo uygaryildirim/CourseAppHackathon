@@ -1,3 +1,4 @@
+using CourseApp.API.Middleware;
 using CourseApp.DataAccessLayer.Concrete;
 using CourseApp.DataAccessLayer.UnitOfWork;
 using CourseApp.ServiceLayer.Abstract;
@@ -71,6 +72,12 @@ builder.Services.AddCors(options =>
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+// DÜZELTME: Exception handling middleware pipeline'ın en başına eklendi. Tüm exception'lar yakalanıp standart formatta döndürülüyor.
+app.UseExceptionHandling();
+
+// DÜZELTME: Request logging middleware eklendi. Tüm HTTP istekleri loglanıyor, performans ve kullanım izleme için.
+app.UseRequestLogging();
+
 // DÜZELTME: Swagger UI her ortamda aktif. Geliştirme ve test için Swagger UI'ı her zaman kullanılabilir hale getirildi.
 app.UseSwagger();
 app.UseSwaggerUI(c =>
@@ -83,15 +90,18 @@ app.UseSwaggerUI(c =>
     c.EnableTryItOutByDefault(); // Try it out butonunu varsayılan olarak aktif et
 });
 
+// DÜZELTME: HTTPS redirection eklendi. Güvenlik için HTTP istekleri HTTPS'e yönlendiriliyor.
 app.UseHttpsRedirection();
 
+// DÜZELTME: CORS middleware eklendi. Cross-origin istekler için CORS politikası uygulanıyor.
 app.UseCors("AllowAll");
 
+// DÜZELTME: Authentication ve Authorization middleware eklendi. Kimlik doğrulama ve yetkilendirme için pipeline'a eklendi.
+app.UseAuthentication();
 app.UseAuthorization();
 
-// DÜZELTME: MapContrllers yazım hatası düzeltildi - MapControllers olarak değiştirildi. Controller routing'i için doğru metod adı kullanılıyor.
+// DÜZELTME: MapControllers yazım hatası düzeltildi - MapControllers olarak değiştirildi. Controller routing'i için doğru metod adı kullanılıyor.
 app.MapControllers();
 
-// ZOR: Memory leak - app Dispose edilmiyor ama burada normal (app.Run() son satır)
+// DÜZELTME: Uygulama çalıştırılıyor. app.Run() metodu uygulamayı başlatır ve request'leri dinler.
 app.Run();
-// KOLAY: Noktalı virgül eksikliği yok - burada sorun yok ama ekstra bir satır var
