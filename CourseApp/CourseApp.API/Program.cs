@@ -1,15 +1,25 @@
 using CourseApp.API.Middleware;
+using CourseApp.API.Validators;
 using CourseApp.DataAccessLayer.Concrete;
 using CourseApp.DataAccessLayer.UnitOfWork;
 using CourseApp.ServiceLayer.Abstract;
 using CourseApp.ServiceLayer.Concrete;
 using CourseApp.ServiceLayer.Mapping;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllers();
+// DÜZELTME: FluentValidation eklendi. Controller'larda otomatik validation yapılması için FluentValidation.AspNetCore kullanılıyor.
+builder.Services.AddControllers()
+    .AddFluentValidation(fv =>
+    {
+        fv.RegisterValidatorsFromAssemblyContaining<CreateStudentDtoValidator>();
+        fv.AutomaticValidationEnabled = true;
+        fv.ImplicitlyValidateChildProperties = true;
+    });
 builder.Services.AddEndpointsApiExplorer();
 // DÜZELTME: Swagger UI yapılandırması iyileştirildi. API dokümantasyonu için Swagger UI'ı daha kullanışlı hale getirildi.
 builder.Services.AddSwaggerGen(c =>
@@ -57,6 +67,9 @@ builder.Services.AddScoped<IRegistrationService, RegistrationManager>();
 
 // AutoMapper Configuration
 builder.Services.AddAutoMapper(typeof(StudentMapping).Assembly);
+
+// DÜZELTME: FluentValidation validator'ları DI container'a eklendi. Tüm validator sınıfları otomatik olarak kaydediliyor.
+builder.Services.AddValidatorsFromAssemblyContaining<CreateStudentDtoValidator>();
 
 // CORS Configuration
 builder.Services.AddCors(options =>
