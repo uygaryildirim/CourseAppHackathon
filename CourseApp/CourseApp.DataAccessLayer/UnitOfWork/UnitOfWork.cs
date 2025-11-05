@@ -1,5 +1,6 @@
 ﻿using CourseApp.DataAccessLayer.Abstract;
 using CourseApp.DataAccessLayer.Concrete;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace CourseApp.DataAccessLayer.UnitOfWork;
 
@@ -49,9 +50,42 @@ public class UnitOfWork : IUnitOfWork
         return await _context.SaveChangesAsync();
     }
 
+    // DÜZELTME: Transaction yönetimi eklendi. BeginTransactionAsync metodu ile transaction başlatılıyor, birden fazla işlem atomik olarak yürütülebiliyor.
+    public async Task<IDbContextTransaction> BeginTransactionAsync()
+    {
+        return await _context.Database.BeginTransactionAsync();
+    }
+
+    // DÜZELTME: Transaction commit metodu eklendi. Tüm değişiklikler başarılı olduğunda transaction commit ediliyor.
+    public async Task CommitTransactionAsync()
+    {
+        var transaction = _context.Database.CurrentTransaction;
+        if (transaction != null)
+        {
+            await transaction.CommitAsync();
+        }
+    }
+
+    // DÜZELTME: Transaction rollback metodu eklendi. Hata durumunda tüm değişiklikler geri alınıyor, veri tutarlılığı sağlanıyor.
+    public async Task RollbackTransactionAsync()
+    {
+        var transaction = _context.Database.CurrentTransaction;
+        if (transaction != null)
+        {
+            await transaction.RollbackAsync();
+        }
+    }
+
     // DÜZELTME: DisposeAsync metodu düzgün implement edildi. DbContext dispose edilerek kaynak sızıntısı önleniyor.
     public async ValueTask DisposeAsync()
     {
+        // DÜZELTME: Dispose öncesi aktif transaction varsa rollback ediliyor, kaynak sızıntısı önleniyor.
+        var transaction = _context.Database.CurrentTransaction;
+        if (transaction != null)
+        {
+            await transaction.RollbackAsync();
+        }
+        
         await _context.DisposeAsync();
     }
     

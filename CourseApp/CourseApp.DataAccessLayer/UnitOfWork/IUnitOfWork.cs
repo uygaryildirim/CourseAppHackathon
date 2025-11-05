@@ -1,4 +1,5 @@
 ﻿using CourseApp.DataAccessLayer.Abstract;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace CourseApp.DataAccessLayer.UnitOfWork
 {
@@ -13,5 +14,10 @@ namespace CourseApp.DataAccessLayer.UnitOfWork
         IRegistrationRepository Registrations { get; }
 
         Task<int> CommitAsync();
+        
+        // DÜZELTME: Transaction yönetimi eklendi. Veritabanı işlemlerinin atomik olarak yürütülmesi için transaction desteği sağlanıyor.
+        Task<IDbContextTransaction> BeginTransactionAsync();
+        Task CommitTransactionAsync();
+        Task RollbackTransactionAsync();
     }
 }

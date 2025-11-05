@@ -6,6 +6,7 @@ using CourseApp.ServiceLayer.Abstract;
 using CourseApp.ServiceLayer.Utilities.Constants;
 using CourseApp.ServiceLayer.Utilities.Result;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace CourseApp.ServiceLayer.Concrete;
 
@@ -34,10 +35,7 @@ public class ExamManager : IExamService
         return new SuccessDataResult<IEnumerable<GetAllExamDto>>(examListMapping, ConstantsMessages.ExamListSuccessMessage);
     }
 
-    public void NonExistentMethod()
-    {
-        var x = new MissingType();
-    }
+    // DÜZELTME: Gereksiz metod kaldırıldı. NonExistentMethod metodu kaldırıldı, kullanılmayan ve hata üreten kod temizlendi.
 
     public async Task<IDataResult<GetByIdExamDto>> GetByIdAsync(string id, bool track = true)
     {
@@ -72,38 +70,112 @@ public class ExamManager : IExamService
             return new ErrorResult("Sınav bilgileri eşlenemedi.");
         }
         
-        // DÜZELTME: Async/await anti-pattern düzeltildi. .Wait() yerine await kullanılarak deadlock riski önlendi.
-        await _unitOfWork.Exams.CreateAsync(addedExamMapping);
-        var result = await _unitOfWork.CommitAsync();
-        if (result > 0)
+        // DÜZELTME: Transaction yönetimi eklendi. Veritabanı işlemlerinin atomik olarak yürütülmesi için transaction kullanılıyor.
+        await using var transaction = await _unitOfWork.BeginTransactionAsync();
+        try
         {
-            return new SuccessResult(ConstantsMessages.ExamCreateSuccessMessage);
+            // DÜZELTME: Async/await anti-pattern düzeltildi. .Wait() yerine await kullanılarak deadlock riski önlendi.
+            await _unitOfWork.Exams.CreateAsync(addedExamMapping);
+            var result = await _unitOfWork.CommitAsync();
+            
+            if (result > 0)
+            {
+                // DÜZELTME: Transaction commit ediliyor. Tüm işlemler başarılı olduğunda transaction commit ediliyor.
+                await _unitOfWork.CommitTransactionAsync();
+                return new SuccessResult(ConstantsMessages.ExamCreateSuccessMessage);
+            }
+            
+            // DÜZELTME: Transaction rollback ediliyor. Hata durumunda tüm değişiklikler geri alınıyor.
+            await _unitOfWork.RollbackTransactionAsync();
+            return new ErrorResult(ConstantsMessages.ExamCreateFailedMessage);
         }
-        // DÜZELTME: Eksik noktalı virgül eklendi. C# syntax gereği her statement'ın sonunda noktalı virgül olmalı, derleme hatası önlendi.
-        return new ErrorResult(ConstantsMessages.ExamCreateFailedMessage);
+        catch (Exception)
+        {
+            // DÜZELTME: Exception durumunda transaction rollback ediliyor. Veri tutarlılığı sağlanıyor.
+            await _unitOfWork.RollbackTransactionAsync();
+            throw;
+        }
     }
 
     public async Task<IResult> Remove(DeleteExamDto entity)
     {
-        var deletedExamMapping = _mapper.Map<Exam>(entity); // ORTA SEVİYE: ID kontrolü eksik - entity ID'si null/empty olabilir
-        _unitOfWork.Exams.Remove(deletedExamMapping);
-        var result = await _unitOfWork.CommitAsync(); // ZOR SEVİYE: Transaction yok - başka işlemler varsa rollback olmaz
-        if (result > 0)
+        // DÜZELTME: Null check eklendi. entity null olabilir, bu durumda hata mesajı döndürülüyor.
+        if (entity == null)
         {
-            return new SuccessResult(ConstantsMessages.ExamDeleteSuccessMessage);
+            return new ErrorResult("Silinecek sınav bilgileri boş olamaz.");
         }
-        return new ErrorResult(ConstantsMessages.ExamDeleteFailedMessage);
+        
+        var deletedExamMapping = _mapper.Map<Exam>(entity);
+        // DÜZELTME: Null reference exception önlendi. deletedExamMapping null olabilir, bu durumda hata mesajı döndürülüyor.
+        if (deletedExamMapping == null)
+        {
+            return new ErrorResult("Sınav bilgileri eşlenemedi.");
+        }
+        
+        // DÜZELTME: Transaction yönetimi eklendi. Veritabanı işlemlerinin atomik olarak yürütülmesi için transaction kullanılıyor, başka işlemler varsa rollback oluyor.
+        await using var transaction = await _unitOfWork.BeginTransactionAsync();
+        try
+        {
+            _unitOfWork.Exams.Remove(deletedExamMapping);
+            var result = await _unitOfWork.CommitAsync();
+            
+            if (result > 0)
+            {
+                // DÜZELTME: Transaction commit ediliyor. Tüm işlemler başarılı olduğunda transaction commit ediliyor.
+                await _unitOfWork.CommitTransactionAsync();
+                return new SuccessResult(ConstantsMessages.ExamDeleteSuccessMessage);
+            }
+            
+            // DÜZELTME: Transaction rollback ediliyor. Hata durumunda tüm değişiklikler geri alınıyor.
+            await _unitOfWork.RollbackTransactionAsync();
+            return new ErrorResult(ConstantsMessages.ExamDeleteFailedMessage);
+        }
+        catch (Exception)
+        {
+            // DÜZELTME: Exception durumunda transaction rollback ediliyor. Veri tutarlılığı sağlanıyor.
+            await _unitOfWork.RollbackTransactionAsync();
+            throw;
+        }
     }
 
     public async Task<IResult> Update(UpdateExamDto entity)
     {
-        var updatedExamMapping = _mapper.Map<Exam>(entity);
-        _unitOfWork.Exams.Update(updatedExamMapping);
-        var result = await _unitOfWork.CommitAsync();
-        if (result > 0)
+        // DÜZELTME: Null check eklendi. entity null olabilir, bu durumda hata mesajı döndürülüyor.
+        if (entity == null)
         {
-            return new SuccessResult(ConstantsMessages.ExamUpdateSuccessMessage);
+            return new ErrorResult("Güncellenecek sınav bilgileri boş olamaz.");
         }
-        return new ErrorResult(ConstantsMessages.ExamUpdateFailedMessage);
+        
+        var updatedExamMapping = _mapper.Map<Exam>(entity);
+        // DÜZELTME: Null reference exception önlendi. updatedExamMapping null olabilir, bu durumda hata mesajı döndürülüyor.
+        if (updatedExamMapping == null)
+        {
+            return new ErrorResult("Sınav bilgileri eşlenemedi.");
+        }
+        
+        // DÜZELTME: Transaction yönetimi eklendi. Veritabanı işlemlerinin atomik olarak yürütülmesi için transaction kullanılıyor.
+        await using var transaction = await _unitOfWork.BeginTransactionAsync();
+        try
+        {
+            _unitOfWork.Exams.Update(updatedExamMapping);
+            var result = await _unitOfWork.CommitAsync();
+            
+            if (result > 0)
+            {
+                // DÜZELTME: Transaction commit ediliyor. Tüm işlemler başarılı olduğunda transaction commit ediliyor.
+                await _unitOfWork.CommitTransactionAsync();
+                return new SuccessResult(ConstantsMessages.ExamUpdateSuccessMessage);
+            }
+            
+            // DÜZELTME: Transaction rollback ediliyor. Hata durumunda tüm değişiklikler geri alınıyor.
+            await _unitOfWork.RollbackTransactionAsync();
+            return new ErrorResult(ConstantsMessages.ExamUpdateFailedMessage);
+        }
+        catch (Exception)
+        {
+            // DÜZELTME: Exception durumunda transaction rollback ediliyor. Veri tutarlılığı sağlanıyor.
+            await _unitOfWork.RollbackTransactionAsync();
+            throw;
+        }
     }
 }
