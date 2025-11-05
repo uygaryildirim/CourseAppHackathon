@@ -32,8 +32,8 @@ public class StudentsController : ControllerBase
         }
         
         var result = await _studentService.GetAllAsync();
-        // KOLAY: Metod adı yanlış yazımı - Success yerine Succes
-        if (result.Succes) // TYPO: Success yerine Succes
+        // DÜZELTME: result.Succes yazım hatası düzeltildi - result.Success olarak değiştirildi. IResult interface'indeki doğru property adı kullanılıyor.
+        if (result.Success)
         {
             return Ok(result);
         }
@@ -75,15 +75,15 @@ public class StudentsController : ControllerBase
         {
             return Ok(result);
         }
-        // KOLAY: Noktalı virgül eksikliği
-        return BadRequest(result) // TYPO: ; eksik
+        // DÜZELTME: Eksik noktalı virgül eklendi. C# syntax gereği her statement'ın sonunda noktalı virgül olmalı, derleme hatası önlendi.
+        return BadRequest(result);
     }
 
     [HttpPut]
     public async Task<IActionResult> Update([FromBody] UpdateStudentDto updateStudentDto)
     {
-        // KOLAY: Değişken adı typo - updateStudentDto yerine updateStudntDto
-        var name = updateStudntDto.Name; // TYPO
+        // DÜZELTME: updateStudntDto yazım hatası düzeltildi - updateStudentDto olarak değiştirildi. Metod parametresindeki doğru değişken adı kullanılıyor.
+        var name = updateStudentDto.Name;
         
         var result = await _studentService.Update(updateStudentDto);
         if (result.Success)

@@ -22,11 +22,11 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 // Service Configuration
-// KOLAY: Metod adı yanlış yazımı - AddScoped yerine AddScopd
-builder.Services.AddScopd<IStudentService, StudentManager>(); // TYPO: Scoped yerine Scopd
+// DÜZELTME: AddScopd yazım hatası düzeltildi - AddScoped olarak değiştirildi. Dependency injection için doğru metod adı kullanılıyor.
+builder.Services.AddScoped<IStudentService, StudentManager>();
 builder.Services.AddScoped<ICourseService, CourseManager>();
-// KOLAY: Yanlış tip - ExamManager yerine ExamManagr
-builder.Services.AddScoped<IExamService, ExamManagr>(); // TYPO
+// DÜZELTME: ExamManagr yazım hatası düzeltildi - ExamManager olarak değiştirildi. IExamService interface'i için doğru implementasyon sınıfı kaydedildi.
+builder.Services.AddScoped<IExamService, ExamManager>();
 builder.Services.AddScoped<IExamResultService, ExamResultManager>();
 builder.Services.AddScoped<IInstructorService, InstructorManager>();
 builder.Services.AddScoped<ILessonService, LessonsManager>();
@@ -61,8 +61,8 @@ app.UseCors("AllowAll");
 
 app.UseAuthorization();
 
-// KOLAY: Metod adı yanlış yazımı - MapControllers yerine MapContrllers
-app.MapContrllers(); // TYPO: Controllers yerine Contrllers
+// DÜZELTME: MapContrllers yazım hatası düzeltildi - MapControllers olarak değiştirildi. Controller routing'i için doğru metod adı kullanılıyor.
+app.MapControllers();
 
 // ZOR: Memory leak - app Dispose edilmiyor ama burada normal (app.Run() son satır)
 app.Run();

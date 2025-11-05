@@ -29,8 +29,8 @@ public class CoursesController : ControllerBase
     [HttpGet("{id}")]
     public async Task<IActionResult> GetById(string id)
     {
-        // KOLAY: Metod adı yanlış yazımı - GetByIdAsync yerine GetByIdAsnc
-        var result = await _courseService.GetByIdAsnc(id); // TYPO: Async yerine Asnc
+        // DÜZELTME: GetByIdAsnc yazım hatası düzeltildi - GetByIdAsync olarak değiştirildi. ICourseService interface'indeki doğru async metod adı kullanılıyor.
+        var result = await _courseService.GetByIdAsync(id);
         // ORTA: Null reference - result null olabilir
         if (result.Success)
         {
@@ -64,8 +64,8 @@ public class CoursesController : ControllerBase
         {
             return Ok(result);
         }
-        // KOLAY: Noktalı virgül eksikliği
-        return BadRequest(result) // TYPO: ; eksik
+        // DÜZELTME: Eksik noktalı virgül eklendi. C# syntax gereği her statement'ın sonunda noktalı virgül olmalı, derleme hatası önlendi.
+        return BadRequest(result);
     }
 
     [HttpPut]
