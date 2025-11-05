@@ -17,6 +17,15 @@
     <!-- DÜZELTME: FluentValidation paketleri eklendi. DTO validation için FluentValidation kullanılıyor, daha güvenli ve okunabilir validation sağlanıyor. -->
     <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.9.0" />
+    <!-- DÜZELTME: Serilog paketleri eklendi. Structured logging için Serilog kullanılıyor, JSON formatında loglar ve daha iyi log analizi sağlanıyor. -->
+    <PackageReference Include="Serilog.AspNetCore" Version="8.0.0" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="5.0.1" />
+    <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
+    <!-- DÜZELTME: Health Checks paketi eklendi. Sistem sağlık kontrolü için ASP.NET Core Health Checks kullanılıyor, database ve sistem durumu izleniyor. -->
+    <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="9.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore" Version="9.0.0" />
+    <!-- DÜZELTME: Rate Limiting paketi eklendi. API istek sayısı sınırlama için ASP.NET Core Rate Limiting middleware kullanılıyor, DDoS koruması sağlanıyor. -->
+    <PackageReference Include="AspNetCoreRateLimit" Version="5.0.0" />
   </ItemGroup>
 
   <ItemGroup>

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CourseApp.BusinessLayer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9ea74cc868cb3951ce05d00eb6564da4561f5cf1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d162ac2053a7ad6b3aac94bfe53bc14e95b38392")]
 [assembly: System.Reflection.AssemblyProductAttribute("CourseApp.BusinessLayer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CourseApp.BusinessLayer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

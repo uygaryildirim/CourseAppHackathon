@@ -1,0 +1,603 @@
+2025-11-05 12:39:11.171 +03:00 [INF] Incoming Request: GET /index.html at "2025-11-05T09:39:11.1687890Z"
+2025-11-05 12:39:11.227 +03:00 [INF] Completed Request: GET /index.html - Status: 200 - Duration: 58ms
+2025-11-05 12:39:12.072 +03:00 [INF] Incoming Request: GET /index.html at "2025-11-05T09:39:12.0726190Z"
+2025-11-05 12:39:12.075 +03:00 [INF] Completed Request: GET /index.html - Status: 200 - Duration: 2ms
+2025-11-05 12:39:13.742 +03:00 [INF] Incoming Request: GET /swagger/index.html at "2025-11-05T09:39:13.7424880Z"
+2025-11-05 12:39:13.768 +03:00 [INF] Completed Request: GET /swagger/index.html - Status: 200 - Duration: 26ms
+2025-11-05 12:39:13.887 +03:00 [INF] Incoming Request: GET /swagger/v1/swagger.json at "2025-11-05T09:39:13.8874800Z"
+2025-11-05 12:39:13.948 +03:00 [INF] Completed Request: GET /swagger/v1/swagger.json - Status: 200 - Duration: 60ms
+2025-11-05 12:39:15.863 +03:00 [INF] Incoming Request: GET /index.html at "2025-11-05T09:39:15.8636460Z"
+2025-11-05 12:39:15.867 +03:00 [INF] Completed Request: GET /index.html - Status: 200 - Duration: 3ms
+2025-11-05 12:39:19.961 +03:00 [INF] Incoming Request: GET /api/Courses at "2025-11-05T09:39:19.9619450Z"
+2025-11-05 12:39:19.963 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-11-05 12:39:20.173 +03:00 [WRN] The foreign key property 'Course.InstructorID1' was created in shadow state because a conflicting property with the simple name 'InstructorID' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2025-11-05 12:39:20.252 +03:00 [INF] Completed Request: GET /api/Courses - Status: 200 - Duration: 291ms
+2025-11-05 12:39:21.492 +03:00 [INF] Incoming Request: GET /api/Courses at "2025-11-05T09:39:21.4927910Z"
+2025-11-05 12:39:21.507 +03:00 [INF] Completed Request: GET /api/Courses - Status: 200 - Duration: 15ms
+2025-11-05 12:39:21.991 +03:00 [INF] Incoming Request: GET /api/Courses at "2025-11-05T09:39:21.9910610Z"
+2025-11-05 12:39:22.009 +03:00 [INF] Completed Request: GET /api/Courses - Status: 200 - Duration: 17ms
+2025-11-05 12:39:22.198 +03:00 [INF] Incoming Request: GET /api/Courses at "2025-11-05T09:39:22.1988490Z"
+2025-11-05 12:39:22.199 +03:00 [INF] Completed Request: GET /api/Courses - Status: 200 - Duration: 0ms
+2025-11-05 12:39:22.355 +03:00 [INF] Incoming Request: GET /api/Courses at "2025-11-05T09:39:22.3550940Z"
+2025-11-05 12:39:22.355 +03:00 [INF] Completed Request: GET /api/Courses - Status: 200 - Duration: 0ms
+2025-11-05 12:39:22.490 +03:00 [INF] Incoming Request: GET /api/Courses at "2025-11-05T09:39:22.4908080Z"
+2025-11-05 12:39:22.491 +03:00 [INF] Completed Request: GET /api/Courses - Status: 200 - Duration: 0ms
+2025-11-05 12:39:22.638 +03:00 [INF] Incoming Request: GET /api/Courses at "2025-11-05T09:39:22.6381220Z"
+2025-11-05 12:39:22.638 +03:00 [INF] Completed Request: GET /api/Courses - Status: 200 - Duration: 0ms
+2025-11-05 12:39:23.082 +03:00 [INF] Incoming Request: GET /api/ExamResults at "2025-11-05T09:39:23.0827740Z"
+2025-11-05 12:39:23.144 +03:00 [INF] Completed Request: GET /api/ExamResults - Status: 200 - Duration: 62ms
+2025-11-05 12:39:23.449 +03:00 [INF] Incoming Request: GET /api/Courses at "2025-11-05T09:39:23.4490800Z"
+2025-11-05 12:39:23.449 +03:00 [INF] Completed Request: GET /api/Courses - Status: 200 - Duration: 0ms
+2025-11-05 12:39:23.779 +03:00 [INF] Incoming Request: GET /api/ExamResults at "2025-11-05T09:39:23.7799040Z"
+2025-11-05 12:39:23.782 +03:00 [INF] Completed Request: GET /api/ExamResults - Status: 200 - Duration: 2ms
+2025-11-05 12:39:24.082 +03:00 [INF] Incoming Request: GET /api/Courses at "2025-11-05T09:39:24.0826530Z"
+2025-11-05 12:39:24.083 +03:00 [INF] Completed Request: GET /api/Courses - Status: 200 - Duration: 0ms
+2025-11-05 12:39:24.408 +03:00 [INF] Incoming Request: GET /api/ExamResults at "2025-11-05T09:39:24.4080630Z"
+2025-11-05 12:39:24.410 +03:00 [INF] Completed Request: GET /api/ExamResults - Status: 200 - Duration: 2ms
+2025-11-05 12:39:24.696 +03:00 [INF] Incoming Request: GET /api/Courses at "2025-11-05T09:39:24.6969210Z"
+2025-11-05 12:39:24.699 +03:00 [INF] Completed Request: GET /api/Courses - Status: 200 - Duration: 2ms
+2025-11-05 12:39:24.989 +03:00 [INF] Incoming Request: GET /api/ExamResults at "2025-11-05T09:39:24.9893000Z"
+2025-11-05 12:39:24.991 +03:00 [INF] Completed Request: GET /api/ExamResults - Status: 200 - Duration: 1ms
+2025-11-05 12:39:25.422 +03:00 [INF] Incoming Request: GET /api/Registrations at "2025-11-05T09:39:25.4220760Z"
+2025-11-05 12:39:25.434 +03:00 [INF] Completed Request: GET /api/Registrations - Status: 200 - Duration: 12ms
+2025-11-05 12:39:26.092 +03:00 [INF] Incoming Request: GET /api/Students at "2025-11-05T09:39:26.0920150Z"
+2025-11-05 12:39:26.102 +03:00 [INF] Completed Request: GET /api/Students - Status: 200 - Duration: 10ms
+2025-11-05 12:39:26.105 +03:00 [INF] Incoming Request: POST /api/Students at "2025-11-05T09:39:26.1053570Z"
+2025-11-05 12:39:26.177 +03:00 [INF] Completed Request: POST /api/Students - Status: 200 - Duration: 72ms
+2025-11-05 12:39:26.330 +03:00 [INF] Incoming Request: GET /api/Students at "2025-11-05T09:39:26.3301100Z"
+2025-11-05 12:39:26.335 +03:00 [INF] Completed Request: GET /api/Students - Status: 200 - Duration: 4ms
+2025-11-05 12:39:26.337 +03:00 [INF] Incoming Request: GET /api/Exams at "2025-11-05T09:39:26.3372750Z"
+2025-11-05 12:39:26.344 +03:00 [INF] Completed Request: GET /api/Exams - Status: 200 - Duration: 6ms
+2025-11-05 12:39:26.346 +03:00 [INF] Incoming Request: POST /api/Exams at "2025-11-05T09:39:26.3463470Z"
+2025-11-05 12:39:26.356 +03:00 [INF] Completed Request: POST /api/Exams - Status: 200 - Duration: 9ms
+2025-11-05 12:39:26.509 +03:00 [INF] Incoming Request: GET /api/Exams at "2025-11-05T09:39:26.5091980Z"
+2025-11-05 12:39:26.511 +03:00 [INF] Completed Request: GET /api/Exams - Status: 200 - Duration: 1ms
+2025-11-05 12:39:26.513 +03:00 [INF] Incoming Request: POST /api/ExamResults at "2025-11-05T09:39:26.5134900Z"
+2025-11-05 12:39:26.529 +03:00 [INF] Completed Request: POST /api/ExamResults - Status: 200 - Duration: 16ms
+2025-11-05 12:39:26.531 +03:00 [INF] Incoming Request: GET /api/ExamResults at "2025-11-05T09:39:26.5319410Z"
+2025-11-05 12:39:26.590 +03:00 [INF] Completed Request: GET /api/ExamResults - Status: 200 - Duration: 58ms
+2025-11-05 12:39:27.932 +03:00 [INF] Incoming Request: GET /api/Students at "2025-11-05T09:39:27.9327870Z"
+2025-11-05 12:39:27.934 +03:00 [INF] Completed Request: GET /api/Students - Status: 200 - Duration: 2ms
+2025-11-05 12:39:27.938 +03:00 [INF] Incoming Request: POST /api/Students at "2025-11-05T09:39:27.9381170Z"
+2025-11-05 12:39:27.939 +03:00 [INF] Completed Request: POST /api/Students - Status: 200 - Duration: 1ms
+2025-11-05 12:39:28.092 +03:00 [INF] Incoming Request: GET /api/Students at "2025-11-05T09:39:28.0923230Z"
+2025-11-05 12:39:28.093 +03:00 [INF] Completed Request: GET /api/Students - Status: 200 - Duration: 1ms
+2025-11-05 12:39:28.095 +03:00 [INF] Incoming Request: GET /api/Instructors at "2025-11-05T09:39:28.0959540Z"
+2025-11-05 12:39:28.103 +03:00 [INF] Completed Request: GET /api/Instructors - Status: 200 - Duration: 7ms
+2025-11-05 12:39:28.105 +03:00 [INF] Incoming Request: POST /api/Instructors at "2025-11-05T09:39:28.1057650Z"
+2025-11-05 12:39:28.120 +03:00 [INF] Completed Request: POST /api/Instructors - Status: 200 - Duration: 14ms
+2025-11-05 12:39:28.272 +03:00 [INF] Incoming Request: GET /api/Instructors at "2025-11-05T09:39:28.2728580Z"
+2025-11-05 12:39:28.274 +03:00 [INF] Completed Request: GET /api/Instructors - Status: 200 - Duration: 1ms
+2025-11-05 12:39:28.276 +03:00 [INF] Incoming Request: GET /api/Courses at "2025-11-05T09:39:28.2764020Z"
+2025-11-05 12:39:28.276 +03:00 [INF] Completed Request: GET /api/Courses - Status: 200 - Duration: 0ms
+2025-11-05 12:39:28.278 +03:00 [INF] Incoming Request: POST /api/Courses at "2025-11-05T09:39:28.2785890Z"
+2025-11-05 12:39:28.295 +03:00 [INF] Completed Request: POST /api/Courses - Status: 200 - Duration: 17ms
+2025-11-05 12:39:28.449 +03:00 [INF] Incoming Request: GET /api/Courses at "2025-11-05T09:39:28.4491540Z"
+2025-11-05 12:39:28.453 +03:00 [INF] Completed Request: GET /api/Courses - Status: 200 - Duration: 4ms
+2025-11-05 12:39:28.456 +03:00 [INF] Incoming Request: POST /api/Registrations at "2025-11-05T09:39:28.4560260Z"
+2025-11-05 12:39:28.478 +03:00 [INF] Completed Request: POST /api/Registrations - Status: 200 - Duration: 21ms
+2025-11-05 12:39:28.480 +03:00 [INF] Incoming Request: GET /api/Registrations at "2025-11-05T09:39:28.4801610Z"
+2025-11-05 12:39:28.482 +03:00 [INF] Completed Request: GET /api/Registrations - Status: 200 - Duration: 2ms
+2025-11-05 12:39:29.199 +03:00 [INF] Incoming Request: POST /api/Students at "2025-11-05T09:39:29.1993670Z"
+2025-11-05 12:39:29.200 +03:00 [INF] Completed Request: POST /api/Students - Status: 200 - Duration: 1ms
+2025-11-05 12:39:29.202 +03:00 [INF] Incoming Request: GET /api/Students at "2025-11-05T09:39:29.2026440Z"
+2025-11-05 12:39:29.203 +03:00 [INF] Completed Request: GET /api/Students - Status: 200 - Duration: 0ms
+2025-11-05 12:39:30.077 +03:00 [INF] Incoming Request: POST /api/Exams at "2025-11-05T09:39:30.0779410Z"
+2025-11-05 12:39:30.080 +03:00 [INF] Completed Request: POST /api/Exams - Status: 200 - Duration: 2ms
+2025-11-05 12:39:30.083 +03:00 [INF] Incoming Request: GET /api/Exams at "2025-11-05T09:39:30.0839080Z"
+2025-11-05 12:39:30.085 +03:00 [INF] Completed Request: GET /api/Exams - Status: 200 - Duration: 1ms
+2025-11-05 12:39:31.012 +03:00 [INF] Incoming Request: POST /api/Instructors at "2025-11-05T09:39:31.0126330Z"
+2025-11-05 12:39:31.015 +03:00 [INF] Completed Request: POST /api/Instructors - Status: 200 - Duration: 3ms
+2025-11-05 12:39:31.018 +03:00 [INF] Incoming Request: GET /api/Instructors at "2025-11-05T09:39:31.0185830Z"
+2025-11-05 12:39:31.019 +03:00 [INF] Completed Request: GET /api/Instructors - Status: 200 - Duration: 1ms
+2025-11-05 12:39:32.068 +03:00 [INF] Incoming Request: GET /api/Students at "2025-11-05T09:39:32.0679860Z"
+2025-11-05 12:39:32.069 +03:00 [INF] Completed Request: GET /api/Students - Status: 200 - Duration: 1ms
+2025-11-05 12:39:32.071 +03:00 [INF] Incoming Request: POST /api/Students at "2025-11-05T09:39:32.0717170Z"
+2025-11-05 12:39:32.072 +03:00 [INF] Completed Request: POST /api/Students - Status: 200 - Duration: 1ms
+2025-11-05 12:39:32.225 +03:00 [INF] Incoming Request: GET /api/Students at "2025-11-05T09:39:32.2258910Z"
+2025-11-05 12:39:32.226 +03:00 [INF] Completed Request: GET /api/Students - Status: 200 - Duration: 0ms
+2025-11-05 12:39:32.228 +03:00 [INF] Incoming Request: GET /api/Exams at "2025-11-05T09:39:32.2284950Z"
+2025-11-05 12:39:32.229 +03:00 [INF] Completed Request: GET /api/Exams - Status: 200 - Duration: 0ms
+2025-11-05 12:39:32.230 +03:00 [INF] Incoming Request: POST /api/Exams at "2025-11-05T09:39:32.2309480Z"
+2025-11-05 12:39:32.233 +03:00 [INF] Completed Request: POST /api/Exams - Status: 200 - Duration: 2ms
+2025-11-05 12:39:32.386 +03:00 [INF] Incoming Request: GET /api/Exams at "2025-11-05T09:39:32.3860440Z"
+2025-11-05 12:39:32.386 +03:00 [INF] Completed Request: GET /api/Exams - Status: 200 - Duration: 0ms
+2025-11-05 12:39:32.388 +03:00 [INF] Incoming Request: POST /api/ExamResults at "2025-11-05T09:39:32.3884060Z"
+2025-11-05 12:39:32.389 +03:00 [INF] Completed Request: POST /api/ExamResults - Status: 200 - Duration: 1ms
+2025-11-05 12:39:32.391 +03:00 [INF] Incoming Request: GET /api/ExamResults at "2025-11-05T09:39:32.3913180Z"
+2025-11-05 12:39:32.393 +03:00 [INF] Completed Request: GET /api/ExamResults - Status: 200 - Duration: 2ms
+2025-11-05 12:39:32.484 +03:00 [INF] Incoming Request: GET /api/Instructors at "2025-11-05T09:39:32.4842990Z"
+2025-11-05 12:39:32.485 +03:00 [INF] Completed Request: GET /api/Instructors - Status: 200 - Duration: 1ms
+2025-11-05 12:39:32.487 +03:00 [INF] Incoming Request: POST /api/Instructors at "2025-11-05T09:39:32.4872200Z"
+2025-11-05 12:39:32.489 +03:00 [INF] Completed Request: POST /api/Instructors - Status: 200 - Duration: 2ms
+2025-11-05 12:39:32.642 +03:00 [INF] Incoming Request: GET /api/Instructors at "2025-11-05T09:39:32.6427860Z"
+2025-11-05 12:39:32.643 +03:00 [INF] Completed Request: GET /api/Instructors - Status: 200 - Duration: 0ms
+2025-11-05 12:39:32.645 +03:00 [INF] Incoming Request: POST /api/Courses at "2025-11-05T09:39:32.6452060Z"
+2025-11-05 12:39:32.646 +03:00 [INF] Completed Request: POST /api/Courses - Status: 200 - Duration: 1ms
+2025-11-05 12:39:32.648 +03:00 [INF] Incoming Request: GET /api/Courses at "2025-11-05T09:39:32.6481720Z"
+2025-11-05 12:39:32.648 +03:00 [INF] Completed Request: GET /api/Courses - Status: 200 - Duration: 0ms
+2025-11-05 12:39:33.292 +03:00 [INF] Incoming Request: GET /api/Instructors at "2025-11-05T09:39:33.2923600Z"
+2025-11-05 12:39:33.293 +03:00 [INF] Completed Request: GET /api/Instructors - Status: 200 - Duration: 1ms
+2025-11-05 12:39:33.295 +03:00 [INF] Incoming Request: POST /api/Instructors at "2025-11-05T09:39:33.2959250Z"
+2025-11-05 12:39:33.297 +03:00 [INF] Completed Request: POST /api/Instructors - Status: 200 - Duration: 1ms
+2025-11-05 12:39:33.450 +03:00 [INF] Incoming Request: GET /api/Instructors at "2025-11-05T09:39:33.4509550Z"
+2025-11-05 12:39:33.452 +03:00 [INF] Completed Request: GET /api/Instructors - Status: 200 - Duration: 1ms
+2025-11-05 12:39:33.453 +03:00 [INF] Incoming Request: GET /api/Courses at "2025-11-05T09:39:33.4537790Z"
+2025-11-05 12:39:33.454 +03:00 [INF] Completed Request: GET /api/Courses - Status: 200 - Duration: 0ms
+2025-11-05 12:39:33.456 +03:00 [INF] Incoming Request: POST /api/Courses at "2025-11-05T09:39:33.4567360Z"
+2025-11-05 12:39:33.458 +03:00 [INF] Completed Request: POST /api/Courses - Status: 200 - Duration: 1ms
+2025-11-05 12:39:33.610 +03:00 [INF] Incoming Request: GET /api/Courses at "2025-11-05T09:39:33.6108420Z"
+2025-11-05 12:39:33.611 +03:00 [INF] Completed Request: GET /api/Courses - Status: 200 - Duration: 0ms
+2025-11-05 12:39:33.613 +03:00 [INF] Incoming Request: POST /api/Lessons at "2025-11-05T09:39:33.6132230Z"
+2025-11-05 12:39:33.626 +03:00 [INF] Completed Request: POST /api/Lessons - Status: 200 - Duration: 13ms
+2025-11-05 12:39:33.628 +03:00 [INF] Incoming Request: GET /api/Lessons at "2025-11-05T09:39:33.6284320Z"
+2025-11-05 12:39:33.634 +03:00 [INF] Completed Request: GET /api/Lessons - Status: 200 - Duration: 6ms
+2025-11-05 12:39:35.202 +03:00 [INF] Incoming Request: GET /api/Students at "2025-11-05T09:39:35.2024090Z"
+2025-11-05 12:39:35.206 +03:00 [INF] Completed Request: GET /api/Students - Status: 200 - Duration: 3ms
+2025-11-05 12:39:35.208 +03:00 [INF] Incoming Request: POST /api/Students at "2025-11-05T09:39:35.2081340Z"
+2025-11-05 12:39:35.208 +03:00 [INF] Completed Request: POST /api/Students - Status: 200 - Duration: 0ms
+2025-11-05 12:39:35.371 +03:00 [INF] Incoming Request: GET /api/Students at "2025-11-05T09:39:35.3717900Z"
+2025-11-05 12:39:35.372 +03:00 [INF] Completed Request: GET /api/Students - Status: 200 - Duration: 0ms
+2025-11-05 12:39:35.375 +03:00 [INF] Incoming Request: GET /api/Instructors at "2025-11-05T09:39:35.3750340Z"
+2025-11-05 12:39:35.375 +03:00 [INF] Completed Request: GET /api/Instructors - Status: 200 - Duration: 0ms
+2025-11-05 12:39:35.377 +03:00 [INF] Incoming Request: POST /api/Instructors at "2025-11-05T09:39:35.3773400Z"
+2025-11-05 12:39:35.378 +03:00 [INF] Completed Request: POST /api/Instructors - Status: 200 - Duration: 0ms
+2025-11-05 12:39:35.530 +03:00 [INF] Incoming Request: GET /api/Instructors at "2025-11-05T09:39:35.5308580Z"
+2025-11-05 12:39:35.531 +03:00 [INF] Completed Request: GET /api/Instructors - Status: 200 - Duration: 0ms
+2025-11-05 12:39:35.533 +03:00 [INF] Incoming Request: GET /api/Courses at "2025-11-05T09:39:35.5335190Z"
+2025-11-05 12:39:35.533 +03:00 [INF] Completed Request: GET /api/Courses - Status: 200 - Duration: 0ms
+2025-11-05 12:39:35.535 +03:00 [INF] Incoming Request: POST /api/Courses at "2025-11-05T09:39:35.5355910Z"
+2025-11-05 12:39:35.536 +03:00 [INF] Completed Request: POST /api/Courses - Status: 200 - Duration: 0ms
+2025-11-05 12:39:35.688 +03:00 [INF] Incoming Request: GET /api/Courses at "2025-11-05T09:39:35.6885610Z"
+2025-11-05 12:39:35.689 +03:00 [INF] Completed Request: GET /api/Courses - Status: 200 - Duration: 0ms
+2025-11-05 12:39:35.690 +03:00 [INF] Incoming Request: POST /api/Registrations at "2025-11-05T09:39:35.6907100Z"
+2025-11-05 12:39:35.691 +03:00 [INF] Completed Request: POST /api/Registrations - Status: 200 - Duration: 1ms
+2025-11-05 12:39:35.693 +03:00 [INF] Incoming Request: GET /api/Registrations at "2025-11-05T09:39:35.6935220Z"
+2025-11-05 12:39:35.693 +03:00 [INF] Completed Request: GET /api/Registrations - Status: 200 - Duration: 0ms
+2025-11-05 12:39:35.944 +03:00 [INF] Incoming Request: POST /api/Students at "2025-11-05T09:39:35.9449000Z"
+2025-11-05 12:39:35.946 +03:00 [INF] Completed Request: POST /api/Students - Status: 200 - Duration: 1ms
+2025-11-05 12:39:35.948 +03:00 [INF] Incoming Request: GET /api/Students at "2025-11-05T09:39:35.9480560Z"
+2025-11-05 12:39:35.948 +03:00 [INF] Completed Request: GET /api/Students - Status: 200 - Duration: 0ms
+2025-11-05 12:39:40.559 +03:00 [INF] Incoming Request: GET /api/Courses at "2025-11-05T09:39:40.5591420Z"
+2025-11-05 12:39:40.560 +03:00 [INF] Completed Request: GET /api/Courses - Status: 200 - Duration: 1ms
+2025-11-05 12:39:43.086 +03:00 [INF] Incoming Request: GET /api/ExamResults at "2025-11-05T09:39:43.0865880Z"
+2025-11-05 12:39:43.089 +03:00 [INF] Completed Request: GET /api/ExamResults - Status: 200 - Duration: 2ms
+2025-11-05 12:39:44.003 +03:00 [INF] Incoming Request: GET /api/Exams at "2025-11-05T09:39:44.0032140Z"
+2025-11-05 12:39:44.005 +03:00 [INF] Completed Request: GET /api/Exams - Status: 200 - Duration: 1ms
+2025-11-05 12:39:44.686 +03:00 [INF] Incoming Request: GET /api/Instructors at "2025-11-05T09:39:44.6866630Z"
+2025-11-05 12:39:44.687 +03:00 [INF] Completed Request: GET /api/Instructors - Status: 200 - Duration: 1ms
+2025-11-05 12:39:45.411 +03:00 [INF] Incoming Request: GET /api/Lessons at "2025-11-05T09:39:45.4117350Z"
+2025-11-05 12:39:45.414 +03:00 [INF] Completed Request: GET /api/Lessons - Status: 200 - Duration: 2ms
+2025-11-05 12:39:45.817 +03:00 [INF] Incoming Request: GET /api/Registrations at "2025-11-05T09:39:45.8170520Z"
+2025-11-05 12:39:45.818 +03:00 [INF] Completed Request: GET /api/Registrations - Status: 200 - Duration: 1ms
+2025-11-05 12:39:47.654 +03:00 [INF] Incoming Request: GET /api/Students at "2025-11-05T09:39:47.6540220Z"
+2025-11-05 12:39:47.655 +03:00 [INF] Completed Request: GET /api/Students - Status: 200 - Duration: 1ms
+2025-11-05 12:39:49.240 +03:00 [INF] Incoming Request: GET /api/Registrations at "2025-11-05T09:39:49.2407730Z"
+2025-11-05 12:39:49.241 +03:00 [INF] Completed Request: GET /api/Registrations - Status: 200 - Duration: 1ms
+2025-11-05 12:39:52.049 +03:00 [INF] Incoming Request: GET /api/Students at "2025-11-05T09:39:52.0494330Z"
+2025-11-05 12:39:52.052 +03:00 [INF] Completed Request: GET /api/Students - Status: 200 - Duration: 3ms
+2025-11-05 12:39:52.054 +03:00 [INF] Incoming Request: POST /api/Students at "2025-11-05T09:39:52.0547820Z"
+2025-11-05 12:39:52.055 +03:00 [INF] Completed Request: POST /api/Students - Status: 200 - Duration: 0ms
+2025-11-05 12:39:52.208 +03:00 [INF] Incoming Request: GET /api/Students at "2025-11-05T09:39:52.2087370Z"
+2025-11-05 12:39:52.209 +03:00 [INF] Completed Request: GET /api/Students - Status: 200 - Duration: 1ms
+2025-11-05 12:39:52.211 +03:00 [INF] Incoming Request: GET /api/Instructors at "2025-11-05T09:39:52.2115840Z"
+2025-11-05 12:39:52.212 +03:00 [INF] Completed Request: GET /api/Instructors - Status: 200 - Duration: 0ms
+2025-11-05 12:39:52.213 +03:00 [INF] Incoming Request: POST /api/Instructors at "2025-11-05T09:39:52.2139850Z"
+2025-11-05 12:39:52.214 +03:00 [INF] Completed Request: POST /api/Instructors - Status: 200 - Duration: 0ms
+2025-11-05 12:39:52.368 +03:00 [INF] Incoming Request: GET /api/Instructors at "2025-11-05T09:39:52.3680990Z"
+2025-11-05 12:39:52.369 +03:00 [INF] Completed Request: GET /api/Instructors - Status: 200 - Duration: 1ms
+2025-11-05 12:39:52.371 +03:00 [INF] Incoming Request: GET /api/Courses at "2025-11-05T09:39:52.3716350Z"
+2025-11-05 12:39:52.372 +03:00 [INF] Completed Request: GET /api/Courses - Status: 200 - Duration: 0ms
+2025-11-05 12:39:52.374 +03:00 [INF] Incoming Request: POST /api/Courses at "2025-11-05T09:39:52.3743010Z"
+2025-11-05 12:39:52.375 +03:00 [INF] Completed Request: POST /api/Courses - Status: 200 - Duration: 0ms
+2025-11-05 12:39:52.528 +03:00 [INF] Incoming Request: GET /api/Courses at "2025-11-05T09:39:52.5280390Z"
+2025-11-05 12:39:52.529 +03:00 [INF] Completed Request: GET /api/Courses - Status: 200 - Duration: 0ms
+2025-11-05 12:39:52.530 +03:00 [INF] Incoming Request: POST /api/Registrations at "2025-11-05T09:39:52.5309440Z"
+2025-11-05 12:39:52.533 +03:00 [INF] Completed Request: POST /api/Registrations - Status: 200 - Duration: 2ms
+2025-11-05 12:39:52.535 +03:00 [INF] Incoming Request: GET /api/Registrations at "2025-11-05T09:39:52.5355580Z"
+2025-11-05 12:39:52.536 +03:00 [INF] Completed Request: GET /api/Registrations - Status: 200 - Duration: 0ms
+2025-11-05 12:39:58.822 +03:00 [INF] Incoming Request: GET /api/Students at "2025-11-05T09:39:58.8225760Z"
+2025-11-05 12:39:58.823 +03:00 [INF] Completed Request: GET /api/Students - Status: 200 - Duration: 1ms
+2025-11-05 12:39:58.826 +03:00 [INF] Incoming Request: POST /api/Students at "2025-11-05T09:39:58.8265060Z"
+2025-11-05 12:39:58.827 +03:00 [INF] Completed Request: POST /api/Students - Status: 200 - Duration: 0ms
+2025-11-05 12:39:58.979 +03:00 [INF] Incoming Request: GET /api/Students at "2025-11-05T09:39:58.9796040Z"
+2025-11-05 12:39:58.980 +03:00 [INF] Completed Request: GET /api/Students - Status: 200 - Duration: 1ms
+2025-11-05 12:39:58.982 +03:00 [INF] Incoming Request: GET /api/Instructors at "2025-11-05T09:39:58.9823860Z"
+2025-11-05 12:39:58.983 +03:00 [INF] Completed Request: GET /api/Instructors - Status: 200 - Duration: 0ms
+2025-11-05 12:39:58.985 +03:00 [INF] Incoming Request: POST /api/Instructors at "2025-11-05T09:39:58.9858880Z"
+2025-11-05 12:39:58.987 +03:00 [INF] Completed Request: POST /api/Instructors - Status: 200 - Duration: 1ms
+2025-11-05 12:39:59.139 +03:00 [INF] Incoming Request: GET /api/Instructors at "2025-11-05T09:39:59.1395580Z"
+2025-11-05 12:39:59.140 +03:00 [INF] Completed Request: GET /api/Instructors - Status: 200 - Duration: 1ms
+2025-11-05 12:39:59.144 +03:00 [INF] Incoming Request: GET /api/Courses at "2025-11-05T09:39:59.1441370Z"
+2025-11-05 12:39:59.144 +03:00 [INF] Completed Request: GET /api/Courses - Status: 200 - Duration: 0ms
+2025-11-05 12:39:59.146 +03:00 [INF] Incoming Request: POST /api/Courses at "2025-11-05T09:39:59.1465040Z"
+2025-11-05 12:39:59.147 +03:00 [INF] Completed Request: POST /api/Courses - Status: 200 - Duration: 0ms
+2025-11-05 12:39:59.300 +03:00 [INF] Incoming Request: GET /api/Courses at "2025-11-05T09:39:59.3002530Z"
+2025-11-05 12:39:59.301 +03:00 [INF] Completed Request: GET /api/Courses - Status: 200 - Duration: 0ms
+2025-11-05 12:39:59.303 +03:00 [INF] Incoming Request: POST /api/Registrations at "2025-11-05T09:39:59.3038280Z"
+2025-11-05 12:39:59.305 +03:00 [INF] Completed Request: POST /api/Registrations - Status: 200 - Duration: 2ms
+2025-11-05 12:39:59.308 +03:00 [INF] Incoming Request: GET /api/Registrations at "2025-11-05T09:39:59.3079960Z"
+2025-11-05 12:39:59.308 +03:00 [INF] Completed Request: GET /api/Registrations - Status: 200 - Duration: 0ms
+2025-11-05 12:46:53.078 +03:00 [INF] Incoming Request: GET /index.html at "2025-11-05T09:46:53.0764000Z"
+2025-11-05 12:46:53.125 +03:00 [INF] Completed Request: GET /index.html - Status: 304 - Duration: 49ms
+2025-11-05 12:46:54.219 +03:00 [INF] Incoming Request: GET /swagger/index.html at "2025-11-05T09:46:54.2195660Z"
+2025-11-05 12:46:54.246 +03:00 [INF] Completed Request: GET /swagger/index.html - Status: 200 - Duration: 27ms
+2025-11-05 12:46:54.391 +03:00 [INF] Incoming Request: GET /swagger/v1/swagger.json at "2025-11-05T09:46:54.3914530Z"
+2025-11-05 12:46:54.469 +03:00 [INF] Completed Request: GET /swagger/v1/swagger.json - Status: 200 - Duration: 77ms
+2025-11-05 12:46:56.275 +03:00 [INF] Incoming Request: GET /api/Courses at "2025-11-05T09:46:56.2754090Z"
+2025-11-05 12:46:56.278 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-11-05 12:46:56.504 +03:00 [WRN] The foreign key property 'Course.InstructorID1' was created in shadow state because a conflicting property with the simple name 'InstructorID' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2025-11-05 12:46:56.603 +03:00 [INF] Completed Request: GET /api/Courses - Status: 200 - Duration: 328ms
+2025-11-05 12:46:58.079 +03:00 [INF] Incoming Request: GET /api/ExamResults at "2025-11-05T09:46:58.0790570Z"
+2025-11-05 12:46:58.154 +03:00 [INF] Completed Request: GET /api/ExamResults - Status: 200 - Duration: 75ms
+2025-11-05 12:46:58.874 +03:00 [INF] Incoming Request: GET /api/Students at "2025-11-05T09:46:58.8739870Z"
+2025-11-05 12:46:58.893 +03:00 [INF] Completed Request: GET /api/Students - Status: 200 - Duration: 19ms
+2025-11-05 12:46:59.310 +03:00 [INF] Incoming Request: GET /api/Registrations at "2025-11-05T09:46:59.3103800Z"
+2025-11-05 12:46:59.320 +03:00 [INF] Completed Request: GET /api/Registrations - Status: 200 - Duration: 10ms
+2025-11-05 12:46:59.743 +03:00 [INF] Incoming Request: GET /api/Exams at "2025-11-05T09:46:59.7434090Z"
+2025-11-05 12:46:59.754 +03:00 [INF] Completed Request: GET /api/Exams - Status: 200 - Duration: 11ms
+2025-11-05 12:47:00.315 +03:00 [INF] Incoming Request: GET /api/Lessons at "2025-11-05T09:47:00.3157860Z"
+2025-11-05 12:47:00.327 +03:00 [INF] Completed Request: GET /api/Lessons - Status: 200 - Duration: 11ms
+2025-11-05 12:47:00.943 +03:00 [INF] Incoming Request: GET /api/Instructors at "2025-11-05T09:47:00.9438630Z"
+2025-11-05 12:47:00.955 +03:00 [INF] Completed Request: GET /api/Instructors - Status: 200 - Duration: 11ms
+2025-11-05 12:47:02.421 +03:00 [INF] Incoming Request: POST /api/Students at "2025-11-05T09:47:02.4211650Z"
+2025-11-05 12:47:02.503 +03:00 [INF] Completed Request: POST /api/Students - Status: 200 - Duration: 82ms
+2025-11-05 12:47:02.661 +03:00 [INF] Incoming Request: POST /api/Exams at "2025-11-05T09:47:02.6619470Z"
+2025-11-05 12:47:02.673 +03:00 [INF] Completed Request: POST /api/Exams - Status: 200 - Duration: 11ms
+2025-11-05 12:47:02.828 +03:00 [INF] Incoming Request: POST /api/ExamResults at "2025-11-05T09:47:02.8287480Z"
+2025-11-05 12:47:02.844 +03:00 [INF] Completed Request: POST /api/ExamResults - Status: 400 - Duration: 15ms
+2025-11-05 12:47:02.846 +03:00 [ERR] Connection id "0HNGSA100794J", Request id "0HNGSA100794J:0000000F": An unhandled exception was thrown by the application.
+System.ObjectDisposedException: Cannot access a disposed object.
+Object name: 'IServiceProvider'.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ThrowHelper.ThrowObjectDisposedException()
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngineScope.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetService[T](IServiceProvider provider)
+   at Microsoft.EntityFrameworkCore.Diagnostics.Internal.ScopedLoggerFactory.Create(IServiceProvider internalServiceProvider, IDbContextOptions contextOptions)
+   at Microsoft.EntityFrameworkCore.Infrastructure.EntityFrameworkServicesBuilder.<>c.<TryAddCoreServices>b__8_0(IServiceProvider p)
+   at ResolveService(ILEmitResolverBuilderRuntimeContext, ServiceProviderEngineScope)
+   at ResolveService(ILEmitResolverBuilderRuntimeContext, ServiceProviderEngineScope)
+   at ResolveService(ILEmitResolverBuilderRuntimeContext, ServiceProviderEngineScope)
+   at ResolveService(ILEmitResolverBuilderRuntimeContext, ServiceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Microsoft.EntityFrameworkCore.DbContext.get_DbContextDependencies()
+   at Microsoft.EntityFrameworkCore.DbContext.get_ContextServices()
+   at Microsoft.EntityFrameworkCore.DbContext.get_InternalServiceProvider()
+   at Microsoft.EntityFrameworkCore.DbContext.Microsoft.EntityFrameworkCore.Infrastructure.IInfrastructure<System.IServiceProvider>.get_Instance()
+   at Microsoft.EntityFrameworkCore.Infrastructure.Internal.InfrastructureExtensions.GetService(IInfrastructure`1 accessor, Type serviceType)
+   at Microsoft.EntityFrameworkCore.Infrastructure.Internal.InfrastructureExtensions.GetService[TService](IInfrastructure`1 accessor)
+   at Microsoft.EntityFrameworkCore.Infrastructure.AccessorExtensions.GetService[TService](IInfrastructure`1 accessor)
+   at Microsoft.EntityFrameworkCore.Infrastructure.DatabaseFacade.get_Dependencies()
+   at Microsoft.EntityFrameworkCore.Infrastructure.DatabaseFacade.get_CurrentTransaction()
+   at CourseApp.DataAccessLayer.UnitOfWork.UnitOfWork.DisposeAsync() in /Users/uygaryildirim/Downloads/CourseAppHackathon/CourseApp/CourseApp.DataAccessLayer/UnitOfWork/UnitOfWork.cs:line 83
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngineScope.<DisposeAsync>g__Await|26_0(Int32 i, ValueTask vt, List`1 toDispose)
+   at Microsoft.AspNetCore.Http.Features.RequestServicesFeature.<DisposeAsync>g__Awaited|9_0(RequestServicesFeature servicesFeature, ValueTask vt)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpProtocol.<FireOnCompleted>g__ProcessEvents|242_0(HttpProtocol protocol, Stack`1 events)
+2025-11-05 12:47:14.782 +03:00 [INF] Incoming Request: GET /index.html at "2025-11-05T09:47:14.7825110Z"
+2025-11-05 12:47:14.791 +03:00 [INF] Completed Request: GET /index.html - Status: 200 - Duration: 8ms
+2025-11-05 12:47:18.087 +03:00 [INF] Incoming Request: POST /api/Instructors at "2025-11-05T09:47:18.0872380Z"
+2025-11-05 12:47:18.107 +03:00 [INF] Completed Request: POST /api/Instructors - Status: 200 - Duration: 20ms
+2025-11-05 12:47:18.264 +03:00 [INF] Incoming Request: POST /api/Courses at "2025-11-05T09:47:18.2649560Z"
+2025-11-05 12:47:18.272 +03:00 [INF] Completed Request: POST /api/Courses - Status: 400 - Duration: 7ms
+2025-11-05 12:47:18.272 +03:00 [ERR] Connection id "0HNGSA100794J", Request id "0HNGSA100794J:00000013": An unhandled exception was thrown by the application.
+System.ObjectDisposedException: Cannot access a disposed object.
+Object name: 'IServiceProvider'.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ThrowHelper.ThrowObjectDisposedException()
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetService[T](IServiceProvider provider)
+   at Microsoft.EntityFrameworkCore.Diagnostics.Internal.ScopedLoggerFactory.Create(IServiceProvider internalServiceProvider, IDbContextOptions contextOptions)
+   at Microsoft.EntityFrameworkCore.Infrastructure.EntityFrameworkServicesBuilder.<>c.<TryAddCoreServices>b__8_0(IServiceProvider p)
+   at ResolveService(ILEmitResolverBuilderRuntimeContext, ServiceProviderEngineScope)
+   at ResolveService(ILEmitResolverBuilderRuntimeContext, ServiceProviderEngineScope)
+   at ResolveService(ILEmitResolverBuilderRuntimeContext, ServiceProviderEngineScope)
+   at ResolveService(ILEmitResolverBuilderRuntimeContext, ServiceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Microsoft.EntityFrameworkCore.DbContext.get_DbContextDependencies()
+   at Microsoft.EntityFrameworkCore.DbContext.get_ContextServices()
+   at Microsoft.EntityFrameworkCore.DbContext.get_InternalServiceProvider()
+   at Microsoft.EntityFrameworkCore.DbContext.Microsoft.EntityFrameworkCore.Infrastructure.IInfrastructure<System.IServiceProvider>.get_Instance()
+   at Microsoft.EntityFrameworkCore.Infrastructure.Internal.InfrastructureExtensions.GetService(IInfrastructure`1 accessor, Type serviceType)
+   at Microsoft.EntityFrameworkCore.Infrastructure.Internal.InfrastructureExtensions.GetService[TService](IInfrastructure`1 accessor)
+   at Microsoft.EntityFrameworkCore.Infrastructure.AccessorExtensions.GetService[TService](IInfrastructure`1 accessor)
+   at Microsoft.EntityFrameworkCore.Infrastructure.DatabaseFacade.get_Dependencies()
+   at Microsoft.EntityFrameworkCore.Infrastructure.DatabaseFacade.get_CurrentTransaction()
+   at CourseApp.DataAccessLayer.UnitOfWork.UnitOfWork.DisposeAsync() in /Users/uygaryildirim/Downloads/CourseAppHackathon/CourseApp/CourseApp.DataAccessLayer/UnitOfWork/UnitOfWork.cs:line 83
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngineScope.<DisposeAsync>g__Await|26_0(Int32 i, ValueTask vt, List`1 toDispose)
+   at Microsoft.AspNetCore.Http.Features.RequestServicesFeature.<DisposeAsync>g__Awaited|9_0(RequestServicesFeature servicesFeature, ValueTask vt)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpProtocol.<FireOnCompleted>g__ProcessEvents|242_0(HttpProtocol protocol, Stack`1 events)
+2025-11-05 12:47:30.353 +03:00 [INF] Incoming Request: GET /index.html at "2025-11-05T09:47:30.3536430Z"
+2025-11-05 12:47:30.356 +03:00 [INF] Completed Request: GET /index.html - Status: 200 - Duration: 2ms
+2025-11-05 12:47:31.358 +03:00 [INF] Incoming Request: POST /api/Instructors at "2025-11-05T09:47:31.3588760Z"
+2025-11-05 12:47:31.364 +03:00 [INF] Completed Request: POST /api/Instructors - Status: 200 - Duration: 5ms
+2025-11-05 12:47:34.570 +03:00 [INF] Incoming Request: POST /api/Exams at "2025-11-05T09:47:34.5703730Z"
+2025-11-05 12:47:34.575 +03:00 [INF] Completed Request: POST /api/Exams - Status: 200 - Duration: 5ms
+2025-11-05 12:47:37.231 +03:00 [INF] Incoming Request: POST /api/Students at "2025-11-05T09:47:37.2316190Z"
+2025-11-05 12:47:37.238 +03:00 [INF] Completed Request: POST /api/Students - Status: 200 - Duration: 6ms
+2025-11-05 12:47:37.396 +03:00 [INF] Incoming Request: POST /api/Exams at "2025-11-05T09:47:37.3967380Z"
+2025-11-05 12:47:37.398 +03:00 [INF] Completed Request: POST /api/Exams - Status: 200 - Duration: 1ms
+2025-11-05 12:47:37.555 +03:00 [INF] Incoming Request: POST /api/ExamResults at "2025-11-05T09:47:37.5550120Z"
+2025-11-05 12:47:37.557 +03:00 [INF] Completed Request: POST /api/ExamResults - Status: 400 - Duration: 2ms
+2025-11-05 12:47:37.557 +03:00 [ERR] Connection id "0HNGSA100794J", Request id "0HNGSA100794J:0000001D": An unhandled exception was thrown by the application.
+System.ObjectDisposedException: Cannot access a disposed object.
+Object name: 'IServiceProvider'.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ThrowHelper.ThrowObjectDisposedException()
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetService[T](IServiceProvider provider)
+   at Microsoft.EntityFrameworkCore.Diagnostics.Internal.ScopedLoggerFactory.Create(IServiceProvider internalServiceProvider, IDbContextOptions contextOptions)
+   at Microsoft.EntityFrameworkCore.Infrastructure.EntityFrameworkServicesBuilder.<>c.<TryAddCoreServices>b__8_0(IServiceProvider p)
+   at ResolveService(ILEmitResolverBuilderRuntimeContext, ServiceProviderEngineScope)
+   at ResolveService(ILEmitResolverBuilderRuntimeContext, ServiceProviderEngineScope)
+   at ResolveService(ILEmitResolverBuilderRuntimeContext, ServiceProviderEngineScope)
+   at ResolveService(ILEmitResolverBuilderRuntimeContext, ServiceProviderEngineScope)
+   at Microsoft.EntityFrameworkCore.DbContext.get_DbContextDependencies()
+   at Microsoft.EntityFrameworkCore.DbContext.get_ContextServices()
+   at Microsoft.EntityFrameworkCore.DbContext.get_InternalServiceProvider()
+   at Microsoft.EntityFrameworkCore.DbContext.Microsoft.EntityFrameworkCore.Infrastructure.IInfrastructure<System.IServiceProvider>.get_Instance()
+   at Microsoft.EntityFrameworkCore.Infrastructure.Internal.InfrastructureExtensions.GetService(IInfrastructure`1 accessor, Type serviceType)
+   at Microsoft.EntityFrameworkCore.Infrastructure.Internal.InfrastructureExtensions.GetService[TService](IInfrastructure`1 accessor)
+   at Microsoft.EntityFrameworkCore.Infrastructure.AccessorExtensions.GetService[TService](IInfrastructure`1 accessor)
+   at Microsoft.EntityFrameworkCore.Infrastructure.DatabaseFacade.get_Dependencies()
+   at Microsoft.EntityFrameworkCore.Infrastructure.DatabaseFacade.get_CurrentTransaction()
+   at CourseApp.DataAccessLayer.UnitOfWork.UnitOfWork.DisposeAsync() in /Users/uygaryildirim/Downloads/CourseAppHackathon/CourseApp/CourseApp.DataAccessLayer/UnitOfWork/UnitOfWork.cs:line 83
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngineScope.<DisposeAsync>g__Await|26_0(Int32 i, ValueTask vt, List`1 toDispose)
+   at Microsoft.AspNetCore.Http.Features.RequestServicesFeature.<DisposeAsync>g__Awaited|9_0(RequestServicesFeature servicesFeature, ValueTask vt)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpProtocol.<FireOnCompleted>g__ProcessEvents|242_0(HttpProtocol protocol, Stack`1 events)
+2025-11-05 12:47:40.131 +03:00 [INF] Incoming Request: GET /index.html at "2025-11-05T09:47:40.1318550Z"
+2025-11-05 12:47:40.134 +03:00 [INF] Completed Request: GET /index.html - Status: 200 - Duration: 2ms
+2025-11-05 12:48:08.640 +03:00 [ERR] Hosting failed to start
+System.IO.IOException: Failed to bind to address http://127.0.0.1:5232: address already in use.
+ ---> Microsoft.AspNetCore.Connections.AddressInUseException: Address already in use
+ ---> System.Net.Sockets.SocketException (48): Address already in use
+   at System.Net.Sockets.Socket.DoBind(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.Sockets.Socket.Bind(EndPoint localEP)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportOptions.CreateDefaultBoundListenSocket(EndPoint endpoint)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportFactory.BindAsync(EndPoint endpoint, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Infrastructure.TransportManager.BindAsync(EndPoint endPoint, ConnectionDelegate connectionDelegate, EndpointConfig endpointConfig, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.<>c__DisplayClass28_0`1.<<StartAsync>g__OnBind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.LocalhostListenOptions.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.AddressesStrategy.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.BindAsync(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.StartAsync[TContext](IHttpApplication`1 application, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__14_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+2025-11-05 12:49:05.631 +03:00 [INF] Incoming Request: GET /swagger/index.html at "2025-11-05T09:49:05.6295690Z"
+2025-11-05 12:49:05.690 +03:00 [INF] Completed Request: GET /swagger/index.html - Status: 200 - Duration: 60ms
+2025-11-05 12:49:05.843 +03:00 [INF] Incoming Request: GET /swagger/v1/swagger.json at "2025-11-05T09:49:05.8433380Z"
+2025-11-05 12:49:05.901 +03:00 [INF] Completed Request: GET /swagger/v1/swagger.json - Status: 200 - Duration: 58ms
+2025-11-05 12:49:07.139 +03:00 [INF] Incoming Request: GET /index.html at "2025-11-05T09:49:07.1395890Z"
+2025-11-05 12:49:07.142 +03:00 [INF] Completed Request: GET /index.html - Status: 304 - Duration: 3ms
+2025-11-05 12:49:08.604 +03:00 [INF] Incoming Request: GET /api/Instructors at "2025-11-05T09:49:08.6044170Z"
+2025-11-05 12:49:08.608 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-11-05 12:49:08.873 +03:00 [WRN] The foreign key property 'Course.InstructorID1' was created in shadow state because a conflicting property with the simple name 'InstructorID' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2025-11-05 12:49:08.963 +03:00 [INF] Completed Request: GET /api/Instructors - Status: 200 - Duration: 359ms
+2025-11-05 12:49:08.967 +03:00 [INF] Incoming Request: POST /api/Instructors at "2025-11-05T09:49:08.9671370Z"
+2025-11-05 12:49:09.059 +03:00 [INF] Completed Request: POST /api/Instructors - Status: 200 - Duration: 91ms
+2025-11-05 12:49:09.213 +03:00 [INF] Incoming Request: GET /api/Instructors at "2025-11-05T09:49:09.2129920Z"
+2025-11-05 12:49:09.225 +03:00 [INF] Completed Request: GET /api/Instructors - Status: 200 - Duration: 12ms
+2025-11-05 12:49:09.228 +03:00 [INF] Incoming Request: POST /api/Courses at "2025-11-05T09:49:09.2281110Z"
+2025-11-05 12:49:09.253 +03:00 [INF] Completed Request: POST /api/Courses - Status: 200 - Duration: 25ms
+2025-11-05 12:49:09.256 +03:00 [INF] Incoming Request: GET /api/Courses at "2025-11-05T09:49:09.2560090Z"
+2025-11-05 12:49:09.264 +03:00 [INF] Completed Request: GET /api/Courses - Status: 200 - Duration: 8ms
+2025-11-05 12:49:10.833 +03:00 [INF] Incoming Request: GET /api/Students at "2025-11-05T09:49:10.8331810Z"
+2025-11-05 12:49:10.844 +03:00 [INF] Completed Request: GET /api/Students - Status: 200 - Duration: 11ms
+2025-11-05 12:49:10.847 +03:00 [INF] Incoming Request: POST /api/Students at "2025-11-05T09:49:10.8471300Z"
+2025-11-05 12:49:10.862 +03:00 [INF] Completed Request: POST /api/Students - Status: 200 - Duration: 15ms
+2025-11-05 12:49:11.016 +03:00 [INF] Incoming Request: GET /api/Students at "2025-11-05T09:49:11.0161150Z"
+2025-11-05 12:49:11.021 +03:00 [INF] Completed Request: GET /api/Students - Status: 200 - Duration: 5ms
+2025-11-05 12:49:11.025 +03:00 [INF] Incoming Request: GET /api/Exams at "2025-11-05T09:49:11.0251090Z"
+2025-11-05 12:49:11.031 +03:00 [INF] Completed Request: GET /api/Exams - Status: 200 - Duration: 6ms
+2025-11-05 12:49:11.033 +03:00 [INF] Incoming Request: POST /api/Exams at "2025-11-05T09:49:11.0338020Z"
+2025-11-05 12:49:11.044 +03:00 [INF] Completed Request: POST /api/Exams - Status: 200 - Duration: 10ms
+2025-11-05 12:49:11.196 +03:00 [INF] Incoming Request: GET /api/Exams at "2025-11-05T09:49:11.1968670Z"
+2025-11-05 12:49:11.201 +03:00 [INF] Completed Request: GET /api/Exams - Status: 200 - Duration: 4ms
+2025-11-05 12:49:11.204 +03:00 [INF] Incoming Request: POST /api/ExamResults at "2025-11-05T09:49:11.2041620Z"
+2025-11-05 12:49:11.222 +03:00 [INF] Completed Request: POST /api/ExamResults - Status: 200 - Duration: 18ms
+2025-11-05 12:49:11.225 +03:00 [INF] Incoming Request: GET /api/ExamResults at "2025-11-05T09:49:11.2249930Z"
+2025-11-05 12:49:11.290 +03:00 [INF] Completed Request: GET /api/ExamResults - Status: 200 - Duration: 65ms
+2025-11-05 12:49:12.391 +03:00 [INF] Incoming Request: POST /api/Exams at "2025-11-05T09:49:12.3914480Z"
+2025-11-05 12:49:12.395 +03:00 [INF] Completed Request: POST /api/Exams - Status: 200 - Duration: 4ms
+2025-11-05 12:49:12.398 +03:00 [INF] Incoming Request: GET /api/Exams at "2025-11-05T09:49:12.3981010Z"
+2025-11-05 12:49:12.399 +03:00 [INF] Completed Request: GET /api/Exams - Status: 200 - Duration: 1ms
+2025-11-05 12:49:13.778 +03:00 [INF] Incoming Request: POST /api/Instructors at "2025-11-05T09:49:13.7780980Z"
+2025-11-05 12:49:13.781 +03:00 [INF] Completed Request: POST /api/Instructors - Status: 200 - Duration: 3ms
+2025-11-05 12:49:13.783 +03:00 [INF] Incoming Request: GET /api/Instructors at "2025-11-05T09:49:13.7838350Z"
+2025-11-05 12:49:13.784 +03:00 [INF] Completed Request: GET /api/Instructors - Status: 200 - Duration: 0ms
+2025-11-05 12:49:15.057 +03:00 [INF] Incoming Request: GET /api/Instructors at "2025-11-05T09:49:15.0570970Z"
+2025-11-05 12:49:15.058 +03:00 [INF] Completed Request: GET /api/Instructors - Status: 200 - Duration: 1ms
+2025-11-05 12:49:15.061 +03:00 [INF] Incoming Request: POST /api/Instructors at "2025-11-05T09:49:15.0613910Z"
+2025-11-05 12:49:15.062 +03:00 [INF] Completed Request: POST /api/Instructors - Status: 200 - Duration: 1ms
+2025-11-05 12:49:15.216 +03:00 [INF] Incoming Request: GET /api/Instructors at "2025-11-05T09:49:15.2160490Z"
+2025-11-05 12:49:15.216 +03:00 [INF] Completed Request: GET /api/Instructors - Status: 200 - Duration: 0ms
+2025-11-05 12:49:15.219 +03:00 [INF] Incoming Request: GET /api/Courses at "2025-11-05T09:49:15.2190540Z"
+2025-11-05 12:49:15.220 +03:00 [INF] Completed Request: GET /api/Courses - Status: 200 - Duration: 1ms
+2025-11-05 12:49:15.222 +03:00 [INF] Incoming Request: POST /api/Courses at "2025-11-05T09:49:15.2224350Z"
+2025-11-05 12:49:15.223 +03:00 [INF] Completed Request: POST /api/Courses - Status: 200 - Duration: 1ms
+2025-11-05 12:49:15.376 +03:00 [INF] Incoming Request: GET /api/Courses at "2025-11-05T09:49:15.3765440Z"
+2025-11-05 12:49:15.377 +03:00 [INF] Completed Request: GET /api/Courses - Status: 200 - Duration: 0ms
+2025-11-05 12:49:15.379 +03:00 [INF] Incoming Request: POST /api/Lessons at "2025-11-05T09:49:15.3795300Z"
+2025-11-05 12:49:15.394 +03:00 [INF] Completed Request: POST /api/Lessons - Status: 200 - Duration: 15ms
+2025-11-05 12:49:15.397 +03:00 [INF] Incoming Request: GET /api/Lessons at "2025-11-05T09:49:15.3978550Z"
+2025-11-05 12:49:15.405 +03:00 [INF] Completed Request: GET /api/Lessons - Status: 200 - Duration: 7ms
+2025-11-05 12:49:16.820 +03:00 [INF] Incoming Request: GET /api/Students at "2025-11-05T09:49:16.8205420Z"
+2025-11-05 12:49:16.822 +03:00 [INF] Completed Request: GET /api/Students - Status: 200 - Duration: 1ms
+2025-11-05 12:49:16.824 +03:00 [INF] Incoming Request: POST /api/Students at "2025-11-05T09:49:16.8244900Z"
+2025-11-05 12:49:16.825 +03:00 [INF] Completed Request: POST /api/Students - Status: 200 - Duration: 1ms
+2025-11-05 12:49:16.979 +03:00 [INF] Incoming Request: GET /api/Students at "2025-11-05T09:49:16.9794470Z"
+2025-11-05 12:49:16.981 +03:00 [INF] Completed Request: GET /api/Students - Status: 200 - Duration: 1ms
+2025-11-05 12:49:16.983 +03:00 [INF] Incoming Request: GET /api/Instructors at "2025-11-05T09:49:16.9834500Z"
+2025-11-05 12:49:16.984 +03:00 [INF] Completed Request: GET /api/Instructors - Status: 200 - Duration: 0ms
+2025-11-05 12:49:16.986 +03:00 [INF] Incoming Request: POST /api/Instructors at "2025-11-05T09:49:16.9865590Z"
+2025-11-05 12:49:16.987 +03:00 [INF] Completed Request: POST /api/Instructors - Status: 200 - Duration: 1ms
+2025-11-05 12:49:17.140 +03:00 [INF] Incoming Request: GET /api/Instructors at "2025-11-05T09:49:17.1406320Z"
+2025-11-05 12:49:17.142 +03:00 [INF] Completed Request: GET /api/Instructors - Status: 200 - Duration: 1ms
+2025-11-05 12:49:17.144 +03:00 [INF] Incoming Request: GET /api/Courses at "2025-11-05T09:49:17.1441580Z"
+2025-11-05 12:49:17.145 +03:00 [INF] Completed Request: GET /api/Courses - Status: 200 - Duration: 1ms
+2025-11-05 12:49:17.147 +03:00 [INF] Incoming Request: POST /api/Courses at "2025-11-05T09:49:17.1478800Z"
+2025-11-05 12:49:17.149 +03:00 [INF] Completed Request: POST /api/Courses - Status: 200 - Duration: 1ms
+2025-11-05 12:49:17.303 +03:00 [INF] Incoming Request: GET /api/Courses at "2025-11-05T09:49:17.3031050Z"
+2025-11-05 12:49:17.303 +03:00 [INF] Completed Request: GET /api/Courses - Status: 200 - Duration: 0ms
+2025-11-05 12:49:17.306 +03:00 [INF] Incoming Request: POST /api/Registrations at "2025-11-05T09:49:17.3060530Z"
+2025-11-05 12:49:17.329 +03:00 [INF] Completed Request: POST /api/Registrations - Status: 200 - Duration: 23ms
+2025-11-05 12:49:17.332 +03:00 [INF] Incoming Request: GET /api/Registrations at "2025-11-05T09:49:17.3321430Z"
+2025-11-05 12:49:17.341 +03:00 [INF] Completed Request: GET /api/Registrations - Status: 200 - Duration: 8ms
+2025-11-05 12:49:17.796 +03:00 [INF] Incoming Request: POST /api/Students at "2025-11-05T09:49:17.7965530Z"
+2025-11-05 12:49:17.798 +03:00 [INF] Completed Request: POST /api/Students - Status: 200 - Duration: 1ms
+2025-11-05 12:49:17.800 +03:00 [INF] Incoming Request: GET /api/Students at "2025-11-05T09:49:17.8003380Z"
+2025-11-05 12:49:17.800 +03:00 [INF] Completed Request: GET /api/Students - Status: 200 - Duration: 0ms
+2025-11-05 12:49:19.306 +03:00 [INF] Incoming Request: GET /api/Students at "2025-11-05T09:49:19.3066130Z"
+2025-11-05 12:49:19.308 +03:00 [INF] Completed Request: GET /api/Students - Status: 200 - Duration: 1ms
+2025-11-05 12:49:22.372 +03:00 [INF] Incoming Request: GET /api/Students at "2025-11-05T09:49:22.3721090Z"
+2025-11-05 12:49:22.374 +03:00 [INF] Completed Request: GET /api/Students - Status: 200 - Duration: 2ms
+2025-11-05 12:49:22.376 +03:00 [INF] Incoming Request: POST /api/Students at "2025-11-05T09:49:22.3769390Z"
+2025-11-05 12:49:22.377 +03:00 [INF] Completed Request: POST /api/Students - Status: 200 - Duration: 0ms
+2025-11-05 12:49:22.531 +03:00 [INF] Incoming Request: GET /api/Students at "2025-11-05T09:49:22.5310390Z"
+2025-11-05 12:49:22.532 +03:00 [INF] Completed Request: GET /api/Students - Status: 200 - Duration: 1ms
+2025-11-05 12:49:22.535 +03:00 [INF] Incoming Request: GET /api/Instructors at "2025-11-05T09:49:22.5350430Z"
+2025-11-05 12:49:22.535 +03:00 [INF] Completed Request: GET /api/Instructors - Status: 200 - Duration: 0ms
+2025-11-05 12:49:22.538 +03:00 [INF] Incoming Request: POST /api/Instructors at "2025-11-05T09:49:22.5385750Z"
+2025-11-05 12:49:22.539 +03:00 [INF] Completed Request: POST /api/Instructors - Status: 200 - Duration: 0ms
+2025-11-05 12:49:22.692 +03:00 [INF] Incoming Request: GET /api/Instructors at "2025-11-05T09:49:22.6920750Z"
+2025-11-05 12:49:22.693 +03:00 [INF] Completed Request: GET /api/Instructors - Status: 200 - Duration: 1ms
+2025-11-05 12:49:22.695 +03:00 [INF] Incoming Request: GET /api/Courses at "2025-11-05T09:49:22.6952140Z"
+2025-11-05 12:49:22.696 +03:00 [INF] Completed Request: GET /api/Courses - Status: 200 - Duration: 0ms
+2025-11-05 12:49:22.701 +03:00 [INF] Incoming Request: POST /api/Courses at "2025-11-05T09:49:22.7011120Z"
+2025-11-05 12:49:22.701 +03:00 [INF] Completed Request: POST /api/Courses - Status: 200 - Duration: 0ms
+2025-11-05 12:49:22.854 +03:00 [INF] Incoming Request: GET /api/Courses at "2025-11-05T09:49:22.8549530Z"
+2025-11-05 12:49:22.855 +03:00 [INF] Completed Request: GET /api/Courses - Status: 200 - Duration: 0ms
+2025-11-05 12:49:22.857 +03:00 [INF] Incoming Request: POST /api/Registrations at "2025-11-05T09:49:22.8577670Z"
+2025-11-05 12:49:22.858 +03:00 [INF] Completed Request: POST /api/Registrations - Status: 200 - Duration: 1ms
+2025-11-05 12:49:22.860 +03:00 [INF] Incoming Request: GET /api/Registrations at "2025-11-05T09:49:22.8608020Z"
+2025-11-05 12:49:22.861 +03:00 [INF] Completed Request: GET /api/Registrations - Status: 200 - Duration: 0ms
+2025-11-05 12:49:23.469 +03:00 [INF] Incoming Request: GET /api/Instructors at "2025-11-05T09:49:23.4694420Z"
+2025-11-05 12:49:23.470 +03:00 [INF] Completed Request: GET /api/Instructors - Status: 200 - Duration: 1ms
+2025-11-05 12:49:23.473 +03:00 [INF] Incoming Request: POST /api/Instructors at "2025-11-05T09:49:23.4732440Z"
+2025-11-05 12:49:23.474 +03:00 [INF] Completed Request: POST /api/Instructors - Status: 200 - Duration: 1ms
+2025-11-05 12:49:23.627 +03:00 [INF] Incoming Request: GET /api/Instructors at "2025-11-05T09:49:23.6274760Z"
+2025-11-05 12:49:23.628 +03:00 [INF] Completed Request: GET /api/Instructors - Status: 200 - Duration: 1ms
+2025-11-05 12:49:23.632 +03:00 [INF] Incoming Request: GET /api/Courses at "2025-11-05T09:49:23.6320380Z"
+2025-11-05 12:49:23.632 +03:00 [INF] Completed Request: GET /api/Courses - Status: 200 - Duration: 0ms
+2025-11-05 12:49:23.634 +03:00 [INF] Incoming Request: POST /api/Courses at "2025-11-05T09:49:23.6348760Z"
+2025-11-05 12:49:23.635 +03:00 [INF] Completed Request: POST /api/Courses - Status: 200 - Duration: 0ms
+2025-11-05 12:49:23.788 +03:00 [INF] Incoming Request: GET /api/Courses at "2025-11-05T09:49:23.7881470Z"
+2025-11-05 12:49:23.788 +03:00 [INF] Completed Request: GET /api/Courses - Status: 200 - Duration: 0ms
+2025-11-05 12:49:23.792 +03:00 [INF] Incoming Request: POST /api/Lessons at "2025-11-05T09:49:23.7926250Z"
+2025-11-05 12:49:23.794 +03:00 [INF] Completed Request: POST /api/Lessons - Status: 200 - Duration: 1ms
+2025-11-05 12:49:23.796 +03:00 [INF] Incoming Request: GET /api/Lessons at "2025-11-05T09:49:23.7967030Z"
+2025-11-05 12:49:23.797 +03:00 [INF] Completed Request: GET /api/Lessons - Status: 200 - Duration: 0ms
+2025-11-05 12:49:24.727 +03:00 [INF] Incoming Request: GET /api/Registrations at "2025-11-05T09:49:24.7276920Z"
+2025-11-05 12:49:24.728 +03:00 [INF] Completed Request: GET /api/Registrations - Status: 200 - Duration: 0ms
+2025-11-05 12:49:26.377 +03:00 [INF] Incoming Request: GET /api/Lessons at "2025-11-05T09:49:26.3775620Z"
+2025-11-05 12:49:26.378 +03:00 [INF] Completed Request: GET /api/Lessons - Status: 200 - Duration: 1ms
+2025-11-05 12:49:27.754 +03:00 [INF] Incoming Request: GET /api/Instructors at "2025-11-05T09:49:27.7542200Z"
+2025-11-05 12:49:27.755 +03:00 [INF] Completed Request: GET /api/Instructors - Status: 200 - Duration: 1ms
+2025-11-05 12:49:28.393 +03:00 [INF] Incoming Request: GET /api/Exams at "2025-11-05T09:49:28.3932730Z"
+2025-11-05 12:49:28.394 +03:00 [INF] Completed Request: GET /api/Exams - Status: 200 - Duration: 1ms
+2025-11-05 12:49:28.927 +03:00 [INF] Incoming Request: GET /api/ExamResults at "2025-11-05T09:49:28.9274550Z"
+2025-11-05 12:49:28.932 +03:00 [INF] Completed Request: GET /api/ExamResults - Status: 200 - Duration: 5ms
+2025-11-05 12:49:29.796 +03:00 [INF] Incoming Request: GET /api/Courses at "2025-11-05T09:49:29.7966360Z"
+2025-11-05 12:49:29.797 +03:00 [INF] Completed Request: GET /api/Courses - Status: 200 - Duration: 0ms
+2025-11-05 12:51:14.131 +03:00 [INF] Incoming Request: GET /index.html at "2025-11-05T09:51:14.1295790Z"
+2025-11-05 12:51:14.174 +03:00 [INF] Completed Request: GET /index.html - Status: 200 - Duration: 45ms
+2025-11-05 12:51:15.289 +03:00 [INF] Incoming Request: GET /swagger/index.html at "2025-11-05T09:51:15.2890860Z"
+2025-11-05 12:51:15.315 +03:00 [INF] Completed Request: GET /swagger/index.html - Status: 200 - Duration: 26ms
+2025-11-05 12:51:15.426 +03:00 [INF] Incoming Request: GET /swagger/v1/swagger.json at "2025-11-05T09:51:15.4268550Z"
+2025-11-05 12:51:15.488 +03:00 [INF] Completed Request: GET /swagger/v1/swagger.json - Status: 200 - Duration: 61ms
+2025-11-05 12:51:24.138 +03:00 [INF] Incoming Request: POST /api/Students at "2025-11-05T09:51:24.1380970Z"
+2025-11-05 12:51:24.140 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-11-05 12:51:24.279 +03:00 [INF] Completed Request: POST /api/Students - Status: 400 - Duration: 141ms
+2025-11-05 12:51:24.298 +03:00 [ERR] Connection id "0HNGSA3DQ04M9", Request id "0HNGSA3DQ04M9:00000004": An unhandled exception was thrown by the application.
+System.ObjectDisposedException: Cannot access a disposed object.
+Object name: 'IServiceProvider'.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ThrowHelper.ThrowObjectDisposedException()
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngineScope.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetService[T](IServiceProvider provider)
+   at Microsoft.EntityFrameworkCore.Diagnostics.Internal.ScopedLoggerFactory.Create(IServiceProvider internalServiceProvider, IDbContextOptions contextOptions)
+   at Microsoft.EntityFrameworkCore.Infrastructure.EntityFrameworkServicesBuilder.<>c.<TryAddCoreServices>b__8_0(IServiceProvider p)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitFactory(FactoryCallSite factoryCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScopeCache(ServiceCallSite callSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScopeCache(ServiceCallSite callSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScopeCache(ServiceCallSite callSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScopeCache(ServiceCallSite callSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.Resolve(ServiceCallSite callSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.DynamicServiceProviderEngine.<>c__DisplayClass2_0.<RealizeService>b__0(ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(ServiceIdentifier serviceIdentifier, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngineScope.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Microsoft.EntityFrameworkCore.DbContext.get_DbContextDependencies()
+   at Microsoft.EntityFrameworkCore.DbContext.get_ContextServices()
+   at Microsoft.EntityFrameworkCore.DbContext.get_InternalServiceProvider()
+   at Microsoft.EntityFrameworkCore.DbContext.Microsoft.EntityFrameworkCore.Infrastructure.IInfrastructure<System.IServiceProvider>.get_Instance()
+   at Microsoft.EntityFrameworkCore.Infrastructure.Internal.InfrastructureExtensions.GetService(IInfrastructure`1 accessor, Type serviceType)
+   at Microsoft.EntityFrameworkCore.Infrastructure.Internal.InfrastructureExtensions.GetService[TService](IInfrastructure`1 accessor)
+   at Microsoft.EntityFrameworkCore.Infrastructure.AccessorExtensions.GetService[TService](IInfrastructure`1 accessor)
+   at Microsoft.EntityFrameworkCore.Infrastructure.DatabaseFacade.get_Dependencies()
+   at Microsoft.EntityFrameworkCore.Infrastructure.DatabaseFacade.get_CurrentTransaction()
+   at CourseApp.DataAccessLayer.UnitOfWork.UnitOfWork.DisposeAsync() in /Users/uygaryildirim/Downloads/CourseAppHackathon/CourseApp/CourseApp.DataAccessLayer/UnitOfWork/UnitOfWork.cs:line 83
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngineScope.<DisposeAsync>g__Await|26_0(Int32 i, ValueTask vt, List`1 toDispose)
+   at Microsoft.AspNetCore.Http.Features.RequestServicesFeature.<DisposeAsync>g__Awaited|9_0(RequestServicesFeature servicesFeature, ValueTask vt)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpProtocol.<FireOnCompleted>g__ProcessEvents|242_0(HttpProtocol protocol, Stack`1 events)
+2025-11-05 12:51:31.929 +03:00 [INF] Incoming Request: POST /api/Students at "2025-11-05T09:51:31.9296500Z"
+2025-11-05 12:51:31.933 +03:00 [INF] Completed Request: POST /api/Students - Status: 400 - Duration: 4ms
+2025-11-05 12:51:31.935 +03:00 [ERR] Connection id "0HNGSA3DQ04M9", Request id "0HNGSA3DQ04M9:00000005": An unhandled exception was thrown by the application.
+System.ObjectDisposedException: Cannot access a disposed object.
+Object name: 'IServiceProvider'.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ThrowHelper.ThrowObjectDisposedException()
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngineScope.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetService[T](IServiceProvider provider)
+   at Microsoft.EntityFrameworkCore.Diagnostics.Internal.ScopedLoggerFactory.Create(IServiceProvider internalServiceProvider, IDbContextOptions contextOptions)
+   at Microsoft.EntityFrameworkCore.Infrastructure.EntityFrameworkServicesBuilder.<>c.<TryAddCoreServices>b__8_0(IServiceProvider p)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.Resolve(ServiceCallSite callSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.DynamicServiceProviderEngine.<>c__DisplayClass2_0.<RealizeService>b__0(ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(ServiceIdentifier serviceIdentifier, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngineScope.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Microsoft.EntityFrameworkCore.DbContext.get_DbContextDependencies()
+   at Microsoft.EntityFrameworkCore.DbContext.get_ContextServices()
+   at Microsoft.EntityFrameworkCore.DbContext.get_InternalServiceProvider()
+   at Microsoft.EntityFrameworkCore.DbContext.Microsoft.EntityFrameworkCore.Infrastructure.IInfrastructure<System.IServiceProvider>.get_Instance()
+   at Microsoft.EntityFrameworkCore.Infrastructure.Internal.InfrastructureExtensions.GetService(IInfrastructure`1 accessor, Type serviceType)
+   at Microsoft.EntityFrameworkCore.Infrastructure.Internal.InfrastructureExtensions.GetService[TService](IInfrastructure`1 accessor)
+   at Microsoft.EntityFrameworkCore.Infrastructure.AccessorExtensions.GetService[TService](IInfrastructure`1 accessor)
+   at Microsoft.EntityFrameworkCore.Infrastructure.DatabaseFacade.get_Dependencies()
+   at Microsoft.EntityFrameworkCore.Infrastructure.DatabaseFacade.get_CurrentTransaction()
+   at CourseApp.DataAccessLayer.UnitOfWork.UnitOfWork.DisposeAsync() in /Users/uygaryildirim/Downloads/CourseAppHackathon/CourseApp/CourseApp.DataAccessLayer/UnitOfWork/UnitOfWork.cs:line 83
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngineScope.<DisposeAsync>g__Await|26_0(Int32 i, ValueTask vt, List`1 toDispose)
+   at Microsoft.AspNetCore.Http.Features.RequestServicesFeature.<DisposeAsync>g__Awaited|9_0(RequestServicesFeature servicesFeature, ValueTask vt)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpProtocol.<FireOnCompleted>g__ProcessEvents|242_0(HttpProtocol protocol, Stack`1 events)
+2025-11-05 12:51:39.225 +03:00 [INF] Incoming Request: POST /api/Students at "2025-11-05T09:51:39.2254040Z"
+2025-11-05 12:51:39.397 +03:00 [WRN] The foreign key property 'Course.InstructorID1' was created in shadow state because a conflicting property with the simple name 'InstructorID' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2025-11-05 12:51:39.466 +03:00 [INF] Completed Request: POST /api/Students - Status: 200 - Duration: 241ms
+2025-11-05 12:51:43.766 +03:00 [INF] Incoming Request: GET /api/Students at "2025-11-05T09:51:43.7667070Z"
+2025-11-05 12:51:43.841 +03:00 [INF] Completed Request: GET /api/Students - Status: 200 - Duration: 74ms
