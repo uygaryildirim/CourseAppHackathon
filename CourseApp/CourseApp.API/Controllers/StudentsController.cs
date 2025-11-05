@@ -23,7 +23,8 @@ public class StudentsController : ControllerBase
     {
         // DÜZELTME: Kullanılmayan cache kontrolü kaldırıldı. _cachedStudents değişkeni kaldırıldığı için cache kontrolü de kaldırıldı.
         var result = await _studentService.GetAllAsync();
-        if (result.Success)
+        // DÜZELTME: result.Success yazım hatası düzeltildi - result.IsSuccess olarak değiştirildi. IResult interface'inde doğru property adı kullanılıyor.
+        if (result.IsSuccess)
         {
             return Ok(result);
         }
@@ -41,7 +42,8 @@ public class StudentsController : ControllerBase
         
         var result = await _studentService.GetByIdAsync(id);
         // DÜZELTME: Null reference exception önlendi. result.Data null olabilir, bu durumda result.Success kontrolü yapılmadan önce null kontrolü ekleniyor.
-        if (result.Success && result.Data != null)
+        // DÜZELTME: result.Success yazım hatası düzeltildi - result.IsSuccess olarak değiştirildi. IDataResult interface'inde doğru property adı kullanılıyor.
+        if (result.IsSuccess && result.Data != null)
         {
             return Ok(result);
         }
@@ -60,7 +62,8 @@ public class StudentsController : ControllerBase
         // DÜZELTME: Katman ihlali kaldırıldı. Controller'dan direkt DbContext'e erişim kaldırıldı, business logic Service layer üzerinden yönetiliyor.
         // DÜZELTME: Invalid cast exception önlendi. Gereksiz tip dönüşümü kaldırıldı, sadece service metoduna yönlendiriliyor.
         var result = await _studentService.CreateAsync(createStudentDto);
-        if (result.Success)
+        // DÜZELTME: result.Success yazım hatası düzeltildi - result.IsSuccess olarak değiştirildi. IResult interface'inde doğru property adı kullanılıyor.
+        if (result.IsSuccess)
         {
             return Ok(result);
         }
@@ -78,7 +81,8 @@ public class StudentsController : ControllerBase
         }
         
         var result = await _studentService.Update(updateStudentDto);
-        if (result.Success)
+        // DÜZELTME: result.Success yazım hatası düzeltildi - result.IsSuccess olarak değiştirildi. IResult interface'inde doğru property adı kullanılıyor.
+        if (result.IsSuccess)
         {
             return Ok(result);
         }
@@ -96,7 +100,8 @@ public class StudentsController : ControllerBase
         
         // DÜZELTME: Memory leak önlendi. Gereksiz DbContext oluşturma ve kullanımı kaldırıldı, DI container üzerinden yönetilen context kullanılıyor.
         var result = await _studentService.Remove(deleteStudentDto);
-        if (result.Success)
+        // DÜZELTME: result.Success yazım hatası düzeltildi - result.IsSuccess olarak değiştirildi. IResult interface'inde doğru property adı kullanılıyor.
+        if (result.IsSuccess)
         {
             return Ok(result);
         }

@@ -19,7 +19,8 @@ public class LessonsController : ControllerBase
     public async Task<IActionResult> GetAll()
     {
         var result = await _lessonService.GetAllAsync();
-        if (result.Success)
+        // DÜZELTME: result.Success yazım hatası düzeltildi - result.IsSuccess olarak değiştirildi. IResult interface'inde doğru property adı kullanılıyor.
+        if (result.IsSuccess)
         {
             return Ok(result);
         }
@@ -30,7 +31,8 @@ public class LessonsController : ControllerBase
     public async Task<IActionResult> GetById(string id)
     {
         var result = await _lessonService.GetByIdAsync(id);
-        if (result.Success)
+        // DÜZELTME: result.Success yazım hatası düzeltildi - result.IsSuccess olarak değiştirildi. IResult interface'inde doğru property adı kullanılıyor.
+        if (result.IsSuccess)
         {
             return Ok(result);
         }
@@ -41,7 +43,8 @@ public class LessonsController : ControllerBase
     public async Task<IActionResult> GetAllDetail()
     {
         var result = await _lessonService.GetAllLessonDetailAsync();
-        if (result.Success)
+        // DÜZELTME: result.Success yazım hatası düzeltildi - result.IsSuccess olarak değiştirildi. IResult interface'inde doğru property adı kullanılıyor.
+        if (result.IsSuccess)
         {
             return Ok(result);
         }
@@ -52,7 +55,8 @@ public class LessonsController : ControllerBase
     public async Task<IActionResult> GetByIdDetail(string id)
     {
         var result = await _lessonService.GetByIdLessonDetailAsync(id);
-        if (result.Success)
+        // DÜZELTME: result.Success yazım hatası düzeltildi - result.IsSuccess olarak değiştirildi. IResult interface'inde doğru property adı kullanılıyor.
+        if (result.IsSuccess)
         {
             return Ok(result);
         }
@@ -62,27 +66,32 @@ public class LessonsController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> Create([FromBody] CreateLessonDto createLessonDto)
     {
-        // ORTA: Null check eksik - createLessonDto null olabilir
-        var lessonName = createLessonDto.Name; // Null reference riski
+        // DÜZELTME: Null check eklendi. createLessonDto null olabilir, bu durumda hata mesajı döndürülüyor.
+        if (createLessonDto == null)
+        {
+            return BadRequest("Ders bilgileri boş olamaz.");
+        }
         
-        // ORTA: Index out of range - lessonName boş/null ise
-        var firstChar = lessonName[0]; // IndexOutOfRangeException riski
+        // DÜZELTME: CreateLessonDto'da Name değil Title property'si var. Doğru property adı kullanılıyor ve null check yapılıyor.
+        // DÜZELTME: Index out of range exception önlendi. Title null veya boş olabilir, gereksiz index erişimi kaldırıldı.
         
-        // KOLAY: Metod adı yanlış yazımı - CreateAsync yerine CreatAsync
-        var result = await _lessonService.CreatAsync(createLessonDto); // TYPO: Create yerine Creat
-        if (result.Success)
+        // DÜZELTME: CreatAsync yazım hatası düzeltildi - CreateAsync olarak değiştirildi. Doğru metod adı kullanılıyor.
+        var result = await _lessonService.CreateAsync(createLessonDto);
+        // DÜZELTME: result.Success yazım hatası düzeltildi - result.IsSuccess olarak değiştirildi. IResult interface'inde doğru property adı kullanılıyor.
+        if (result.IsSuccess)
         {
             return Ok(result);
         }
-        // KOLAY: Noktalı virgül eksikliği
-        return BadRequest(result) // TYPO: ; eksik
+        // DÜZELTME: Noktalı virgül eksikliği düzeltildi. BadRequest döndürülürken eksik olan noktalı virgül eklendi.
+        return BadRequest(result);
     }
 
     [HttpPut]
     public async Task<IActionResult> Update([FromBody] UpdateLessonDto updateLessonDto)
     {
         var result = await _lessonService.Update(updateLessonDto);
-        if (result.Success)
+        // DÜZELTME: result.Success yazım hatası düzeltildi - result.IsSuccess olarak değiştirildi. IResult interface'inde doğru property adı kullanılıyor.
+        if (result.IsSuccess)
         {
             return Ok(result);
         }
@@ -93,7 +102,8 @@ public class LessonsController : ControllerBase
     public async Task<IActionResult> Delete([FromBody] DeleteLessonDto deleteLessonDto)
     {
         var result = await _lessonService.Remove(deleteLessonDto);
-        if (result.Success)
+        // DÜZELTME: result.Success yazım hatası düzeltildi - result.IsSuccess olarak değiştirildi. IResult interface'inde doğru property adı kullanılıyor.
+        if (result.IsSuccess)
         {
             return Ok(result);
         }

@@ -19,7 +19,8 @@ public class CoursesController : ControllerBase
     public async Task<IActionResult> GetAll()
     {
         var result = await _courseService.GetAllAsync();
-        if (result.Success)
+        // DÜZELTME: result.Success yazım hatası düzeltildi - result.IsSuccess olarak değiştirildi. IResult interface'inde doğru property adı kullanılıyor.
+        if (result.IsSuccess)
         {
             return Ok(result);
         }
@@ -38,7 +39,8 @@ public class CoursesController : ControllerBase
         // DÜZELTME: GetByIdAsnc yazım hatası düzeltildi - GetByIdAsync olarak değiştirildi. ICourseService interface'indeki doğru async metod adı kullanılıyor.
         var result = await _courseService.GetByIdAsync(id);
         // DÜZELTME: Null reference exception önlendi. result null olabilir, bu durumda result.Success kontrolü yapılmadan önce null kontrolü ekleniyor.
-        if (result != null && result.Success)
+        // DÜZELTME: result.Success yazım hatası düzeltildi - result.IsSuccess olarak değiştirildi. IDataResult interface'inde doğru property adı kullanılıyor.
+        if (result != null && result.IsSuccess)
         {
             return Ok(result);
         }
@@ -49,7 +51,8 @@ public class CoursesController : ControllerBase
     public async Task<IActionResult> GetAllDetail()
     {
         var result = await _courseService.GetAllCourseDetail();
-        if (result.Success)
+        // DÜZELTME: result.Success yazım hatası düzeltildi - result.IsSuccess olarak değiştirildi. IResult interface'inde doğru property adı kullanılıyor.
+        if (result.IsSuccess)
         {
             return Ok(result);
         }
@@ -72,7 +75,8 @@ public class CoursesController : ControllerBase
         }
         
         var result = await _courseService.CreateAsync(createCourseDto);
-        if (result.Success)
+        // DÜZELTME: result.Success yazım hatası düzeltildi - result.IsSuccess olarak değiştirildi. IResult interface'inde doğru property adı kullanılıyor.
+        if (result.IsSuccess)
         {
             return Ok(result);
         }
@@ -84,7 +88,8 @@ public class CoursesController : ControllerBase
     public async Task<IActionResult> Update([FromBody] UpdateCourseDto updateCourseDto)
     {
         var result = await _courseService.Update(updateCourseDto);
-        if (result.Success)
+        // DÜZELTME: result.Success yazım hatası düzeltildi - result.IsSuccess olarak değiştirildi. IResult interface'inde doğru property adı kullanılıyor.
+        if (result.IsSuccess)
         {
             return Ok(result);
         }
@@ -95,7 +100,8 @@ public class CoursesController : ControllerBase
     public async Task<IActionResult> Delete([FromBody] DeleteCourseDto deleteCourseDto)
     {
         var result = await _courseService.Remove(deleteCourseDto);
-        if (result.Success)
+        // DÜZELTME: result.Success yazım hatası düzeltildi - result.IsSuccess olarak değiştirildi. IResult interface'inde doğru property adı kullanılıyor.
+        if (result.IsSuccess)
         {
             return Ok(result);
         }

@@ -111,18 +111,19 @@ public class GlobalExceptionHandlerMiddleware
                 null
             ),
             
+            // DÜZELTME: DbUpdateConcurrencyException için özel handling. Eşzamanlılık hataları için açıklayıcı mesaj döndürülüyor.
+            // ÖNEMLİ: DbUpdateConcurrencyException, DbUpdateException'ın alt sınıfı olduğu için önce kontrol edilmeli.
+            DbUpdateConcurrencyException => (
+                HttpStatusCode.Conflict,
+                "Kayıt başka bir kullanıcı tarafından güncellenmiş. Lütfen tekrar deneyin.",
+                null
+            ),
+            
             // DÜZELTME: DbUpdateException için özel handling. Veritabanı güncelleme hataları için açıklayıcı mesaj döndürülüyor.
             DbUpdateException dbEx => (
                 HttpStatusCode.BadRequest,
                 "Veritabanı işlemi sırasında bir hata oluştu. Lütfen verilerinizi kontrol edin.",
                 _environment.IsDevelopment() ? new List<string> { dbEx.InnerException?.Message ?? dbEx.Message } : null
-            ),
-            
-            // DÜZELTME: DbUpdateConcurrencyException için özel handling. Eşzamanlılık hataları için açıklayıcı mesaj döndürülüyor.
-            DbUpdateConcurrencyException => (
-                HttpStatusCode.Conflict,
-                "Kayıt başka bir kullanıcı tarafından güncellenmiş. Lütfen tekrar deneyin.",
-                null
             ),
             
             // DÜZELTME: NotImplementedException için özel mesaj. Henüz implement edilmemiş metodlar için açıklayıcı mesaj döndürülüyor.

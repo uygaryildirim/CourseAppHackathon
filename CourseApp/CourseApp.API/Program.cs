@@ -13,13 +13,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // DÜZELTME: FluentValidation eklendi. Controller'larda otomatik validation yapılması için FluentValidation.AspNetCore kullanılıyor.
-builder.Services.AddControllers()
-    .AddFluentValidation(fv =>
-    {
-        fv.RegisterValidatorsFromAssemblyContaining<CreateStudentDtoValidator>();
-        fv.AutomaticValidationEnabled = true;
-        fv.ImplicitlyValidateChildProperties = true;
-    });
+// DÜZELTME: AddFluentValidation deprecated, yerine AddFluentValidationAutoValidation ve AddFluentValidationClientsideAdapters kullanılıyor. Daha modern ve güncel FluentValidation API'si kullanılıyor.
+builder.Services.AddControllers();
+builder.Services.AddFluentValidationAutoValidation();
+builder.Services.AddFluentValidationClientsideAdapters();
+builder.Services.AddValidatorsFromAssemblyContaining<CreateStudentDtoValidator>();
 builder.Services.AddEndpointsApiExplorer();
 // DÜZELTME: Swagger UI yapılandırması iyileştirildi. API dokümantasyonu için Swagger UI'ı daha kullanışlı hale getirildi.
 builder.Services.AddSwaggerGen(c =>

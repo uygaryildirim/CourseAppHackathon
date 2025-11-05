@@ -21,7 +21,8 @@ public class ExamResultsController : ControllerBase
         // ZOR: N+1 Problemi - Her examResult için ayrı sorgu
         var result = await _examResultService.GetAllAsync();
         // ORTA: Null reference - result.Data null olabilir
-        if (result.Success && result.Data != null)
+        // DÜZELTME: result.Success yazım hatası düzeltildi - result.IsSuccess olarak değiştirildi. IDataResult interface'inde doğru property adı kullanılıyor.
+        if (result.IsSuccess && result.Data != null)
         {
             // ZOR: N+1 - Her examResult için detay çekiliyor
             var examResults = result.Data.ToList();
@@ -40,7 +41,8 @@ public class ExamResultsController : ControllerBase
     public async Task<IActionResult> GetById(string id)
     {
         var result = await _examResultService.GetByIdAsync(id);
-        if (result.Success)
+        // DÜZELTME: result.Success yazım hatası düzeltildi - result.IsSuccess olarak değiştirildi. IResult interface'inde doğru property adı kullanılıyor.
+        if (result.IsSuccess)
         {
             return Ok(result);
         }
@@ -51,7 +53,8 @@ public class ExamResultsController : ControllerBase
     public async Task<IActionResult> GetAllDetail()
     {
         var result = await _examResultService.GetAllExamResultDetailAsync();
-        if (result.Success)
+        // DÜZELTME: result.Success yazım hatası düzeltildi - result.IsSuccess olarak değiştirildi. IResult interface'inde doğru property adı kullanılıyor.
+        if (result.IsSuccess)
         {
             return Ok(result);
         }
@@ -62,7 +65,8 @@ public class ExamResultsController : ControllerBase
     public async Task<IActionResult> GetByIdDetail(string id)
     {
         var result = await _examResultService.GetByIdExamResultDetailAsync(id);
-        if (result.Success)
+        // DÜZELTME: result.Success yazım hatası düzeltildi - result.IsSuccess olarak değiştirildi. IResult interface'inde doğru property adı kullanılıyor.
+        if (result.IsSuccess)
         {
             return Ok(result);
         }
@@ -73,7 +77,8 @@ public class ExamResultsController : ControllerBase
     public async Task<IActionResult> Create([FromBody] CreateExamResultDto createExamResultDto)
     {
         var result = await _examResultService.CreateAsync(createExamResultDto);
-        if (result.Success)
+        // DÜZELTME: result.Success yazım hatası düzeltildi - result.IsSuccess olarak değiştirildi. IResult interface'inde doğru property adı kullanılıyor.
+        if (result.IsSuccess)
         {
             return Ok(result);
         }
@@ -84,7 +89,8 @@ public class ExamResultsController : ControllerBase
     public async Task<IActionResult> Update([FromBody] UpdateExamResultDto updateExamResultDto)
     {
         var result = await _examResultService.Update(updateExamResultDto);
-        if (result.Success)
+        // DÜZELTME: result.Success yazım hatası düzeltildi - result.IsSuccess olarak değiştirildi. IResult interface'inde doğru property adı kullanılıyor.
+        if (result.IsSuccess)
         {
             return Ok(result);
         }
@@ -95,7 +101,8 @@ public class ExamResultsController : ControllerBase
     public async Task<IActionResult> Delete([FromBody] DeleteExamResultDto deleteExamResultDto)
     {
         var result = await _examResultService.Remove(deleteExamResultDto);
-        if (result.Success)
+        // DÜZELTME: result.Success yazım hatası düzeltildi - result.IsSuccess olarak değiştirildi. IResult interface'inde doğru property adı kullanılıyor.
+        if (result.IsSuccess)
         {
             return Ok(result);
         }

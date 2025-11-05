@@ -19,7 +19,8 @@ public class InstructorsController : ControllerBase
     public async Task<IActionResult> GetAll()
     {
         var result = await _instructorService.GetAllAsync();
-        if (result.Success)
+        // DÜZELTME: result.Success yazım hatası düzeltildi - result.IsSuccess olarak değiştirildi. IResult interface'inde doğru property adı kullanılıyor.
+        if (result.IsSuccess)
         {
             return Ok(result);
         }
@@ -30,7 +31,8 @@ public class InstructorsController : ControllerBase
     public async Task<IActionResult> GetById(string id)
     {
         var result = await _instructorService.GetByIdAsync(id);
-        if (result.Success)
+        // DÜZELTME: result.Success yazım hatası düzeltildi - result.IsSuccess olarak değiştirildi. IResult interface'inde doğru property adı kullanılıyor.
+        if (result.IsSuccess)
         {
             return Ok(result);
         }
@@ -54,7 +56,8 @@ public class InstructorsController : ControllerBase
         
         // DÜZELTME: Invalid cast exception önlendi. Gereksiz tip dönüşümü kaldırıldı, string'i int'e cast etme işlemi kaldırıldı.
         var result = await _instructorService.CreateAsync(createdInstructorDto);
-        if (result.Success)
+        // DÜZELTME: result.Success yazım hatası düzeltildi - result.IsSuccess olarak değiştirildi. IResult interface'inde doğru property adı kullanılıyor.
+        if (result.IsSuccess)
         {
             return Ok(result);
         }
@@ -65,7 +68,8 @@ public class InstructorsController : ControllerBase
     public async Task<IActionResult> Update([FromBody] UpdatedInstructorDto updatedInstructorDto)
     {
         var result = await _instructorService.Update(updatedInstructorDto);
-        if (result.Success)
+        // DÜZELTME: result.Success yazım hatası düzeltildi - result.IsSuccess olarak değiştirildi. IResult interface'inde doğru property adı kullanılıyor.
+        if (result.IsSuccess)
         {
             return Ok(result);
         }
@@ -76,7 +80,8 @@ public class InstructorsController : ControllerBase
     public async Task<IActionResult> Delete([FromBody] DeletedInstructorDto deletedInstructorDto)
     {
         var result = await _instructorService.Remove(deletedInstructorDto);
-        if (result.Success)
+        // DÜZELTME: result.Success yazım hatası düzeltildi - result.IsSuccess olarak değiştirildi. IResult interface'inde doğru property adı kullanılıyor.
+        if (result.IsSuccess)
         {
             return Ok(result);
         }
