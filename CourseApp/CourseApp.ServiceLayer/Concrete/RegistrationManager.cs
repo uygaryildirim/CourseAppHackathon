@@ -160,7 +160,32 @@ public class RegistrationManager : IRegistrationService
 
     public async Task<IDataResult<GetByIdRegistrationDetailDto>> GetByIdRegistrationDetailAsync(string id, bool track = true)
     {
-        throw new NotImplementedException();
+        // DÜZELTME: NotImplementedException kaldırıldı, metod implement edildi. id parametresi null veya empty olabilir, bu durumda hata mesajı döndürülüyor.
+        if (string.IsNullOrEmpty(id))
+        {
+            return new ErrorDataResult<GetByIdRegistrationDetailDto>(null, "ID parametresi boş olamaz.");
+        }
+        
+        // DÜZELTME: Repository'den detail bilgisi çekiliyor. GetByIdRegistrationDetail metodu ile kayıt detay bilgisi alınıyor.
+        var registration = await _unitOfWork.Registrations.GetByIdRegistrationDetail(id, track);
+        
+        // DÜZELTME: Null reference exception önlendi. registration null olabilir, bu durumda hata mesajı döndürülüyor.
+        if (registration == null)
+        {
+            return new ErrorDataResult<GetByIdRegistrationDetailDto>(null, "Belirtilen ID'ye sahip kayıt bulunamadı.");
+        }
+        
+        // DÜZELTME: AutoMapper ile Registration entity'si GetByIdRegistrationDetailDto'ya map ediliyor. Entity'den DTO'ya dönüşüm yapılıyor.
+        var registrationMapping = _mapper.Map<GetByIdRegistrationDetailDto>(registration);
+        
+        // DÜZELTME: Null reference exception önlendi. registrationMapping null olabilir, bu durumda hata mesajı döndürülüyor.
+        if (registrationMapping == null)
+        {
+            return new ErrorDataResult<GetByIdRegistrationDetailDto>(null, "Kayıt bilgileri eşlenemedi.");
+        }
+        
+        // DÜZELTME: Başarılı sonuç döndürülüyor. Kayıt detay bilgisi başarıyla alındı ve döndürülüyor.
+        return new SuccessDataResult<GetByIdRegistrationDetailDto>(registrationMapping, ConstantsMessages.RegistrationGetByIdSuccessMessage);
     }
 
     // DÜZELTME: Gereksiz metod kaldırıldı. AccessNonExistentProperty ve NonExistentProperty kaldırıldı, kullanılmayan ve hata üreten kod temizlendi.

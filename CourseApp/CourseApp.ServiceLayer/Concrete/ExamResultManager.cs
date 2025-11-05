@@ -158,7 +158,32 @@ public class ExamResultManager : IExamResultService
 
     public async Task<IDataResult<GetByIdExamResultDetailDto>> GetByIdExamResultDetailAsync(string id, bool track = true)
     {
-        throw new NotImplementedException();
+        // DÜZELTME: NotImplementedException kaldırıldı, metod implement edildi. id parametresi null veya empty olabilir, bu durumda hata mesajı döndürülüyor.
+        if (string.IsNullOrEmpty(id))
+        {
+            return new ErrorDataResult<GetByIdExamResultDetailDto>(null, "ID parametresi boş olamaz.");
+        }
+        
+        // DÜZELTME: Repository'den detail bilgisi çekiliyor. GetByIdExamResultDetailAsync metodu ile sınav sonucu detay bilgisi alınıyor.
+        var examResult = await _unitOfWork.ExamResults.GetByIdExamResultDetailAsync(id, track);
+        
+        // DÜZELTME: Null reference exception önlendi. examResult null olabilir, bu durumda hata mesajı döndürülüyor.
+        if (examResult == null)
+        {
+            return new ErrorDataResult<GetByIdExamResultDetailDto>(null, "Belirtilen ID'ye sahip sınav sonucu bulunamadı.");
+        }
+        
+        // DÜZELTME: AutoMapper ile ExamResult entity'si GetByIdExamResultDetailDto'ya map ediliyor. Entity'den DTO'ya dönüşüm yapılıyor.
+        var examResultMapping = _mapper.Map<GetByIdExamResultDetailDto>(examResult);
+        
+        // DÜZELTME: Null reference exception önlendi. examResultMapping null olabilir, bu durumda hata mesajı döndürülüyor.
+        if (examResultMapping == null)
+        {
+            return new ErrorDataResult<GetByIdExamResultDetailDto>(null, "Sınav sonucu bilgileri eşlenemedi.");
+        }
+        
+        // DÜZELTME: Başarılı sonuç döndürülüyor. Sınav sonucu detay bilgisi başarıyla alındı ve döndürülüyor.
+        return new SuccessDataResult<GetByIdExamResultDetailDto>(examResultMapping, ConstantsMessages.ExamResultGetByIdSuccessMessage);
     }
 
     // DÜZELTME: Gereksiz metod kaldırıldı. CallMissingMethod ve MissingMethodHelper kaldırıldı, kullanılmayan ve hata üreten kod temizlendi.
